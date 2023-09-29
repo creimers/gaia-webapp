@@ -85,7 +85,14 @@ export default function LayerAccordion() {
       >
         {LAYER_GROUPS.map((group) => (
           <AccordionItem value={group.id} key={group.id}>
-            <AccordionTrigger>{group.name}</AccordionTrigger>
+            <AccordionTrigger>
+              <div className="w-full flex justify-between items-center">
+                <div>{group.name}</div>
+                <div>
+                  <group.icon className="w-7 h-7" weight="light" />
+                </div>
+              </div>
+            </AccordionTrigger>
             <AccordionContent className="px-8 py-3 space-y-4">
               <div className="space-y-4">
                 {group.layers.map((layer) => (
