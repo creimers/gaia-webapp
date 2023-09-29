@@ -1,14 +1,51 @@
 "use client";
 
 import * as React from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
+
+import resolveConfig from "tailwindcss/resolveConfig";
+import { Config, ScreensConfig } from "tailwindcss/types/config";
+import tailwindConfig from "@/tailwind.config";
 
 import { Stack, ArrowLeft } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
 
+const fullConfig = resolveConfig(tailwindConfig as unknown as Config);
+
+type ding = { xs: string; sm: string; md: string; lg: string; xl: string };
+const breakpoints = (fullConfig?.theme?.screens || {
+  xs: "480px",
+  sm: "640px",
+  md: "768px",
+  lg: "1024px",
+  xl: "1280px",
+}) as ding;
+
+type BreakpointKey = keyof ScreensConfig;
+
 export default function Sidebar({ children }: { children?: React.ReactNode }) {
-  const [open, setOpen] = React.useState(true); // todo: make this a function of the screen width
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const open = searchParams.get("sidebar") === "true";
+
+  function setOpen(open: boolean) {
+    const params = new URLSearchParams(searchParams);
+    params.set("sidebar", open.toString());
+    router.replace(pathname + "?" + params.toString());
+  }
+
+  React.useEffect(() => {
+    const width = window.innerWidth;
+    const open = searchParams.get("sidebar");
+    breakpoints.xs;
+    if (width > parseInt(breakpoints.sm) && open !== "false") {
+      setOpen(true);
+    }
+  }, []);
+
   return (
     <div
       className={cn(
@@ -60,7 +97,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
       </header>
       <main
         id="sidebar-left-body"
-        className="bg-white/90 backdrop-blur-md overflow-y-scroll flex-1"
+        className="bg-white/90 backdrop-blur-md overflow-y-scroll flex-1 overflow-x-hidden"
       >
         {children}
       </main>
