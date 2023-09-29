@@ -3,5 +3,9 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="w-full h-screen bg-green-400">{children}</div>;
+  return (
+    <div className="w-full h-screen max-h-screen overflow-hidden relative bg-blue-100">
+      {children}
+    </div>
+  );
 }

@@ -8,9 +8,8 @@ import { ROUTES } from "@/lib/constants";
 
 export default function NavDesktop() {
   const pathname = usePathname();
-  console.log({ pathname });
   return (
-    <nav>
+    <nav className="hidden md:block">
       <ul className="flex space-x-4">
         {ROUTES.map((route) => {
           const active = route.pathname === pathname;

@@ -1,3 +1,12 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import Sidebar from "@/components/dashboard/sidebar";
+
 export default function Dashboard() {
-  return <div>Dash!</div>;
+  return (
+    <>
+      <Sidebar></Sidebar>
+    </>
+  );
 }
