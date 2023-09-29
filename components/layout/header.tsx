@@ -1,18 +1,28 @@
 "use client";
 import * as React from "react";
+
 import { cn } from "@/lib/utils";
+
 export default function Header() {
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
-  const body = document.getElementsByTagName("body")[0];
+
+  // refactor with ref
+  const bodyRef = React.useRef<HTMLBodyElement>();
+
+  React.useEffect(() => {
+    bodyRef.current = window.document.getElementsByTagName("body")[0];
+  }, []);
 
   function toggleMobileNav() {
     const open = mobileNavOpen;
-    if (open) {
-      body.style.overflow = "auto";
-      setMobileNavOpen(false);
-    } else {
-      body.style.overflow = "hidden";
-      setMobileNavOpen(true);
+    if (bodyRef.current) {
+      if (open) {
+        bodyRef.current.style.overflow = "auto";
+        setMobileNavOpen(false);
+      } else {
+        bodyRef.current.style.overflow = "hidden";
+        setMobileNavOpen(true);
+      }
     }
   }
 
