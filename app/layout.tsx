@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="relative">
         <Header />
-        <main className="bg-red-500 h-[200dvh]">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

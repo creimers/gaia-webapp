@@ -3,5 +3,5 @@ export default function TextPageLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="max-w-prose mx-auto bg-red-200">{children}</div>;
+  return <div className="max-w-prose mx-auto my-28">{children}</div>;
 }
