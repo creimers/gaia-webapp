@@ -87,6 +87,7 @@ export default function TheMap() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [mapInitialized, setMapInitialized] = React.useState(false);
 
   // # grap map state from url
   const latitude = parseFloat(searchParams.get("lat") || `${DEFAULT_LATITUDE}`);
@@ -134,7 +135,10 @@ export default function TheMap() {
 
   return (
     <Map
-      onLoad={() => offsetSidebar()}
+      onLoad={() => {
+        offsetSidebar();
+        setMapInitialized(true);
+      }}
       ref={mapRef}
       onMoveEnd={() => persistViewState()}
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
@@ -146,32 +150,34 @@ export default function TheMap() {
       onMove={(evt) => setViewState(evt.viewState)}
       maxZoom={10}
     >
-      <div className="absolute top-[75px] md:top-[100px] right-4 md:right-8">
-        {/** @ts-ignore */}
-        <SearchBox
-          placeholder="Search for a location"
-          mapboxgl={mapboxgl}
-          accessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN!}
-          value=""
-          options={{
-            language: "en",
-            bbox: [
-              [-17.625, -34.833], // Southwest corner: minimum longitude and latitude
-              [51.279, 37.345], // Northeast corner: maximum longitude and latitude
-            ],
-          }}
-          onRetrieve={(e) => {
-            const feature = e.features[0];
-            if (feature) {
-              const { coordinates } = feature.geometry;
-              mapRef.current?.flyTo({
-                center: { lng: coordinates[0], lat: coordinates[1] },
-                zoom: 10,
-              });
-            }
-          }}
-        ></SearchBox>
-      </div>
+      {mapInitialized && (
+        <div className="absolute top-[75px] md:top-[100px] right-4 md:right-8">
+          {/** @ts-ignore */}
+          <SearchBox
+            placeholder="Search for a location"
+            mapboxgl={mapboxgl}
+            accessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN!}
+            value=""
+            options={{
+              language: "en",
+              bbox: [
+                [-17.625, -34.833], // Southwest corner: minimum longitude and latitude
+                [51.279, 37.345], // Northeast corner: maximum longitude and latitude
+              ],
+            }}
+            onRetrieve={(e) => {
+              const feature = e.features[0];
+              if (feature) {
+                const { coordinates } = feature.geometry;
+                mapRef.current?.flyTo({
+                  center: { lng: coordinates[0], lat: coordinates[1] },
+                  zoom: 10,
+                });
+              }
+            }}
+          ></SearchBox>
+        </div>
+      )}
       <GeolocateControl position="bottom-right" />
       <NavigationControl position="bottom-right" />
       {Object.keys(LAYER_TILE_URLS).map((layerId) => (
