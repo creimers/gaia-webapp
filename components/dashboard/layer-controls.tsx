@@ -16,7 +16,7 @@ export default function LayerControls() {
     router.replace(pathname + "?" + params.toString());
   }
 
-  function updateBaseLayer(layerName) {
+  function updateBaseLayer(layerName: string) {
     const params = new URLSearchParams(searchParams);
     params.set("base_layer", layerName);
     router.replace(pathname + "?" + params.toString());
