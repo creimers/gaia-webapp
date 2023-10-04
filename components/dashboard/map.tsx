@@ -95,6 +95,7 @@ export default function TheMap() {
     searchParams.get("lon") || `${DEFAULT_LONGITUDE}`
   );
   const zoom = parseFloat(searchParams.get("zoom") || `${DEFAULT_ZOOM}`);
+  const sidebarOpen = searchParams.get("sidebar") === "true";
 
   const baseLayer = searchParams.get("base_layer") || "streets";
   const layerId = searchParams.get("layer") || LAYER.SOIL_LAYER_PH;
@@ -108,7 +109,7 @@ export default function TheMap() {
   const mapRef = React.useRef<MapRef>(null);
 
   const offsetSidebar = () => {
-    if (longitude === DEFAULT_LONGITUDE) {
+    if (longitude === DEFAULT_LONGITUDE && sidebarOpen) {
       const center = mapRef.current?.getCenter();
       const centerPx = mapRef.current?.project(center!);
       if (centerPx !== undefined) {
@@ -151,7 +152,7 @@ export default function TheMap() {
       maxZoom={10}
     >
       {mapInitialized && (
-        <div className="absolute top-[75px] md:top-[100px] right-4 md:right-8">
+        <div className="absolute top-[70px] md:top-[100px] right-0 md:right-8">
           {/** @ts-ignore */}
           <SearchBox
             placeholder="Search for a location"
