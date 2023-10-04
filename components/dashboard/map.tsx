@@ -2,13 +2,19 @@
 
 import * as React from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Map, { Layer, Source, MapRef } from "react-map-gl";
+import Map, {
+  NavigationControl,
+  GeolocateControl,
+  Layer,
+  Source,
+  MapRef,
+} from "react-map-gl";
+import type { RasterPaint } from "mapbox-gl";
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 import * as LAYER from "@/lib/layers";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
-import { RasterPaint } from "mapbox-gl";
 
 const PH_URL =
   "https://gaia-tiles.superservice-international.com/ph/soil_crop/tiles/{z}/{x}/{y}.png";
@@ -95,7 +101,6 @@ export default function TheMap() {
   }`;
 
   const layerOpacity = parseFloat(searchParams.get("layer_opacity") || "1");
-  console.log({ layerOpacity });
 
   const mapRef = React.useRef<MapRef>(null);
 
@@ -139,6 +144,8 @@ export default function TheMap() {
       onMove={(evt) => setViewState(evt.viewState)}
       maxZoom={10}
     >
+      <GeolocateControl position="bottom-right" />
+      <NavigationControl position="bottom-right" />
       {Object.keys(LAYER_TILE_URLS).map((layerId) => (
         <React.Fragment key={layerId}>
           {activeLayer === layerId && (
@@ -148,7 +155,11 @@ export default function TheMap() {
               type="raster"
               tileSize={256}
               scheme="tms"
-              // bounds={layer.bounds}
+              bounds={[
+                -17.525, -34.83353431397413, 51.41351491714595,
+                27.30000000000001,
+              ]}
+              maxzoom={10}
             >
               <Layer
                 id={layerId}

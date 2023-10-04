@@ -6,6 +6,13 @@ export default function Home() {
     <>
       <div className="prose mb-8">
         <h1>About</h1>
+        <iframe
+          className="aspect-video w-full"
+          src="https://www.youtube.com/embed/tB0MCduhOpA?si=9q3jNl5nHev16u1z"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
         <p>
           <strong>
             Guiding Acid Soil Management Investments in Africa (GAIA)

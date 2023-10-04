@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 
+import { SOIL_LAYER_PH, PROFITABILITY_ID } from "@/lib/layers";
+
 import { Button } from "@/components/ui/button";
 
 import {
@@ -11,6 +13,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 type Props = {
   open: boolean;
@@ -20,10 +23,12 @@ type Props = {
 export default function DownloadDialogue({ open, onClose }: Props) {
   const [agreeToLicense, setAgreeToLicense] = React.useState(false);
   const searchParams = useSearchParams();
-  const layer = searchParams.get("layer");
-  const limePrice = searchParams.get("lime_price");
+  const layer = searchParams.get("layer") || SOIL_LAYER_PH;
+  const limePrice = searchParams.get("lime_price") || DEFAULT_LIME_PRICE;
 
-  const filename = `${layer}${limePrice ? `_${limePrice}` : ""}.csv`;
+  const filename = `${layer}${
+    layer.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
+  }.csv`;
 
   function closeDialogue() {
     setAgreeToLicense(false);
