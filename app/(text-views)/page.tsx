@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="prose prose-lg">
+    <div className="prose">
       <h1>About</h1>
       <p>
         <strong>

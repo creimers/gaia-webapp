@@ -1,0 +1,136 @@
+import * as React from "react";
+import { useSearchParams } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+
+type Props = {
+  open: boolean;
+  onClose: () => void;
+};
+
+export default function DownloadDialogue({ open, onClose }: Props) {
+  const [agreeToLicense, setAgreeToLicense] = React.useState(false);
+  const searchParams = useSearchParams();
+  const layer = searchParams.get("layer");
+  const limePrice = searchParams.get("lime_price");
+
+  const filename = `${layer}${limePrice ? `_${limePrice}` : ""}.csv`;
+
+  function closeDialogue() {
+    setAgreeToLicense(false);
+    onClose();
+  }
+
+  async function downloadDataset() {
+    // const filename = `${layer}${limePrice ? `_${limePrice}` : ""}.csv`;
+    const filename = "test.csv";
+    const url = `/data/${filename}`;
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.blob();
+      const a = document.createElement("a");
+      a.href = window.URL.createObjectURL(data);
+      a.download = filename;
+      a.click();
+      closeDialogue();
+    }
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={closeDialogue}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Download Dataset</DialogTitle>
+          <DialogDescription asChild>
+            <div className="space-y-4 text-base">
+              <div>{filename}</div>
+              <div>
+                <p>
+                  This work is licensed under{" "}
+                  <a
+                    href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
+                    target="_blank"
+                    rel="license noopener noreferrer"
+                    style={{ display: "inline-flex" }}
+                  >
+                    CC BY-NC-SA 4.0
+                    <img
+                      alt="Creative Commons License"
+                      style={{
+                        height: "22px",
+                        marginLeft: 3,
+                        verticalAlign: "text-bottom",
+                      }}
+                      src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
+                    />
+                    <img
+                      alt="Creative Commons License"
+                      style={{
+                        height: "22px",
+                        marginLeft: 3,
+                        verticalAlign: "text-bottom",
+                      }}
+                      src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
+                    />
+                    <img
+                      alt="Creative Commons License"
+                      style={{
+                        height: "22px",
+                        marginLeft: 3,
+                        verticalAlign: "text-bottom",
+                      }}
+                      src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
+                    />
+                    <img
+                      alt="Creative Commons License"
+                      style={{
+                        height: "22px",
+                        marginLeft: 3,
+                        verticalAlign: "text-bottom",
+                      }}
+                      src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
+                    />
+                  </a>
+                </p>
+              </div>
+              <div>
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={agreeToLicense}
+                    onChange={() => setAgreeToLicense(!agreeToLicense)}
+                    className="shrink-0"
+                  />
+                  <div>
+                    <span className="pl-2 block">I agree to the license</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="outline" onClick={closeDialogue}>
+            Cancel
+          </Button>
+          <Button
+            variant="default"
+            disabled={!agreeToLicense}
+            onClick={downloadDataset}
+          >
+            Download Dataset
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}

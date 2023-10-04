@@ -7,3 +7,5 @@ export const ROUTES = [
 ];
 
 export const SIDEBAR_WIDTH_PX = 400;
+
+export const DEFAULT_LIME_PRICE = "60";

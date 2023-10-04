@@ -18,7 +18,7 @@ export default function NavDesktop() {
               <Link
                 href={route.pathname}
                 className={cn(
-                  active ? "bg-lime-600 text-white" : "hover:underline",
+                  active ? "bg-lime-600 text-white rounded" : "hover:underline",
                   "font-semibold px-3 py-2"
                 )}
               >

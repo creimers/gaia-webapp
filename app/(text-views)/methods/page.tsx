@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div className="prose prose-lg">
+    <div className="prose">
       <h1>Methods</h1>
       <p>
         Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
