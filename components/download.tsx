@@ -1,11 +1,11 @@
-import type { Download } from "@/tina/__generated__/types";
+// import type { Download } from "@/tina/__generated__/types";
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr/ArrowSquareOut";
 import { Users } from "@phosphor-icons/react/dist/ssr/Users";
 import { Newspaper } from "@phosphor-icons/react/dist/ssr/Newspaper";
 import { File } from "@phosphor-icons/react/dist/ssr/File";
 
 type Props = {
-  download: Downloads;
+  download: { name: string; url: string };
 };
 
 export default function Download({ download }: Props) {

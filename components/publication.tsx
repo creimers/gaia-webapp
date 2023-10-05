@@ -1,11 +1,18 @@
-import type { Publication } from "@/tina/__generated__/types";
+// import type { Publication } from "@/tina/__generated__/types";
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr/ArrowSquareOut";
 import { Users } from "@phosphor-icons/react/dist/ssr/Users";
 import { Newspaper } from "@phosphor-icons/react/dist/ssr/Newspaper";
 import { File } from "@phosphor-icons/react/dist/ssr/File";
 
 type Props = {
-  publication: Publication;
+  publication: {
+    title: string;
+    authors: string;
+    year: string;
+    journal: string;
+    url: string;
+    publicationType: string;
+  };
 };
 
 export default function Publication({ publication }: Props) {
