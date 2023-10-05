@@ -11,6 +11,7 @@ import { ROUTES } from "@/lib/constants";
 
 import { List, X } from "@phosphor-icons/react";
 export default function NavMobile() {
+  const [mounted, setMounted] = React.useState(false);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
 
   // refactor with ref
@@ -18,6 +19,7 @@ export default function NavMobile() {
 
   React.useEffect(() => {
     bodyRef.current = window.document.getElementsByTagName("body")[0];
+    setMounted(true);
   }, []);
 
   function toggleMobileNav() {
@@ -35,6 +37,8 @@ export default function NavMobile() {
 
   const pathname = usePathname();
 
+  // if (!mounted) return null;
+
   return (
     <nav className="md:hidden flex items-center">
       <button
@@ -44,43 +48,45 @@ export default function NavMobile() {
         <List className="w-8 h-8" />
       </button>
 
-      {createPortal(
-        <div
-          className={cn(
-            "fixed top-0 h-[100dvh] bg-white/90 backdrop-blur left-0 w-screen p-8 space-y-8",
-            showMobileNav ? "z-[100]" : "hidden"
-          )}
-        >
-          <button
-            onClick={toggleMobileNav}
-            className="absolute top-3 left-0 w-[75px] flex justify-center"
-          >
-            <X className="h-8 w-8" />
-          </button>
-          <ul className="flex flex-col space-y-4 text-2xl">
-            {ROUTES.map((route) => {
-              const active = route.pathname === pathname;
-              return (
-                <li key={route.title}>
-                  <Link
-                    onClick={() => setTimeout(toggleMobileNav, 200)}
-                    href={route.pathname}
-                    className={cn(
-                      active
-                        ? "bg-lime-600 text-white rounded"
-                        : "hover:underline",
-                      "font-semibold px-3 py-2"
-                    )}
-                  >
-                    {route.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>,
-        document.body
-      )}
+      {mounted
+        ? createPortal(
+            <div
+              className={cn(
+                "fixed top-0 h-[100dvh] bg-white/90 backdrop-blur left-0 w-screen p-8 space-y-8",
+                showMobileNav ? "z-[100]" : "hidden"
+              )}
+            >
+              <button
+                onClick={toggleMobileNav}
+                className="absolute top-3 left-0 w-[75px] flex justify-center"
+              >
+                <X className="h-8 w-8" />
+              </button>
+              <ul className="flex flex-col space-y-4 text-2xl">
+                {ROUTES.map((route) => {
+                  const active = route.pathname === pathname;
+                  return (
+                    <li key={route.title}>
+                      <Link
+                        onClick={() => setTimeout(toggleMobileNav, 200)}
+                        href={route.pathname}
+                        className={cn(
+                          active
+                            ? "bg-lime-600 text-white rounded"
+                            : "hover:underline",
+                          "font-semibold px-3 py-2"
+                        )}
+                      >
+                        {route.title}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>,
+            document.body
+          )
+        : null}
     </nav>
   );
 }
