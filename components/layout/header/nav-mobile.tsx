@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -36,40 +37,50 @@ export default function NavMobile() {
 
   return (
     <nav className="md:hidden flex items-center">
-      <button onClick={toggleMobileNav}>
+      <button
+        onClick={toggleMobileNav}
+        className="w-[75px] flex justify-center"
+      >
         <List className="w-8 h-8" />
       </button>
-      <div
-        className={cn(
-          "fixed top-0 h-[100dvh] bg-white left-0 w-screen p-8 space-y-8",
-          showMobileNav ? "z-40" : "hidden"
-        )}
-      >
-        <button onClick={toggleMobileNav} className="absolute top-3 left-4">
-          <X className="h-8 w-8" />
-        </button>
-        <ul className="flex flex-col space-y-4 text-2xl">
-          {ROUTES.map((route) => {
-            const active = route.pathname === pathname;
-            return (
-              <li key={route.title}>
-                <Link
-                  onClick={toggleMobileNav}
-                  href={route.pathname}
-                  className={cn(
-                    active
-                      ? "bg-lime-600 text-white rounded"
-                      : "hover:underline",
-                    "font-semibold px-3 py-2"
-                  )}
-                >
-                  {route.title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+
+      {createPortal(
+        <div
+          className={cn(
+            "fixed top-0 h-[100dvh] bg-white/90 backdrop-blur left-0 w-screen p-8 space-y-8",
+            showMobileNav ? "z-[100]" : "hidden"
+          )}
+        >
+          <button
+            onClick={toggleMobileNav}
+            className="absolute top-3 left-0 w-[75px] flex justify-center"
+          >
+            <X className="h-8 w-8" />
+          </button>
+          <ul className="flex flex-col space-y-4 text-2xl">
+            {ROUTES.map((route) => {
+              const active = route.pathname === pathname;
+              return (
+                <li key={route.title}>
+                  <Link
+                    onClick={() => setTimeout(toggleMobileNav, 200)}
+                    href={route.pathname}
+                    className={cn(
+                      active
+                        ? "bg-lime-600 text-white rounded"
+                        : "hover:underline",
+                      "font-semibold px-3 py-2"
+                    )}
+                  >
+                    {route.title}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>,
+        document.body
+      )}
     </nav>
   );
 }

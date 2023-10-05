@@ -10,13 +10,15 @@ import Map, {
   MapRef,
 } from "react-map-gl";
 import type { RasterPaint } from "mapbox-gl";
+import { SearchBox } from "@mapbox/search-js-react";
+import mapboxgl from "mapbox-gl";
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { MagnifyingGlass } from "@phosphor-icons/react";
 
 import * as LAYER from "@/lib/layers";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
-import { SearchBox } from "@mapbox/search-js-react";
-import mapboxgl from "mapbox-gl";
+import { cn } from "@/lib/utils";
 
 const PH_URL =
   "https://gaia-tiles.superservice-international.com/ph/soil_crop/tiles/{z}/{x}/{y}.png";
@@ -88,6 +90,7 @@ export default function TheMap() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [mapInitialized, setMapInitialized] = React.useState(false);
+  const [searchDialogueOpen, setSearchDialogueOpen] = React.useState(false);
 
   // # grap map state from url
   const latitude = parseFloat(searchParams.get("lat") || `${DEFAULT_LATITUDE}`);
@@ -134,6 +137,13 @@ export default function TheMap() {
     router.replace(pathname + "?" + params.toString());
   }, [viewState]);
 
+  function handleSearchSelection(latitude: number, longitude: number) {
+    mapRef.current?.flyTo({
+      center: { lng: longitude, lat: latitude },
+      zoom: 10,
+    });
+  }
+
   return (
     <Map
       onLoad={() => {
@@ -152,35 +162,53 @@ export default function TheMap() {
       maxZoom={10}
     >
       {mapInitialized && (
-        <div className="absolute top-[70px] md:top-[100px] right-0 md:right-8">
-          {/** @ts-ignore */}
-          <SearchBox
-            placeholder="Search for a location"
-            mapboxgl={mapboxgl}
-            accessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN!}
-            value=""
-            options={{
-              language: "en",
-              bbox: [
-                [-17.625, -34.833], // Southwest corner: minimum longitude and latitude
-                [51.279, 37.345], // Northeast corner: maximum longitude and latitude
-              ],
-            }}
-            onRetrieve={(e) => {
-              const feature = e.features[0];
-              if (feature) {
-                const { coordinates } = feature.geometry;
-                mapRef.current?.flyTo({
-                  center: { lng: coordinates[0], lat: coordinates[1] },
-                  zoom: 10,
-                });
-              }
-            }}
-          ></SearchBox>
-        </div>
+        <>
+          <div
+            className={cn(
+              "absolute top-[200px] w-full md:w-64 justify-center md:top-[100px] md:right-8 hidden md:block",
+              searchDialogueOpen && "z-[100] flex"
+            )}
+          >
+            {/** @ts-ignore */}
+            <SearchBox
+              placeholder="Search for a location"
+              mapboxgl={mapboxgl}
+              accessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN!}
+              value=""
+              options={{
+                language: "en",
+                bbox: [
+                  [-17.625, -34.833], // Southwest corner: minimum longitude and latitude
+                  [51.279, 37.345], // Northeast corner: maximum longitude and latitude
+                ],
+              }}
+              onRetrieve={(e) => {
+                const feature = e.features[0];
+                if (feature) {
+                  const { coordinates } = feature.geometry;
+                  mapRef.current?.flyTo({
+                    center: { lng: coordinates[0], lat: coordinates[1] },
+                    zoom: 10,
+                  });
+                  if (searchDialogueOpen) {
+                    setSearchDialogueOpen(false);
+                  }
+                }
+              }}
+            ></SearchBox>
+          </div>
+        </>
       )}
       <GeolocateControl position="bottom-right" />
       <NavigationControl position="bottom-right" />
+      <div className="absolute bottom-[190px] right-[10px] block md:hidden">
+        <button
+          onClick={() => setSearchDialogueOpen((o) => !o)}
+          className="bg-gray-50 shadow-md h-[29px] w-[29px] rounded flex justify-center items-center"
+        >
+          <MagnifyingGlass className="h-4 w-4" weight="bold" />
+        </button>
+      </div>
       {Object.keys(LAYER_TILE_URLS).map((layerId) => (
         <React.Fragment key={layerId}>
           {activeLayer === layerId && (

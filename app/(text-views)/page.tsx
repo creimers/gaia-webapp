@@ -64,7 +64,7 @@ export default function Home() {
         <div className="col-span-6 font-semibold text-lg">
           Africa Based Partners
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center col-span-2 md:col-span-1">
           <Image
             src="/logos/agra.png"
             height={341}
@@ -72,7 +72,7 @@ export default function Home() {
             alt="AGRA logo"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center col-span-2 md:col-span-1">
           <Image
             src="/logos/eiar.png"
             height={762}
@@ -80,7 +80,7 @@ export default function Home() {
             alt="EIAR logo"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center col-span-2 md:col-span-1">
           <Image
             src="/logos/kalro.png"
             height={709}
@@ -88,7 +88,7 @@ export default function Home() {
             alt="KALRO logo"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center col-span-2 md:col-span-1">
           <Image
             src="/logos/rab.png"
             height={970}
@@ -96,7 +96,7 @@ export default function Home() {
             alt="RAB logo"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center col-span-2 md:col-span-1">
           <Image
             src="/logos/tari.png"
             height={563}
@@ -104,7 +104,7 @@ export default function Home() {
             alt="TARI logo"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center col-span-2 md:col-span-1">
           <Image
             src="/logos/sagcot.png"
             height={583}
@@ -115,7 +115,7 @@ export default function Home() {
         <div className="col-span-6 font-semibold text-lg">
           Non-Africa Based Partners
         </div>
-        <div className="flex items-center justify-center col-span-2">
+        <div className="flex items-center justify-center col-span-3 md:col-span-2">
           <Image
             src="/logos/ucd.png"
             height={256}
@@ -123,7 +123,7 @@ export default function Home() {
             alt="ucd logo"
           />
         </div>
-        <div className="flex items-center justify-center col-span-2">
+        <div className="flex items-center justify-center col-span-3 md:col-span-2">
           <Image
             src="/logos/wur.png"
             height={248}

@@ -124,13 +124,15 @@ export default function DownloadDialogue({ open, onClose }: Props) {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="outline" onClick={closeDialogue}>
+          <Button variant="outline" onClick={closeDialogue} size="lg">
             Cancel
           </Button>
+          <div className="h-2 block md:hidden" />
           <Button
             variant="default"
             disabled={!agreeToLicense}
             onClick={downloadDataset}
+            size="lg"
           >
             Download Dataset
           </Button>

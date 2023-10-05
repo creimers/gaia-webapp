@@ -90,7 +90,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
         </button>
         <div
           className={cn(
-            "absolute top-0 left-0 h-[75px] flex items-center w-full md:w-[400px] md:justify-center justify-end pr-[calc(3*75px+10px)] md:pr-0 transition-opacity duration-500 delay-200",
+            "absolute top-0 left-0 h-[75px] flex items-center w-screen md:w-[400px] justify-center  md:pr-0 transition-opacity duration-500 delay-200",
             sidebarOpen ? "opacity-100" : "opacity-0"
           )}
         >
