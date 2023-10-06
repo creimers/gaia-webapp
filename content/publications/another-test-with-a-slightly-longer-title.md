@@ -1,9 +1,9 @@
 ---
 title: another test with a slightly longer title
-authors: braschi and fekas
+authors: 'Andrea Braschi, Dimitri Fekas'
 year: '2023'
-journal: Agroforestry
-url: 'https://www.zeit.de'
+journal: Agroforestry Online
+url: 'https://www.cimmyt.org'
 publicationType:
   - Technical Report
 ---
