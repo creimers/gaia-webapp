@@ -1,5 +1,5 @@
 ---
-title: another test with a slightly longer title
+title: Another test with a slightly longer title
 authors: 'Andrea Braschi, Dimitri Fekas'
 year: '2023'
 journal: Agroforestry Online
