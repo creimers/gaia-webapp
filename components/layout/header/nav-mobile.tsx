@@ -52,7 +52,7 @@ export default function NavMobile() {
         ? createPortal(
             <div
               className={cn(
-                "fixed top-0 h-[100dvh] bg-white/90 backdrop-blur left-0 w-screen p-8 space-y-8",
+                "fixed top-0 h-[100dvh] bg-white/90 backdrop-blur left-0 w-screen px-8 pt-20",
                 showMobileNav ? "z-[100]" : "hidden"
               )}
             >
@@ -62,7 +62,7 @@ export default function NavMobile() {
               >
                 <X className="h-8 w-8" />
               </button>
-              <ul className="flex flex-col space-y-4 text-2xl">
+              <ul className="flex flex-col space-y-6 text-3xl">
                 {ROUTES.map((route) => {
                   const active = route.pathname === pathname;
                   return (

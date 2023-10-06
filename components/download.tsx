@@ -9,11 +9,10 @@ type Props = {
 
 export default function DownloadItem({ download }: Props) {
   return (
-    <div className="p-8 rounded-xl bg-gray-100 relative">
-      {/* <div className="absolute top-2 right-2 bg-gray-200 rounded-lg px-2 py-1 text-sm">
-        {publication.publicationType}
-      </div> */}
-      <h2 className="text-2xl text-lime-900 mb-2">{download.title}</h2>
+    <div className="p-6 rounded-xl bg-gray-100 relative">
+      <h2 className="text-2xl text-lime-800 mb-2 font-medium">
+        {download.title}
+      </h2>
       <div className="text-gray-600 flex items-center space-x-2">
         <MapPin className="w-4 h-4" />
         <span>{download.country}</span>

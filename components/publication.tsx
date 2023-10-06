@@ -5,24 +5,18 @@ import { Newspaper } from "@phosphor-icons/react/dist/ssr/Newspaper";
 import { File } from "@phosphor-icons/react/dist/ssr/File";
 
 type Props = {
-  // publication: {
-  //   title: string;
-  //   authors: string;
-  //   year: string;
-  //   journal: string;
-  //   url: string;
-  //   publicationType: string;
-  // };
   publication: Publication;
 };
 
 export default function Publication({ publication }: Props) {
   return (
     <div className="p-8 rounded-xl bg-gray-100 relative">
-      <div className="absolute top-2 right-2 bg-gray-200 rounded-lg px-2 py-1 text-sm">
+      <div className="absolute top-2 right-2 bg-gray-200 rounded-lg px-2 py-1 text-xs">
         {publication.publicationType}
       </div>
-      <h2 className="text-2xl text-lime-900 mb-2">{publication.title}</h2>
+      <h2 className="text-2xl text-lime-800 mb-2 font-medium">
+        {publication.title}
+      </h2>
       <div className="text-gray-600 flex items-center space-x-2">
         <Users className="w-4 h-4" />
         <span>{publication.authors}</span>

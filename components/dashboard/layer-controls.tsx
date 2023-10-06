@@ -29,12 +29,12 @@ export default function LayerControls() {
         <div className="flex space-x-6">
           <button
             className={cn(
-              "flex-1 bg-gray-400 rounded-xl p-6 flex justify-center items-center text-black text-2xl bg-[url('/streets.png')] bg-cover bg-center",
+              "flex-1 bg-gray-400 rounded-xl p-6 flex justify-center items-center text-slate-800 text-2xl bg-[url('/streets.png')] bg-cover bg-center",
               baseLayer === "streets" && "ring-4 ring-offset-0 ring-indigo-500"
             )}
             onClick={() => updateBaseLayer("streets")}
           >
-            Streets
+            <span className="backdrop-blur px-2 py-1 rounded-lg">Streets</span>
           </button>
           <button
             className={cn(
@@ -44,7 +44,9 @@ export default function LayerControls() {
             )}
             onClick={() => updateBaseLayer("satellite")}
           >
-            <span className="drop-shadow-lg">Satellite</span>
+            <span className="backdrop-blur px-2 py-1 rounded-lg">
+              Satellite
+            </span>
           </button>
         </div>
       </div>
