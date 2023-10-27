@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/dialog";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
+import CountrySelect, { type Country } from "./country-select";
+
 type Props = {
   open: boolean;
   onClose: () => void;
@@ -22,16 +24,18 @@ type Props = {
 
 export default function DownloadDialogue({ open, onClose }: Props) {
   const [agreeToLicense, setAgreeToLicense] = React.useState(false);
+  const [country, setCountry] = React.useState<Country | undefined>();
   const searchParams = useSearchParams();
   const layer = searchParams.get("layer") || SOIL_LAYER_PH;
   const limePrice = searchParams.get("lime_price") || DEFAULT_LIME_PRICE;
 
   const filename = `${layer}${
     layer.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
-  }.csv`;
+  }${country ? `_${country.iso}` : ""}.csv`;
 
   function closeDialogue() {
     setAgreeToLicense(false);
+    setCountry(undefined);
     onClose();
   }
 
@@ -56,8 +60,12 @@ export default function DownloadDialogue({ open, onClose }: Props) {
         <DialogHeader>
           <DialogTitle>Download Dataset</DialogTitle>
           <DialogDescription asChild>
-            <div className="space-y-4 text-base">
-              <div>{filename}</div>
+            <div className="space-y-4 text-base py-4">
+              <div>
+                <label className="font-semibold mb-2 block">Country</label>
+                <CountrySelect value={country} handleUpdate={setCountry} />
+              </div>
+              {/* <div>{filename}</div> */}
               <div>
                 <p>
                   This work is licensed under{" "}
@@ -130,7 +138,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
           <div className="h-2 block md:hidden" />
           <Button
             variant="default"
-            disabled={!agreeToLicense}
+            disabled={!agreeToLicense || !country}
             onClick={downloadDataset}
             size="lg"
           >
