@@ -10,7 +10,7 @@ export default function Header() {
         <div className="w-64">
           <Logo />
         </div>
-        <span className="hidden lg:block text-xs">
+        <span className="hidden lg:block text-sm">
           Guiding acid soil management <br /> investments in Africa
         </span>
       </div>
