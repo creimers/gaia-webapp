@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
+import Citation from "./citation";
 import CountrySelect, { type Country } from "./country-select";
 
 type Props = {
@@ -115,6 +116,14 @@ export default function DownloadDialogue({ open, onClose }: Props) {
                   </a>
                 </p>
               </div>
+              <details>
+                <summary className="font-semibold cursor-pointer">
+                  Show suggested citation
+                </summary>
+                <div className="py-1">
+                  <Citation />
+                </div>
+              </details>
               <div>
                 <label className="flex items-center cursor-pointer">
                   <input
