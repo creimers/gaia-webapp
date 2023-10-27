@@ -79,8 +79,8 @@ const LAYER_TILE_URLS: { [key: string]: string } = {
   [`${LAYER.PROFITABILITY_LAYER_OTHER}_100`]: HP_URL,
 };
 
-const DEFAULT_LATITUDE = 6.909917;
-const DEFAULT_LONGITUDE = 17.658167;
+const DEFAULT_LATITUDE = -6;
+const DEFAULT_LONGITUDE = 26.793587;
 const DEFAULT_ZOOM = 3;
 
 const BASE_LAYER_URLS: { [key: string]: string } = {
