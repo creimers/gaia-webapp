@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <div className="prose">
-      <h1>Methods</h1>
+      <h1>Methods - Profitability assessement</h1>
       <p>
         Gridded data on soil properties, crop harvested area, and physical
         production were used to estimate the crop production of acid soils after

@@ -25,23 +25,63 @@ export default function NavMobile() {
         <SheetContent side="left">
           <ul className="flex flex-col space-y-6 text-xl pt-4">
             {ROUTES.map((route) => {
-              const active = route.pathname === pathname;
-              return (
-                <li key={route.title}>
-                  <Link
-                    onClick={() => setOpen(false)}
-                    href={route.pathname}
-                    className={cn(
-                      active
-                        ? "bg-lime-600 text-white rounded"
-                        : "hover:underline",
-                      "font-semibold px-3 py-2"
-                    )}
-                  >
-                    {route.title}
-                  </Link>
-                </li>
-              );
+              const active =
+                route.pathname == "/"
+                  ? pathname === route.pathname
+                  : pathname.startsWith(route.pathname);
+              if (route.children) {
+                return (
+                  <li key={route.title}>
+                    <details>
+                      <summary
+                        className={cn(
+                          active
+                            ? "bg-lime-600 text-white rounded"
+                            : "hover:underline",
+                          "font-semibold px-3 py-2"
+                        )}
+                      >
+                        {route.title}
+                      </summary>
+                      <ul className="space-y-2 py-4">
+                        {route.children.map((child) => (
+                          <li key={child.pathname}>
+                            <Link
+                              onClick={() => setOpen(false)}
+                              href={child.pathname}
+                              className={cn(
+                                pathname === child.pathname
+                                  ? "bg-lime-600 text-white rounded"
+                                  : "hover:underline",
+                                "px-3 py-2 text-sm"
+                              )}
+                            >
+                              {child.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={route.title}>
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href={route.pathname}
+                      className={cn(
+                        active
+                          ? "bg-lime-600 text-white rounded"
+                          : "hover:underline",
+                        "font-semibold px-3 py-2"
+                      )}
+                    >
+                      {route.title}
+                    </Link>
+                  </li>
+                );
+              }
             })}
           </ul>
         </SheetContent>
