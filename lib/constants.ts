@@ -17,6 +17,7 @@ export const ROUTES = [
   },
   { pathname: "/publications", title: "Publications" },
   { pathname: "/downloads", title: "Downloads" },
+  { pathname: "/team", title: "Team" },
 ];
 
 export const SIDEBAR_WIDTH_PX = 400;
