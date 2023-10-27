@@ -1,6 +1,6 @@
 export const ROUTES = [
   { pathname: "/", title: "About" },
-  { pathname: "/dashboard", title: "Dashboard" },
+  { pathname: "/data", title: "Data" },
   {
     pathname: "/methods",
     title: "Methods",
@@ -17,7 +17,7 @@ export const ROUTES = [
   },
   { pathname: "/publications", title: "Publications" },
   { pathname: "/downloads", title: "Downloads" },
-  { pathname: "/team", title: "Team" },
+  { pathname: "/partners", title: "Partners" },
 ];
 
 export const SIDEBAR_WIDTH_PX = 400;
