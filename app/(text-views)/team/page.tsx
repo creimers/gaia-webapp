@@ -71,13 +71,15 @@ export default function Team() {
   return (
     <div className="prose">
       <h1>Team</h1>
-      {TEAM.map((member) => (
-        <div key={member.name}>
-          <h2>{member.name}</h2>
-          <p>{member.affiliation}</p>
-          <p>{member.location}</p>
-        </div>
-      ))}
+      <div className="not-prose space-y-6">
+        {TEAM.map((member) => (
+          <div key={member.name} className="space-y-2">
+            <h2 className="font-semibold text-xl">{member.name}</h2>
+            <p className="text-gray-700">{member.affiliation}</p>
+            <p className="text-gray-500">{member.location}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
