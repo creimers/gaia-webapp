@@ -4,14 +4,16 @@ import * as React from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 import type { Icon } from "@phosphor-icons/react";
-import { Grains, Ruler, Coins, Globe, Download } from "@phosphor-icons/react";
-
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Grains,
+  Ruler,
+  Coins,
+  Globe,
+  Download,
+  CaretRight,
+} from "@phosphor-icons/react";
+
+import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 
@@ -101,6 +103,11 @@ const LAYER_GROUPS: LayerGroup[] = [
   PROFITABILITY_LAYERS,
 ];
 
+const LAYER_GROUP_LAYER_ID_MAPPING = LAYER_GROUPS.reduce((acc, group) => {
+  acc[group.id] = group.layers.map((layer) => layer.id);
+  return acc;
+}, {} as Record<string, string[]>);
+
 export default function LayerAccordion() {
   const [downloadDialogueOpen, setDownloadDialogueOpen] = React.useState(false);
   const [layerGroupId, setLayerGroupId] = React.useState<string | undefined>();
@@ -133,28 +140,41 @@ export default function LayerAccordion() {
   }, []);
 
   return (
-    <div>
+    <>
       <DownloadDialogue
         open={downloadDialogueOpen}
         onClose={() => setDownloadDialogueOpen(false)}
       />
-      <Accordion
-        type="single"
-        value={layerGroupId}
-        onValueChange={(value) => setLayerGroupId(value)}
-      >
-        {LAYER_GROUPS.map((group) => (
-          <AccordionItem value={group.id} key={group.id}>
-            <AccordionTrigger>
-              <div className="w-full flex justify-between items-center">
-                <div>{group.name}</div>
+      <div className="relative divide-y">
+        {LAYER_GROUPS.map((group) => {
+          const open = layerGroupId === group.id;
+          const layers = LAYER_GROUP_LAYER_ID_MAPPING[group.id];
+          return (
+            <React.Fragment key={group.id}>
+              <div
+                className="sticky top-0 bg-green-600 hover:bg-green-600/80 text-white flex justify-between items-center px-4 py-2 cursor-pointer"
+                onClick={() => {
+                  if (open) {
+                    setLayerGroupId(undefined);
+                  } else {
+                    setLayerGroupId(group.id);
+                  }
+                }}
+              >
+                <div className="flex items-center">
+                  <CaretRight
+                    className={cn(
+                      "h-5 w-5 shrink-0 transition-transform duration-200 mr-3",
+                      open && "rotate-90"
+                    )}
+                  />
+                  <div>{group.name}</div>
+                </div>
                 <div>
                   <group.icon className="w-7 h-7" weight="light" />
                 </div>
               </div>
-            </AccordionTrigger>
-            <AccordionContent className="px-8 py-3">
-              <div className="space-y-6">
+              <div className={cn("space-y-6 p-4", open ? "block" : "hidden")}>
                 <div className="space-y-4">
                   {group.layers.map((layer) => (
                     <div key={layer.id}>
@@ -198,6 +218,7 @@ export default function LayerAccordion() {
                 <div className="flex justify-center">
                   <Button
                     variant={"secondary"}
+                    disabled={!layers.includes(layerId)}
                     size={"lg"}
                     onClick={() => setDownloadDialogueOpen(true)}
                   >
@@ -206,10 +227,10 @@ export default function LayerAccordion() {
                   </Button>
                 </div>
               </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </>
   );
 }

@@ -7,8 +7,10 @@ export default function Dashboard() {
   return (
     <>
       <Sidebar>
-        <div className="flex flex-col max-h-full h-full justify-between">
-          <LayerAccordion />
+        <div className="h-full relative overflow-hidden flex flex-col">
+          <div className="h-full overflow-y-scroll pb-12 flex-grow">
+            <LayerAccordion />
+          </div>
           <LayerControls />
         </div>
       </Sidebar>

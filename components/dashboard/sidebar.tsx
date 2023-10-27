@@ -50,10 +50,10 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
     <div
       className={cn(
         "absolute left-0 top-[50px] md:top-[80px] shadow-md z-40 transition-transform duration-300 text-black",
-        `w-screen md:w-[400px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-80px)] flex flex-col`,
+        `w-screen md:w-[350px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-80px)] flex flex-col`,
         sidebarOpen
           ? `translate-x-0`
-          : `-translate-x-full md:translate-x-[-400px]`
+          : `-translate-x-full md:translate-x-[-350px]`
       )}
     >
       <div
@@ -64,7 +64,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
       ></div>
       <header
         className={cn(
-          "w-[calc(100vw+75px)] md:w-[calc(400px+75px)] h-[75px] translate-x-[0px] relative backdrop-blur-md shrink-0 bg-white/90",
+          "w-[calc(100vw+75px)] md:w-[calc(350px+75px)] h-[75px] translate-x-[0px] relative backdrop-blur-md shrink-0 bg-white/90",
           sidebarOpen && "border-b"
         )}
       >
@@ -90,7 +90,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
         </button>
         <div
           className={cn(
-            "absolute top-0 left-0 h-[75px] flex items-center w-screen md:w-[400px] justify-center  md:pr-0 transition-opacity duration-500 delay-200",
+            "absolute top-0 left-0 h-[75px] flex items-center w-screen md:w-[350px] justify-center  md:pr-0 transition-opacity duration-500 delay-200",
             sidebarOpen ? "opacity-100" : "opacity-0"
           )}
         >
