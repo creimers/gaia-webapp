@@ -1,6 +1,3 @@
-import Logo from "@/components/layout/header/logo";
-import Image from "next/image";
-
 export default function Home() {
   return (
     <>
@@ -45,86 +42,6 @@ export default function Home() {
             www.cimmyt.org/projects/gaia
           </a>
         </p>
-      </div>
-      <div className="grid grid-cols-6 gap-8">
-        <div className="col-span-2 flex justify-center items-center">
-          <Logo />
-        </div>
-        <div className="col-span-2 flex justify-center items-center">
-          <Image src="/logos/eia.png" height={263} width={320} alt="EiA logo" />
-        </div>
-        <div className="col-span-2 flex justify-center items-center">
-          <Image
-            src="/logos/bill-melinda-gates.svg"
-            height={64}
-            width={250}
-            alt="Bill Melinda Gates logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/agra.png"
-            height={341}
-            width={1000}
-            alt="AGRA logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/eiar.png"
-            height={762}
-            width={443}
-            alt="EIAR logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/kalro.png"
-            height={709}
-            width={1000}
-            alt="KALRO logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/rab.png"
-            height={970}
-            width={1000}
-            alt="RAB logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/tari.png"
-            height={563}
-            width={1000}
-            alt="TARI logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/sagcot.png"
-            height={583}
-            width={1000}
-            alt="SAGCOT logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-3 md:col-span-2">
-          <Image
-            src="/logos/ucd.png"
-            height={256}
-            width={1000}
-            alt="ucd logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-3 md:col-span-2">
-          <Image
-            src="/logos/wur.png"
-            height={248}
-            width={1000}
-            alt="wur logo"
-          />
-        </div>
       </div>
     </>
   );

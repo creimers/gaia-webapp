@@ -57,7 +57,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={closeDialogue}>
-      <DialogContent>
+      <DialogContent className="max-w-xl">
         <DialogHeader>
           <DialogTitle>Download Dataset</DialogTitle>
           <DialogDescription asChild>
@@ -116,14 +116,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
                   </a>
                 </p>
               </div>
-              <details>
-                <summary className="font-semibold cursor-pointer">
-                  Show suggested citation
-                </summary>
-                <div className="py-1">
-                  <Citation />
-                </div>
-              </details>
+              <Citation />
               <div>
                 <label className="flex items-center cursor-pointer">
                   <input
