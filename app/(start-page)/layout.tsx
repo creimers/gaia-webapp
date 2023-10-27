@@ -7,7 +7,7 @@ export default function TextPageLayout({
 }) {
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="max-w-prose mx-auto my-20 md:my-28 px-4 md:px-0 flex-1 w-full">
+      <main className="my-20 md:my-28 px-4 md:px-0 flex-1 w-full">
         {children}
       </main>
       <Footer />

@@ -12,14 +12,12 @@ export default async function Publications() {
   let themPublications = publications as Publication[];
 
   return (
-    <div>
-      <div className="prose">
-        <h1>Publications</h1>
-        <div className="space-y-4 not-prose">
-          {themPublications.map((pub) => {
-            return <PublicationItem key={pub.id} publication={pub} />;
-          })}
-        </div>
+    <div className="prose">
+      <h1>Publications</h1>
+      <div className="space-y-4 not-prose">
+        {themPublications.map((pub) => {
+          return <PublicationItem key={pub.id} publication={pub} />;
+        })}
       </div>
     </div>
   );
