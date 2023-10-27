@@ -47,22 +47,19 @@ export default function Home() {
         </p>
       </div>
       <div className="grid grid-cols-6 gap-8">
-        <div className="col-span-6 font-semibold text-lg">
-          Leadership and Funding
-        </div>
-        <div className="col-span-3 flex justify-center items-center">
+        <div className="col-span-2 flex justify-center items-center">
           <Logo />
         </div>
-        <div className="col-span-3 flex justify-center items-center">
+        <div className="col-span-2 flex justify-center items-center">
+          <Image src="/logos/eia.png" height={263} width={320} alt="EiA logo" />
+        </div>
+        <div className="col-span-2 flex justify-center items-center">
           <Image
             src="/logos/bill-melinda-gates.svg"
             height={64}
             width={250}
             alt="Bill Melinda Gates logo"
           />
-        </div>
-        <div className="col-span-6 font-semibold text-lg">
-          Africa Based Partners
         </div>
         <div className="flex items-center justify-center col-span-2 md:col-span-1">
           <Image
@@ -111,9 +108,6 @@ export default function Home() {
             width={1000}
             alt="SAGCOT logo"
           />
-        </div>
-        <div className="col-span-6 font-semibold text-lg">
-          Non-Africa Based Partners
         </div>
         <div className="flex items-center justify-center col-span-3 md:col-span-2">
           <Image
