@@ -90,10 +90,14 @@ const DropdownMenu = ({ title, isActive, subroutes }: DropdownMenuProps) => {
                 key={child.pathname}
                 className={cn(
                   active ? "bg-lime-600 text-white rounded" : "hover:underline",
-                  "font-semibold px-3 py-2"
+                  "font-semibold"
                 )}
               >
-                <Link href={child.pathname} onClick={() => setOpen(false)}>
+                <Link
+                  href={child.pathname}
+                  onClick={() => setOpen(false)}
+                  className="h-full w-full inline-block py-2 px-3"
+                >
                   {child.title}
                 </Link>
               </li>
