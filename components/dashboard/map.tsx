@@ -18,6 +18,7 @@ import * as LAYER from "@/lib/layers";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 import dynamic from "next/dynamic";
+import Legend from "./legend";
 
 const CustomSearchBox = dynamic(() => import("./search-box"), {
   ssr: false,
@@ -176,6 +177,7 @@ export default function TheMap() {
       )}
       <GeolocateControl position="bottom-right" />
       <NavigationControl position="bottom-right" />
+      <Legend />
       <div className="absolute bottom-[190px] right-[10px] block md:hidden">
         <button
           onClick={() => setSearchDialogueOpen((o) => !o)}

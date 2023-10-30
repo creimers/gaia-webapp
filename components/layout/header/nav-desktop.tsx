@@ -1,95 +1,45 @@
 "use client";
+
+import * as React from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { useClickAway } from "react-use";
 
 import { ROUTES } from "@/lib/constants";
+import { CaretDown } from "@phosphor-icons/react";
 
 export default function NavDesktop() {
   const pathname = usePathname();
   return (
-    <NavigationMenu className="hidden md:block">
-      <NavigationMenuList>
-        {ROUTES.map((item) => {
-          const active =
-            item.pathname == "/"
-              ? pathname === item.pathname
-              : pathname.startsWith(item.pathname);
-          return (
-            <NavigationMenuItem key={item.title}>
-              {item.children ? (
-                <>
-                  <NavigationMenuTrigger
-                    className={cn(active && "bg-lime-600 text-white")}
-                  >
-                    {item.title}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="p-4 space-y-3 relative w-full">
-                      {item.children.map((child) => (
-                        <li key={child.title} className="w-full">
-                          <Link href={child.pathname} legacyBehavior passHref>
-                            <NavigationMenuLink
-                              active={pathname === child.pathname}
-                              className={cn(navigationMenuTriggerStyle())}
-                            >
-                              {child.title}
-                            </NavigationMenuLink>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </>
-              ) : (
-                <Link href={item.pathname} legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      active && "bg-lime-600 text-white"
-                    )}
-                  >
-                    {item.title}
-                  </NavigationMenuLink>
-                </Link>
-              )}
-            </NavigationMenuItem>
-          );
-        })}
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
-  return (
     <nav className="hidden md:block">
-      <ul className="flex space-x-4">
+      <ul className="flex space-x-2 items-center">
         {ROUTES.map((route) => {
-          const active = route.pathname === pathname;
+          const active =
+            route.pathname == "/"
+              ? pathname === route.pathname
+              : pathname.startsWith(route.pathname);
           if (route.children) {
-            return <div key={route.title}>ding dong</div>;
+            return (
+              <DropdownMenu
+                title={route.title}
+                isActive={active}
+                key={route.title}
+                subroutes={route.children}
+              />
+            );
           } else {
             return (
-              <li key={route.title}>
-                <Link
-                  href={route.pathname}
-                  className={cn(
-                    active
-                      ? "bg-lime-600 text-white rounded"
-                      : "hover:underline",
-                    "font-semibold px-3 py-2"
-                  )}
-                >
-                  {route.title}
-                </Link>
+              <li
+                key={route.title}
+                className={cn(
+                  active ? "bg-lime-600 text-white rounded" : "hover:underline",
+                  "font-semibold px-3 py-2"
+                )}
+              >
+                <Link href={route.pathname}>{route.title}</Link>
               </li>
             );
           }
@@ -98,3 +48,59 @@ export default function NavDesktop() {
     </nav>
   );
 }
+
+type DropdownMenuProps = {
+  title: string;
+  isActive: boolean;
+  subroutes: { title: string; pathname: string }[];
+};
+
+const DropdownMenu = ({ title, isActive, subroutes }: DropdownMenuProps) => {
+  const ref = React.useRef<HTMLLIElement>(null);
+  const [open, setOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  useClickAway(ref, () => {
+    setOpen(false);
+  });
+
+  return (
+    <li
+      key={title}
+      className={cn(
+        isActive ? "bg-lime-600 text-white rounded" : "hover:underline",
+        "font-semibold px-3 py-2 inline-flex items-center cursor-pointer relative"
+      )}
+      onClick={() => setOpen(!open)}
+      ref={ref}
+    >
+      <CaretDown className="w-4 h-4 mr-1" />
+      <span>{title}</span>
+      {open && (
+        <ul
+          className={cn(
+            "absolute left-1/2 -translate-x-1/2 top-12 p-4 shadow-lg bg-white text-black whitespace-nowrap space-y-2 rounded-md border",
+            open ? "block" : "hidden"
+          )}
+        >
+          {subroutes.map((child) => {
+            const active = child.pathname === pathname;
+            return (
+              <li
+                key={child.pathname}
+                className={cn(
+                  active ? "bg-lime-600 text-white rounded" : "hover:underline",
+                  "font-semibold px-3 py-2"
+                )}
+              >
+                <Link href={child.pathname} onClick={() => setOpen(false)}>
+                  {child.title}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </li>
+  );
+};

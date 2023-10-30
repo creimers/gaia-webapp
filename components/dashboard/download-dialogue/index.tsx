@@ -61,7 +61,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
         <DialogHeader>
           <DialogTitle>Download Dataset</DialogTitle>
           <DialogDescription asChild>
-            <div className="space-y-4 text-base py-4">
+            <div className="space-y-4 text-base py-4 text-gray-800">
               <div>
                 <label className="font-semibold mb-2 block">Country</label>
                 <CountrySelect value={country} handleUpdate={setCountry} />

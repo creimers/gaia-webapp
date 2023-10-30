@@ -42,6 +42,10 @@ export default function Home() {
             www.cimmyt.org/projects/gaia
           </a>
         </p>
+        <div className="rounded-lg bg-green-200 border-green-700 border text-green-700 p-6 space-y-2">
+          <div className="font-semibold text-lg">Business disclaimer</div>
+          <div>The content of this disclaimer still needs to be discussed.</div>
+        </div>
       </div>
     </>
   );

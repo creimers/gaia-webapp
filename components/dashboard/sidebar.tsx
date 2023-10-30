@@ -49,8 +49,8 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "absolute left-0 top-[50px] md:top-[80px] shadow-md z-40 transition-transform duration-300 text-black",
-        `w-screen md:w-[350px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-80px)] flex flex-col`,
+        "absolute left-0 top-[50px] md:top-[70px] shadow-md z-40 transition-transform duration-300 text-black",
+        `w-screen md:w-[350px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-70px)] flex flex-col`,
         sidebarOpen
           ? `translate-x-0`
           : `-translate-x-full md:translate-x-[-350px]`
