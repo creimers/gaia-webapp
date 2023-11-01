@@ -10,10 +10,16 @@ import {
   Globe,
   Download,
   CaretRight,
+  Info,
 } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
 
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 
 import * as LAYER from "@/lib/layers";
@@ -183,10 +189,20 @@ export default function LayerAccordion() {
                           onChange={() => setLayerId(layer.id)}
                           className="shrink-0 h-5 w-5"
                         />
-                        <div>
+                        <div className="flex items-center space-x-2">
                           <span className="pl-2 block text-lg">
                             {layer.name}
                           </span>
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button variant="ghost">
+                                <Info className="w-4 h-4" />
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent side="right">
+                              Info for {layer.name}
+                            </PopoverContent>
+                          </Popover>
                         </div>
                       </label>
                     </div>

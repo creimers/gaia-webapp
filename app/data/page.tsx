@@ -7,8 +7,8 @@ export default function Dashboard() {
   return (
     <>
       <Sidebar>
-        <div className="h-full relative overflow-hidden flex flex-col">
-          <div className="h-full overflow-y-scroll pb-12 flex-grow">
+        <div className="h-full relative overflow-y-hidden flex flex-col">
+          <div className="h-full overflow-y-scroll pb-12 flex-grow overflow-x-visible">
             <LayerAccordion />
           </div>
           <LayerControls />

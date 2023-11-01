@@ -42,7 +42,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
     <div
       className={cn(
         "absolute left-0 top-[50px] md:top-[70px] shadow-md z-40 transition-transform duration-300 text-black",
-        `w-screen md:w-[350px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-70px)] flex flex-col`,
+        `w-screen md:w-[350px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-70px)]`,
         sidebarOpen
           ? `translate-x-0`
           : `-translate-x-full md:translate-x-[-350px]`
@@ -91,7 +91,8 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
       </header>
       <main
         id="sidebar-left-body"
-        className="bg-white/90 backdrop-blur-md overflow-y-scroll flex-1 overflow-x-hidden"
+        className="bg-white/90 backdrop-blur-md h-[calc(100%-65px)]"
+        // style={{ height: "calc(100% - 65px)" }}
       >
         {children}
       </main>
