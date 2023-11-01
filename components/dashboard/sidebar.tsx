@@ -1,13 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 import resolveConfig from "tailwindcss/resolveConfig";
-import { Config, ScreensConfig } from "tailwindcss/types/config";
+import { Config } from "tailwindcss/types/config";
 import tailwindConfig from "@/tailwind.config";
 
 import { Stack, ArrowLeft } from "@phosphor-icons/react";
+import { useQueryState, parseAsBoolean } from "next-usequerystate";
 
 import { cn } from "@/lib/utils";
 
@@ -22,29 +22,21 @@ const breakpoints = (fullConfig?.theme?.screens || {
   xl: "1280px",
 }) as ding;
 
-type BreakpointKey = keyof ScreensConfig;
-
 export default function Sidebar({ children }: { children?: React.ReactNode }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const [sidebarOpen, setSidebarOpen] = useQueryState(
+    "sidebar",
+    parseAsBoolean
+  );
 
   React.useEffect(() => {
     const width = window.innerWidth;
-    const open = searchParams.get("sidebar");
     breakpoints.xs;
-    if (width > parseInt(breakpoints.sm) && open !== "false") {
-      setSidebarOpen(true);
+    if (width > parseInt(breakpoints.sm) && sidebarOpen !== false) {
+      setTimeout(() => {
+        setSidebarOpen(true);
+      }, 500);
     }
   }, []);
-
-  React.useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    params.set("sidebar", sidebarOpen.toString());
-    router.replace(pathname + "?" + params.toString());
-  }, [sidebarOpen]);
 
   return (
     <div
@@ -59,21 +51,21 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
       <div
         className={cn(
           "absolute top-0 right-0 shadow-md",
-          `w-[75px] h-[75px] translate-x-[75px]`
+          `w-[65px] h-[65px] translate-x-[65px]`
         )}
       ></div>
       <header
         className={cn(
-          "w-[calc(100vw+75px)] md:w-[calc(350px+75px)] h-[75px] translate-x-[0px] relative backdrop-blur-md shrink-0 bg-white/90",
+          "w-[calc(100vw+65px)] md:w-[calc(350px+65px)] h-[65px] translate-x-[0px] relative backdrop-blur-md shrink-0 bg-white/90",
           sidebarOpen && "border-b"
         )}
       >
         <div
           onClick={() => setSidebarOpen(true)}
           className={cn(
-            "h-[75px] w-[75px] absolute top-0 right-0 transition-transform duration-300 flex justify-center items-center z-20",
+            "h-[65px] w-[65px] absolute top-0 right-0 transition-transform duration-300 flex justify-center items-center z-20",
             sidebarOpen
-              ? `-translate-x-[calc(2*75px)] md:-translate-x-[75px]`
+              ? `-translate-x-[calc(2*65px)] md:-translate-x-[65px]`
               : `translate-x-[0px] cursor-pointer`
           )}
         >
@@ -81,7 +73,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
         </div>
         <button
           className={cn(
-            "h-[75px] w-[75px] absolute top-0 right-[75px] md:right-0 flex justify-center items-center group bg-gray-200/70 z-10 transition-opacity",
+            "h-[65px] w-[65px] absolute top-0 right-[65px] md:right-0 flex justify-center items-center group bg-gray-200/70 z-10 transition-opacity",
             sidebarOpen ? "opacity-100" : "opacity-0"
           )}
           onClick={() => setSidebarOpen(false)}
@@ -90,7 +82,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
         </button>
         <div
           className={cn(
-            "absolute top-0 left-0 h-[75px] flex items-center w-screen md:w-[350px] justify-center  md:pr-0 transition-opacity duration-500 delay-200",
+            "absolute top-0 left-0 h-[65px] flex items-center w-screen md:w-[350px] justify-center  md:pr-0 transition-opacity duration-500 delay-200",
             sidebarOpen ? "opacity-100" : "opacity-0"
           )}
         >

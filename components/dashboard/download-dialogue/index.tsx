@@ -66,7 +66,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
                 <label className="font-semibold mb-2 block">Country</label>
                 <CountrySelect value={country} handleUpdate={setCountry} />
               </div>
-              {/* <div>{filename}</div> */}
+              <Citation />
               <div>
                 <p>
                   This work is licensed under{" "}
@@ -116,7 +116,6 @@ export default function DownloadDialogue({ open, onClose }: Props) {
                   </a>
                 </p>
               </div>
-              <Citation />
               <div>
                 <label className="flex items-center cursor-pointer">
                   <input

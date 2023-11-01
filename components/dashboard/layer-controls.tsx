@@ -2,34 +2,25 @@
 
 import * as React from "react";
 
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-// import {
-//   BASE_LAYER,
-//   BASE_LAYER_SATELLITE,
-//   BASE_LAYER_STREETS,
-// } from "@/lib/constants/url-params";
 import { CaretUp, SlidersHorizontal } from "@phosphor-icons/react";
+import { parseAsString, useQueryState, parseAsFloat } from "next-usequerystate";
 
 export default function LayerControls() {
   const [open, setOpen] = React.useState(false);
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
 
-  const layerOpacity = searchParams.get("layer_opacity") || "1";
-  const baseLayer = searchParams.get("base_layer") || "streets";
+  const [layerOpacity, setLayerOpacity] = useQueryState(
+    "layer_opacity",
+    parseAsFloat.withDefault(1)
+  );
+  const [baseLayer, setBaseLayer] = useQueryState(
+    "base_layer",
+    parseAsString.withDefault("streets")
+  );
 
   function updateLayerOpacity(e: React.ChangeEvent<HTMLInputElement>) {
-    const params = new URLSearchParams(searchParams);
-    params.set("layer_opacity", e.target.value);
-    router.replace(pathname + "?" + params.toString());
-  }
-
-  function updateBaseLayer(layerName: string) {
-    const params = new URLSearchParams(searchParams);
-    params.set("base_layer", layerName);
-    router.replace(pathname + "?" + params.toString());
+    const opacity = parseFloat(e.target.value);
+    setLayerOpacity(opacity);
   }
 
   return (
@@ -63,7 +54,7 @@ export default function LayerControls() {
                   baseLayer === "streets" &&
                     "ring-4 ring-offset-0 ring-indigo-500"
                 )}
-                onClick={() => updateBaseLayer("streets")}
+                onClick={() => setBaseLayer("streets")}
               >
                 <span className="backdrop-blur px-2 py-1 rounded-lg">
                   Streets
@@ -75,7 +66,7 @@ export default function LayerControls() {
                   baseLayer === "satellite" &&
                     "ring-4 ring-offset-0 ring-indigo-500"
                 )}
-                onClick={() => updateBaseLayer("satellite")}
+                onClick={() => setBaseLayer("satellite")}
               >
                 <span className="backdrop-blur px-2 py-1 rounded-lg">
                   Satellite

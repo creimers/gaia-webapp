@@ -19,7 +19,7 @@ export default function TextPageLayout({
             </p>
           </div>
           <div>
-            <h3 className="mb-2 font-semibold text-lg">Kenia Office</h3>
+            <h3 className="mb-2 font-semibold text-lg">Kenya Office</h3>
             <p>
               ICRAF House <br />
               United Nations Avenue, Gigiri <br />

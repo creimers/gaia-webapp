@@ -11,7 +11,6 @@ import Map, {
 } from "react-map-gl";
 import type { RasterPaint } from "mapbox-gl";
 
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 
 import * as LAYER from "@/lib/layers";
@@ -19,6 +18,14 @@ import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 import dynamic from "next/dynamic";
 import Legend from "./legend";
+import {
+  parseAsBoolean,
+  useQueryState,
+  useQueryStates,
+  parseAsFloat,
+  parseAsString,
+} from "next-usequerystate";
+import { useSearchParams } from "next/navigation";
 
 const CustomSearchBox = dynamic(() => import("./search-box"), {
   ssr: false,
@@ -90,33 +97,43 @@ const BASE_LAYER_URLS: { [key: string]: string } = {
 };
 
 export default function TheMap() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const [mapHasMoved, setMapHasMoved] = React.useState(false);
   const [mapInitialized, setMapInitialized] = React.useState(false);
   const [searchDialogueOpen, setSearchDialogueOpen] = React.useState(false);
 
   // # grap map state from url
-  const latitude = parseFloat(searchParams.get("lat") || `${DEFAULT_LATITUDE}`);
-  const longitude = parseFloat(
-    searchParams.get("lon") || `${DEFAULT_LONGITUDE}`
-  );
-  const zoom = parseFloat(searchParams.get("zoom") || `${DEFAULT_ZOOM}`);
-  const sidebarOpen = searchParams.get("sidebar") === "true";
+  const [viewStateQuery, setViewStateQuery] = useQueryStates({
+    lon: parseAsFloat.withDefault(DEFAULT_LONGITUDE),
+    lat: parseAsFloat.withDefault(DEFAULT_LATITUDE),
+    zoom: parseAsFloat.withDefault(DEFAULT_ZOOM),
+  });
+  const [sidebarOpen] = useQueryState("sidebar", parseAsBoolean);
 
-  const baseLayer = searchParams.get("base_layer") || "streets";
-  const layerId = searchParams.get("layer") || LAYER.SOIL_LAYER_PH;
-  const limePrice = searchParams.get("lime_price") || DEFAULT_LIME_PRICE;
+  const [baseLayer] = useQueryState(
+    "base_layer",
+    parseAsString.withDefault("streets")
+  );
+  const [layerId] = useQueryState(
+    "layer",
+    parseAsString.withDefault(LAYER.SOIL_LAYER_PH)
+  );
+  const [limePrice] = useQueryState(
+    "lime_price",
+    parseAsString.withDefault(DEFAULT_LIME_PRICE)
+  );
+  const [layerOpacity] = useQueryState(
+    "layer_opacity",
+    parseAsFloat.withDefault(1)
+  );
+
   const activeLayer = `${layerId}${
     layerId.includes(LAYER.PROFITABILITY_ID) ? `_${limePrice}` : ""
   }`;
 
-  const layerOpacity = parseFloat(searchParams.get("layer_opacity") || "1");
-
   const mapRef = React.useRef<MapRef>(null);
 
-  const offsetSidebar = () => {
-    if (longitude === DEFAULT_LONGITUDE && sidebarOpen) {
+  React.useEffect(() => {
+    if (!mapHasMoved && sidebarOpen) {
       const center = mapRef.current?.getCenter();
       const centerPx = mapRef.current?.project(center!);
       if (centerPx !== undefined) {
@@ -125,20 +142,18 @@ export default function TheMap() {
         mapRef.current?.flyTo({ center: newCenter! });
       }
     }
-  };
+  }, [mapInitialized, sidebarOpen, mapHasMoved]);
 
   const [viewState, setViewState] = React.useState({
-    longitude,
-    latitude,
-    zoom,
+    longitude: viewStateQuery.lon,
+    latitude: viewStateQuery.lat,
+    zoom: viewStateQuery.zoom,
   });
 
   const persistViewState = React.useCallback(() => {
-    const params = new URLSearchParams(searchParams);
-    params.set("lat", viewState.latitude.toString());
-    params.set("lon", viewState.longitude.toString());
-    params.set("zoom", viewState.zoom.toString());
-    router.replace(pathname + "?" + params.toString());
+    const { latitude, longitude, zoom } = viewState;
+    setViewStateQuery({ lat: latitude, lon: longitude, zoom });
+    setMapHasMoved(true);
   }, [viewState]);
 
   function handleSearchSelection(longitude: number, latitude: number) {
@@ -154,7 +169,6 @@ export default function TheMap() {
   return (
     <Map
       onLoad={() => {
-        offsetSidebar();
         setMapInitialized(true);
       }}
       ref={mapRef}

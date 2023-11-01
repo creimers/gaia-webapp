@@ -17,6 +17,9 @@ export default async function Page() {
           {downloads.map((download) => {
             return <DownloadItem key={download.id} download={download} />;
           })}
+          {downloads.length === 0 && (
+            <p>Currently there are no downloads available.</p>
+          )}
         </div>
       </div>
     </div>

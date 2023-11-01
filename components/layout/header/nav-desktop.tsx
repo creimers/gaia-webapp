@@ -74,8 +74,8 @@ const DropdownMenu = ({ title, isActive, subroutes }: DropdownMenuProps) => {
       onClick={() => setOpen(!open)}
       ref={ref}
     >
-      <CaretDown className="w-4 h-4 mr-1" />
       <span>{title}</span>
+      <CaretDown className="w-4 h-4 ml-1" />
       {open && (
         <ul
           className={cn(

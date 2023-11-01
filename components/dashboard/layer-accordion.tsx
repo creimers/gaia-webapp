@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 import type { Icon } from "@phosphor-icons/react";
 import {
@@ -21,6 +20,7 @@ import * as LAYER from "@/lib/layers";
 
 import DownloadDialogue from "./download-dialogue";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
+import { parseAsString, useQueryState } from "next-usequerystate";
 
 type Layer = {
   name: string;
@@ -111,23 +111,20 @@ const LAYER_GROUP_LAYER_ID_MAPPING = LAYER_GROUPS.reduce((acc, group) => {
 export default function LayerAccordion() {
   const [downloadDialogueOpen, setDownloadDialogueOpen] = React.useState(false);
   const [layerGroupId, setLayerGroupId] = React.useState<string | undefined>();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
 
-  const layerId = searchParams.get("layer") || SOIL_LAYERS.layers[0].id;
-  const limePrice = searchParams.get("lime_price") || DEFAULT_LIME_PRICE;
+  const [layerId, setLayerId] = useQueryState(
+    "layer",
+    parseAsString.withDefault(SOIL_LAYERS.layers[0].id)
+  );
 
-  function setLayerId(layerId: string) {
-    const params = new URLSearchParams(searchParams);
-    params.set("layer", layerId);
-    router.replace(pathname + "?" + params.toString());
-  }
+  const [limePrice, setLimePrice] = useQueryState(
+    "lime_price",
+    parseAsString.withDefault(DEFAULT_LIME_PRICE)
+  );
 
   function updateLimePrice(e: React.ChangeEvent<HTMLInputElement>) {
-    const params = new URLSearchParams(searchParams);
-    params.set("lime_price", e.target.value);
-    router.replace(pathname + "?" + params.toString());
+    const price = e.target.value;
+    setLimePrice(price);
   }
 
   React.useEffect(() => {
