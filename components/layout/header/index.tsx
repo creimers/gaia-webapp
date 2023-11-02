@@ -6,10 +6,10 @@ import NavMobile from "./nav-mobile";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full h-[50px] md:h-[70px] shadow-md bg-white/90 backdrop-blur-md flex items-center justify-between pr-4 md:px-8 z-50">
+    <header className="fixed top-0 left-0 w-full h-[50px] md:h-[65px] shadow-md bg-white/90 backdrop-blur-md flex items-center justify-between pr-4 md:px-8 z-50">
       <NavMobile />
       <div className="flex items-center space-x-8">
-        <div className="w-10">
+        <div className="w-8 md:w-10">
           <a
             href="https://www.cgiar.org/"
             target="_blank"
@@ -18,7 +18,7 @@ export default function Header() {
             <Logo />
           </a>
         </div>
-        <div className="w-14">
+        <div className="w-10 md:w-14">
           <a
             href="https://scalingagronomy.org/"
             target="_blank"

@@ -10,23 +10,18 @@ import {
   Globe,
   Download,
   CaretRight,
-  Info,
 } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
 
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 
 import * as LAYER from "@/lib/layers";
 
-import DownloadDialogue from "./download-dialogue";
+import DownloadDialogue from "../download-dialogue";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 import { parseAsString, useQueryState } from "next-usequerystate";
+import Layer from "./layer";
 
 type Layer = {
   name: string;
@@ -180,32 +175,12 @@ export default function LayerAccordion() {
               <div className={cn("space-y-6 p-4", open ? "block" : "hidden")}>
                 <div className="space-y-4">
                   {group.layers.map((layer) => (
-                    <div key={layer.id}>
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          value={layer.id}
-                          checked={layerId === layer.id}
-                          onChange={() => setLayerId(layer.id)}
-                          className="shrink-0 h-5 w-5"
-                        />
-                        <div className="flex items-center space-x-2">
-                          <span className="pl-2 block text-lg">
-                            {layer.name}
-                          </span>
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button variant="ghost">
-                                <Info className="w-4 h-4" />
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent side="right">
-                              Info for {layer.name}
-                            </PopoverContent>
-                          </Popover>
-                        </div>
-                      </label>
-                    </div>
+                    <Layer
+                      layer={layer}
+                      key={layer.id}
+                      activeLayerId={layerId}
+                      handleSetLayerId={setLayerId}
+                    />
                   ))}
                 </div>
                 {group.id === LAYER.PROFITABILITY_ID && (

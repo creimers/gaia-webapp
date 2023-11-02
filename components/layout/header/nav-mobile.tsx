@@ -53,7 +53,7 @@ export default function NavMobile() {
                                 pathname === child.pathname
                                   ? "bg-lime-600 text-white rounded"
                                   : "hover:underline",
-                                "px-3 py-2 text-sm"
+                                "px-3 py-2 text-base"
                               )}
                             >
                               {child.title}

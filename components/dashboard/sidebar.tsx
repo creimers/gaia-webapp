@@ -30,8 +30,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
 
   React.useEffect(() => {
     const width = window.innerWidth;
-    breakpoints.xs;
-    if (width > parseInt(breakpoints.sm) && sidebarOpen !== false) {
+    if (width >= parseInt(breakpoints.md) && sidebarOpen !== false) {
       setTimeout(() => {
         setSidebarOpen(true);
       }, 500);
@@ -41,8 +40,8 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "absolute left-0 top-[50px] md:top-[70px] shadow-md z-40 transition-transform duration-300 text-black",
-        `w-screen md:w-[350px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-70px)]`,
+        "absolute left-0 top-[50px] md:top-[65px] shadow-md z-40 transition-transform duration-300 text-black",
+        `w-screen md:w-[350px] h-[calc(100dvh-50px)] md:h-[calc(100dvh-65px)]`,
         sidebarOpen
           ? `translate-x-0`
           : `-translate-x-full md:translate-x-[-350px]`
