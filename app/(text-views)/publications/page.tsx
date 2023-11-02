@@ -40,7 +40,11 @@ export default async function Publications({ searchParams }: Props) {
               return (
                 <Link
                   key={type}
-                  href={active ? "/publications" : `/publications?type=${type}`}
+                  href={
+                    active
+                      ? `/publications?bust=${Math.random()}`
+                      : `/publications?type=${type}&bust=${Math.random()}`
+                  }
                   className={cn(
                     "rounded-md px-2 py-1",
                     active ? "bg-lime-600 text-white" : "bg-gray-100 text-black"
