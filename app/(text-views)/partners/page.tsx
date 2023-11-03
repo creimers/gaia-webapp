@@ -111,7 +111,7 @@ const sections: { [key: string]: Partner[] } = {
       ],
     },
   ],
-  "Founding partners": [
+  "Funding partners": [
     {
       name: "EiA",
       homepage: "https://www.ei-a.org/",
