@@ -70,99 +70,226 @@ const TEAM = [
     email: "",
   },
 ];
+
+type Partner = {
+  name: string;
+  logo: React.ReactNode;
+  homepage: string;
+  team: {
+    name: string;
+    location: string;
+  }[];
+};
+
+const sections: { [key: string]: Partner[] } = {
+  "Coordinating partner": [
+    {
+      name: "International Maize and Wheat Improvement Center",
+      homepage: "https://www.cimmyt.org/",
+      logo: <Logo />,
+      team: [
+        {
+          name: "João Vasco Silva",
+          location: "Harare, Zimbabwe",
+        },
+        {
+          name: "Samuel Gameda",
+          location: "Addis Ababa, Ethiopia",
+        },
+        {
+          name: "Jordan Chamberlin",
+          location: "Nairobi, Kenya",
+        },
+        {
+          name: "Tesfaye Sida",
+          location: "Addis Ababa, Ethiopia",
+        },
+        {
+          name: "Moti Jaleta",
+          location: "Addis Ababa, Ethiopia",
+        },
+      ],
+    },
+  ],
+  "Founding partners": [
+    {
+      name: "EiA",
+      homepage: "https://www.ei-a.org/",
+      logo: (
+        <Image
+          src="/logos/eia.png"
+          height={263}
+          width={320}
+          alt="EiA logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [],
+    },
+    {
+      name: "Bill & Melinda Gates Foundation",
+      homepage: "https://www.gatesfoundation.org/",
+      logo: (
+        <Image
+          src="/logos/bill-melinda-gates.svg"
+          height={64}
+          width={250}
+          alt="Bill Melinda Gates logo"
+        />
+      ),
+      team: [],
+    },
+  ],
+  "Regional partners": [
+    {
+      name: "AGRA",
+      homepage: "https://agra.org/",
+      logo: (
+        <Image
+          src="/logos/agra.png"
+          height={341}
+          width={1000}
+          alt="AGRA logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [],
+    },
+    {
+      name: "Ethiopian Institute of Agricultural Research",
+      homepage: "https://www.eiar.gov.et/",
+      logo: (
+        <Image
+          src="/logos/eiar.png"
+          height={762}
+          width={443}
+          alt="EIAR logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [{ name: "Temesgn Desalegn", location: "Addis Ababa, Ethiopia" }],
+    },
+    {
+      name: "Kenya Agricultural and Livestock Research Organisation",
+      homepage: "https://www.kalro.org/",
+      logo: (
+        <Image
+          src="/logos/kalro.png"
+          height={709}
+          width={1000}
+          alt="KALRO logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [],
+    },
+    {
+      name: "Rwanda Agriculture and Animal Resources Development Board",
+      homepage: "https://rab.gov.rw/",
+      logo: (
+        <Image
+          src="/logos/rab.png"
+          height={970}
+          width={1000}
+          alt="RAB logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [],
+    },
+    {
+      name: "Tanzania Agricultural Research Institute",
+      homepage: "https://www.tari.go.tz/",
+      logo: (
+        <Image
+          src="/logos/tari.png"
+          height={563}
+          width={1000}
+          alt="TARI logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [],
+    },
+  ],
+  "Advanced academic institutions": [
+    {
+      name: "UC Davis",
+      homepage: "https://www.ucdavis.edu/",
+      logo: (
+        <Image
+          src="/logos/ucd.png"
+          height={256}
+          width={1000}
+          alt="ucd logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [
+        {
+          name: "Robert J. Hijmans",
+          location: "Davis, United States of America",
+        },
+      ],
+    },
+    {
+      name: "WUR",
+      homepage: "https://www.wur.nl/",
+      logo: (
+        <Image
+          src="/logos/wur.png"
+          height={248}
+          width={1000}
+          alt="wur logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [],
+    },
+  ],
+};
+
 export default function Team() {
   return (
     <div className="prose">
       <h1>Partners</h1>
-      <div className="not-prose space-y-6">
-        {TEAM.map((member) => (
-          <div key={member.name} className="space-y-2">
-            <h2 className="font-semibold text-xl">{member.name}</h2>
-            <p className="text-gray-700">{member.affiliation}</p>
-            <p className="text-gray-500">{member.location}</p>
+      {Object.keys(sections).map((section) => (
+        <div key={section}>
+          <h2>{section}</h2>
+          <div className="space-y-4">
+            {sections[section].map((partner) => (
+              <div
+                key={partner.name}
+                className="grid grid-cols-2 gap-8 bg-gray-100 rounded-xl p-8"
+              >
+                <div className="max-h-[85px] w-auto not-prose">
+                  {partner.logo}
+                </div>
+                <div className="not-prose">
+                  <h3 className="font-semibold mb-2">
+                    <a
+                      href={partner.homepage}
+                      className="hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {partner.name}
+                    </a>
+                  </h3>
+                  <ul className="space-y-2">
+                    {partner.team.map((member) => (
+                      <li key={member.name} className="flex flex-col">
+                        <span>{member.name}</span>
+                        <span className="text-xs">({member.location})</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="grid grid-cols-6 gap-8">
-        <div className="col-span-2 flex justify-center items-center">
-          <Logo />
         </div>
-        <div className="col-span-2 flex justify-center items-center">
-          <Image src="/logos/eia.png" height={263} width={320} alt="EiA logo" />
-        </div>
-        <div className="col-span-2 flex justify-center items-center">
-          <Image
-            src="/logos/bill-melinda-gates.svg"
-            height={64}
-            width={250}
-            alt="Bill Melinda Gates logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/agra.png"
-            height={341}
-            width={1000}
-            alt="AGRA logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/eiar.png"
-            height={762}
-            width={443}
-            alt="EIAR logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/kalro.png"
-            height={709}
-            width={1000}
-            alt="KALRO logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/rab.png"
-            height={970}
-            width={1000}
-            alt="RAB logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/tari.png"
-            height={563}
-            width={1000}
-            alt="TARI logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-2 md:col-span-1">
-          <Image
-            src="/logos/sagcot.png"
-            height={583}
-            width={1000}
-            alt="SAGCOT logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-3 md:col-span-2">
-          <Image
-            src="/logos/ucd.png"
-            height={256}
-            width={1000}
-            alt="ucd logo"
-          />
-        </div>
-        <div className="flex items-center justify-center col-span-3 md:col-span-2">
-          <Image
-            src="/logos/wur.png"
-            height={248}
-            width={1000}
-            alt="wur logo"
-          />
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
