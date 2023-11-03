@@ -78,13 +78,14 @@ type Partner = {
   team: {
     name: string;
     location: string;
+    affiliation?: string;
   }[];
 };
 
 const sections: { [key: string]: Partner[] } = {
   "Coordinating partner": [
     {
-      name: "International Maize and Wheat Improvement Center",
+      name: "International Maize and Wheat Improvement Center (CIMMYT)",
       homepage: "https://www.cimmyt.org/",
       logo: <Logo />,
       team: [
@@ -93,12 +94,18 @@ const sections: { [key: string]: Partner[] } = {
           location: "Harare, Zimbabwe",
         },
         {
-          name: "Samuel Gameda",
-          location: "Addis Ababa, Ethiopia",
-        },
-        {
           name: "Jordan Chamberlin",
           location: "Nairobi, Kenya",
+        },
+
+        {
+          name: "Frédéric Baudron",
+          affiliation: "CIRAD",
+          location: "Montpellier, France",
+        },
+        {
+          name: "Samuel Gameda",
+          location: "Addis Ababa, Ethiopia",
         },
         {
           name: "Tesfaye Sida",
@@ -108,12 +115,26 @@ const sections: { [key: string]: Partner[] } = {
           name: "Moti Jaleta",
           location: "Addis Ababa, Ethiopia",
         },
+        { name: "Rahel Assefa", location: "Addis Ababa, Ethiopia" },
       ],
     },
   ],
   "Funding partners": [
     {
-      name: "EiA",
+      name: "Bill & Melinda Gates Foundation (BMGF)",
+      homepage: "https://www.gatesfoundation.org/",
+      logo: (
+        <Image
+          src="/logos/bill-melinda-gates.svg"
+          height={64}
+          width={250}
+          alt="Bill Melinda Gates logo"
+        />
+      ),
+      team: [],
+    },
+    {
+      name: "OneCGIAR initiative on Excellence in Agronomy (EiA)",
       homepage: "https://www.ei-a.org/",
       logo: (
         <Image
@@ -126,23 +147,10 @@ const sections: { [key: string]: Partner[] } = {
       ),
       team: [],
     },
-    {
-      name: "Bill & Melinda Gates Foundation",
-      homepage: "https://www.gatesfoundation.org/",
-      logo: (
-        <Image
-          src="/logos/bill-melinda-gates.svg"
-          height={64}
-          width={250}
-          alt="Bill Melinda Gates logo"
-        />
-      ),
-      team: [],
-    },
   ],
   "Regional partners": [
     {
-      name: "AGRA",
+      name: "Alliance for a Green Revolution in Africa (AGRA)",
       homepage: "https://agra.org/",
       logo: (
         <Image
@@ -153,10 +161,10 @@ const sections: { [key: string]: Partner[] } = {
           className="max-h-full w-auto"
         />
       ),
-      team: [],
+      team: [{ name: "Asseta Diallo", location: "Accra, Ghana" }],
     },
     {
-      name: "Ethiopian Institute of Agricultural Research",
+      name: "Ethiopian Institute of Agricultural Research (EIAR)",
       homepage: "https://www.eiar.gov.et/",
       logo: (
         <Image
@@ -170,7 +178,7 @@ const sections: { [key: string]: Partner[] } = {
       team: [{ name: "Temesgn Desalegn", location: "Addis Ababa, Ethiopia" }],
     },
     {
-      name: "Kenya Agricultural and Livestock Research Organisation",
+      name: "Kenya Agricultural and Livestock Research Organisation (KALRO)",
       homepage: "https://www.kalro.org/",
       logo: (
         <Image
@@ -184,7 +192,7 @@ const sections: { [key: string]: Partner[] } = {
       team: [],
     },
     {
-      name: "Rwanda Agriculture and Animal Resources Development Board",
+      name: "Rwanda Agriculture and Animal Resources Development Board (RAB)",
       homepage: "https://rab.gov.rw/",
       logo: (
         <Image
@@ -195,10 +203,10 @@ const sections: { [key: string]: Partner[] } = {
           className="max-h-full w-auto"
         />
       ),
-      team: [],
+      team: [{ name: "Vicky Ruganzu", location: "Kigali, Rwanda" }],
     },
     {
-      name: "Tanzania Agricultural Research Institute",
+      name: "Tanzania Agricultural Research Institute (TARI)",
       homepage: "https://www.tari.go.tz/",
       logo: (
         <Image
@@ -209,12 +217,15 @@ const sections: { [key: string]: Partner[] } = {
           className="max-h-full w-auto"
         />
       ),
-      team: [],
+      team: [
+        { name: "Joel Meliyo", location: "Dodoma, Tanzania" },
+        { name: "Sibaway Mwango", location: "Tanga, Tanzania" },
+      ],
     },
   ],
   "Advanced academic institutions": [
     {
-      name: "UC Davis",
+      name: "University of California-Davis (UC-Davis)",
       homepage: "https://www.ucdavis.edu/",
       logo: (
         <Image
@@ -230,10 +241,15 @@ const sections: { [key: string]: Partner[] } = {
           name: "Robert J. Hijmans",
           location: "Davis, United States of America",
         },
+        {
+          name: "Fernando Aramburu-Merlos",
+          affiliation: "UNL",
+          location: "Lincoln, United States of America",
+        },
       ],
     },
     {
-      name: "WUR",
+      name: "Wageningen University and Research (WUR)",
       homepage: "https://www.wur.nl/",
       logo: (
         <Image
@@ -244,7 +260,10 @@ const sections: { [key: string]: Partner[] } = {
           className="max-h-full w-auto"
         />
       ),
-      team: [],
+      team: [
+        { name: "Ken Giller", location: "Wageningen, Netherlands" },
+        { name: "Tom Schut", location: "Wageningen, Netherlands" },
+      ],
     },
   ],
 };
@@ -279,8 +298,11 @@ export default function Team() {
                   <ul className="space-y-2">
                     {partner.team.map((member) => (
                       <li key={member.name} className="flex flex-col">
-                        <span>{member.name}</span>
-                        <span className="text-xs">({member.location})</span>
+                        <span>
+                          {member.name}{" "}
+                          {member.affiliation && `(${member.affiliation})`}
+                        </span>
+                        <span className="text-xs">{member.location}</span>
                       </li>
                     ))}
                   </ul>
