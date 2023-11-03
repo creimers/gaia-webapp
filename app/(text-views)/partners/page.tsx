@@ -260,7 +260,7 @@ export default function Team() {
             {sections[section].map((partner) => (
               <div
                 key={partner.name}
-                className="grid grid-cols-2 gap-8 bg-gray-100 rounded-xl p-8"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 rounded-xl p-8"
               >
                 <div className="max-h-[85px] w-auto not-prose">
                   {partner.logo}
