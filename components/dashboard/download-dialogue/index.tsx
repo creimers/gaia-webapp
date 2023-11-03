@@ -17,6 +17,7 @@ import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 import Citation from "./citation";
 import CountrySelect, { type Country } from "./country-select";
+import License from "./license";
 
 type Props = {
   open: boolean;
@@ -68,55 +69,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
               <CountrySelect value={country} handleUpdate={setCountry} />
             </div>
             <Citation />
-            <div>
-              <p>
-                This work is licensed under{" "}
-                <a
-                  href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
-                  target="_blank"
-                  rel="license noopener noreferrer"
-                  style={{ display: "inline-flex" }}
-                >
-                  CC BY-NC-SA 4.0
-                  <img
-                    alt="Creative Commons License"
-                    style={{
-                      height: "22px",
-                      marginLeft: 3,
-                      verticalAlign: "text-bottom",
-                    }}
-                    src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
-                  />
-                  <img
-                    alt="Creative Commons License"
-                    style={{
-                      height: "22px",
-                      marginLeft: 3,
-                      verticalAlign: "text-bottom",
-                    }}
-                    src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
-                  />
-                  <img
-                    alt="Creative Commons License"
-                    style={{
-                      height: "22px",
-                      marginLeft: 3,
-                      verticalAlign: "text-bottom",
-                    }}
-                    src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
-                  />
-                  <img
-                    alt="Creative Commons License"
-                    style={{
-                      height: "22px",
-                      marginLeft: 3,
-                      verticalAlign: "text-bottom",
-                    }}
-                    src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
-                  />
-                </a>
-              </p>
-            </div>
+            <License />
             <div>
               <label className="flex items-center cursor-pointer">
                 <input
