@@ -142,7 +142,7 @@ const sections: { [key: string]: Partner[] } = {
           height={263}
           width={320}
           alt="EiA logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [],
@@ -158,7 +158,7 @@ const sections: { [key: string]: Partner[] } = {
           height={341}
           width={1000}
           alt="AGRA logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [{ name: "Asseta Diallo", location: "Accra, Ghana" }],
@@ -172,7 +172,7 @@ const sections: { [key: string]: Partner[] } = {
           height={762}
           width={443}
           alt="EIAR logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [{ name: "Temesgn Desalegn", location: "Addis Ababa, Ethiopia" }],
@@ -186,7 +186,7 @@ const sections: { [key: string]: Partner[] } = {
           height={709}
           width={1000}
           alt="KALRO logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [],
@@ -200,7 +200,7 @@ const sections: { [key: string]: Partner[] } = {
           height={970}
           width={1000}
           alt="RAB logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [{ name: "Vicky Ruganzu", location: "Kigali, Rwanda" }],
@@ -214,7 +214,7 @@ const sections: { [key: string]: Partner[] } = {
           height={563}
           width={1000}
           alt="TARI logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [
@@ -233,7 +233,7 @@ const sections: { [key: string]: Partner[] } = {
           height={256}
           width={1000}
           alt="ucd logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [
@@ -257,7 +257,7 @@ const sections: { [key: string]: Partner[] } = {
           height={248}
           width={1000}
           alt="wur logo"
-          className="max-h-full w-auto"
+          className="max-h-full w-auto h-full"
         />
       ),
       team: [
@@ -281,9 +281,7 @@ export default function Team() {
                 key={partner.name}
                 className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 rounded-xl p-8"
               >
-                <div className="max-h-[85px] w-auto not-prose">
-                  {partner.logo}
-                </div>
+                <div className="max-h-[85px] not-prose">{partner.logo}</div>
                 <div className="not-prose">
                   <h3 className="font-semibold mb-2">
                     <a
