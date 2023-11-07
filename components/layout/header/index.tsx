@@ -14,6 +14,7 @@ export default function Header() {
             href="https://www.cgiar.org/"
             target="_blank"
             rel="noopener noreferrer"
+            className="max-h-full h-full"
           >
             <Logo />
           </a>

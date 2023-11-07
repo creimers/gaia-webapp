@@ -7,6 +7,7 @@ export default function Logo() {
       strokeMiterlimit="2"
       clipRule="evenodd"
       viewBox="0 0 48 55"
+      className="max-h-full"
     >
       <g transform="translate(-919.011 -495.211)">
         <g transform="translate(445.911 493.211)">
