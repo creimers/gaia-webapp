@@ -1,76 +1,6 @@
 import Logo from "@/components/layout/header/logo";
 import Image from "next/image";
 
-const TEAM = [
-  {
-    name: "João Vasco Silva",
-    affiliation: "International Maize and Wheat Improvement Center",
-    location: "Harare, Zimbabwe",
-    email: "",
-  },
-  {
-    name: "Fernando Aramburu-Merlos",
-    affiliation: "University of Nebraska-Lincoln",
-    location: "Lincoln, United States of America",
-    email: "",
-  },
-  {
-    name: "Frédéric Baudron",
-    affiliation:
-      "French Agricultural Research Centre for International Development",
-    location: "Montpellier, France",
-    email: "",
-  },
-  {
-    name: "Samuel Gameda",
-    affiliation: "International Maize and Wheat Improvement Center",
-    location: "Addis Ababa, Ethiopia",
-    email: "",
-  },
-  {
-    name: "Joel Meliyo",
-    affiliation: "Tanzania Agricultural Research Institute",
-    location: "Dodoma, Tanzania",
-    email: "",
-  },
-  {
-    name: "Vicky Ruganzu",
-    affiliation: "Rwanda Agriculture and Animal Resources Development Board",
-    location: "Kigali, Rwanda",
-    email: "",
-  },
-  {
-    name: "Temesgn Desalegn",
-    affiliation: "Ethiopian Institute of Agricultural Research",
-    location: "Addis Ababa, Ethiopia",
-    email: "",
-  },
-  {
-    name: "Tesfaye Sida",
-    affiliation: "International Maize and Wheat Improvement Center",
-    location: "Addis Ababa, Ethiopia",
-    email: "",
-  },
-  {
-    name: "Moti Jaleta",
-    affiliation: "International Maize and Wheat Improvement Center",
-    location: "Addis Ababa, Ethiopia",
-    email: "",
-  },
-  {
-    name: "Jordan Chamberlin",
-    affiliation: "International Maize and Wheat Improvement Center",
-    location: "Nairobi, Kenya",
-    email: "",
-  },
-  {
-    name: "Robert J. Hijmans",
-    affiliation: "University of California-Davis",
-    location: "Davis, United States of America",
-    email: "",
-  },
-];
-
 type Partner = {
   name: string;
   logo: React.ReactNode;
@@ -142,7 +72,7 @@ const sections: { [key: string]: Partner[] } = {
           height={263}
           width={320}
           alt="EiA logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [],
@@ -158,7 +88,7 @@ const sections: { [key: string]: Partner[] } = {
           height={341}
           width={1000}
           alt="AGRA logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [{ name: "Asseta Diallo", location: "Accra, Ghana" }],
@@ -172,7 +102,7 @@ const sections: { [key: string]: Partner[] } = {
           height={762}
           width={443}
           alt="EIAR logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [{ name: "Temesgn Desalegn", location: "Addis Ababa, Ethiopia" }],
@@ -186,7 +116,7 @@ const sections: { [key: string]: Partner[] } = {
           height={709}
           width={1000}
           alt="KALRO logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [],
@@ -200,7 +130,7 @@ const sections: { [key: string]: Partner[] } = {
           height={970}
           width={1000}
           alt="RAB logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [{ name: "Vicky Ruganzu", location: "Kigali, Rwanda" }],
@@ -214,7 +144,7 @@ const sections: { [key: string]: Partner[] } = {
           height={563}
           width={1000}
           alt="TARI logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [
@@ -233,7 +163,7 @@ const sections: { [key: string]: Partner[] } = {
           height={256}
           width={1000}
           alt="ucd logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [
@@ -257,7 +187,7 @@ const sections: { [key: string]: Partner[] } = {
           height={248}
           width={1000}
           alt="wur logo"
-          className="max-h-full w-auto h-full"
+          className="max-h-full w-auto"
         />
       ),
       team: [
@@ -281,7 +211,9 @@ export default function Team() {
                 key={partner.name}
                 className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 rounded-xl p-8"
               >
-                <div className="max-h-[85px] not-prose">{partner.logo}</div>
+                <div className="max-h-[85px] h-full not-prose">
+                  {partner.logo}
+                </div>
                 <div className="not-prose">
                   <h3 className="font-semibold mb-2">
                     <a
