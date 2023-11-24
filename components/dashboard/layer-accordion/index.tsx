@@ -226,7 +226,6 @@ export default function LayerAccordion() {
                       key={layer.id}
                       activeLayerId={layerId}
                       handleSetLayerId={setLayerId}
-                      info={layer.info}
                     />
                   ))}
                 </div>
