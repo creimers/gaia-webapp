@@ -39,7 +39,7 @@ const HP_URL =
 const LAYER_TILE_URLS: { [key: string]: string } = {
   // SOIL
   [LAYER.SOIL_LAYER_PH]:
-    "https://gaia-tiles.superservice-international.com/soil_ph/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/soil_ph_bin/{z}/{x}/{y}.webp",
   [LAYER.SOIL_LAYER_EXCHANGEABLE_ACIDITY]:
     "https://gaia-tiles.superservice-international.com/soil_hp/{z}/{x}/{y}.webp",
   [LAYER.SOIL_LAYER_CATION_EXCHANGE_CAPACITY]:
