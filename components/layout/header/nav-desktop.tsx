@@ -70,7 +70,7 @@ const DropdownMenu = ({ title, isActive, subroutes }: DropdownMenuProps) => {
 
   return (
     <li key={title} onClick={() => setOpen(!open)} ref={ref}>
-      <a
+      <span
         className={cn(
           isActive ? "bg-lime-600 text-white rounded" : "hover:underline",
           "font-semibold px-3 py-2 inline-flex items-center cursor-pointer relative"
@@ -109,7 +109,7 @@ const DropdownMenu = ({ title, isActive, subroutes }: DropdownMenuProps) => {
             })}
           </ul>
         )}
-      </a>
+      </span>
     </li>
   );
 };

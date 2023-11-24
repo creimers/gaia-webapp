@@ -75,7 +75,18 @@ const sections: { [key: string]: Partner[] } = {
           className="max-h-full w-auto"
         />
       ),
-      team: [],
+      team: [
+        {
+          name: "Meklit Chernet",
+          affiliation: "Alliance Bioversity-CIAT",
+          location: "Brussels, Belgium",
+        },
+        {
+          name: "Medha Devare",
+          affiliation: "IITA",
+          location: "Montpellier, France",
+        },
+      ],
     },
   ],
   "Regional partners": [

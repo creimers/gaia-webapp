@@ -12,6 +12,7 @@ type Props = {
   layer: {
     id: string;
     name: string;
+    info: React.ReactNode;
   };
   activeLayerId?: string;
   handleSetLayerId: (layerId: string) => void;
@@ -47,13 +48,15 @@ export default function Layer({
                 <Info className="w-4 h-4" />
               </Button>
             </PopoverTrigger>
-            <PopoverContent side="right">Info for {layer.name}</PopoverContent>
+            <PopoverContent side="right" className="prose prose-sm">
+              {layer.info}
+            </PopoverContent>
           </Popover>
         </div>
       </label>
       {infoOpen && (
-        <div className="block md:hidden text-sm text-gray-700">
-          Info for {layer.name}
+        <div className="block md:hidden text-sm text-gray-700 prose prose-sm">
+          {layer.info}
         </div>
       )}
     </div>

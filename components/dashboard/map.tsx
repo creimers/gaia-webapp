@@ -25,7 +25,6 @@ import {
   parseAsFloat,
   parseAsString,
 } from "next-usequerystate";
-import { useSearchParams } from "next/navigation";
 
 const CustomSearchBox = dynamic(() => import("./search-box"), {
   ssr: false,
@@ -39,9 +38,12 @@ const HP_URL =
 
 const LAYER_TILE_URLS: { [key: string]: string } = {
   // SOIL
-  [LAYER.SOIL_LAYER_PH]: PH_URL,
-  [LAYER.SOIL_LAYER_EXCHANGEABLE_ACIDITY]: HP_URL,
-  [LAYER.SOIL_LAYER_CATION_EXCHANGE_CAPACITY]: PH_URL,
+  [LAYER.SOIL_LAYER_PH]:
+    "https://gaia-tiles.superservice-international.com/soil_ph/{z}/{x}/{y}.webp",
+  [LAYER.SOIL_LAYER_EXCHANGEABLE_ACIDITY]:
+    "https://gaia-tiles.superservice-international.com/soil_hp/{z}/{x}/{y}.webp",
+  [LAYER.SOIL_LAYER_CATION_EXCHANGE_CAPACITY]:
+    "https://gaia-tiles.superservice-international.com/soil_ecec/{z}/{x}/{y}.webp",
   // LIME
   [LAYER.LIME_LAYER_WEIGHTED_AVERAGE]: HP_URL,
   [LAYER.LIME_LAYER_CEREALS]: PH_URL,
