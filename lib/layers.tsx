@@ -321,7 +321,7 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
 
 const LIME_LAYER_COMMODITIES: Layer = {
   id: LIME_LAYER_COMMODITIES_ID,
-  label: "Commotidies",
+  label: "Commodities",
   info: (
     <p>
       Crop area weighted lime rate (t CaCO3/ha) estimated with the{" "}
