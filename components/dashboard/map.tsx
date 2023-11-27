@@ -13,7 +13,11 @@ import type { RasterPaint } from "mapbox-gl";
 
 import { MagnifyingGlass } from "@phosphor-icons/react";
 
-import * as LAYER from "@/lib/layers";
+import {
+  LAYER_MAPPING,
+  PROFITABILITY_ID,
+  SOIL_LAYER_PH_ID,
+} from "@/lib/layers";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 import dynamic from "next/dynamic";
@@ -29,65 +33,6 @@ import {
 const CustomSearchBox = dynamic(() => import("./search-box"), {
   ssr: false,
 });
-
-const PH_URL =
-  "https://gaia-tiles.superservice-international.com/ph/soil_crop/tiles/{z}/{x}/{y}.png";
-
-const HP_URL =
-  "https://gaia-tiles.superservice-international.com/hp/{z}/{x}/{y}.png";
-
-const LAYER_TILE_URLS: { [key: string]: string } = {
-  // SOIL
-  [LAYER.SOIL_LAYER_PH]:
-    "https://gaia-tiles.superservice-international.com/soil_ph_bin/{z}/{x}/{y}.webp",
-  [LAYER.SOIL_LAYER_EXCHANGEABLE_ACIDITY]:
-    "https://gaia-tiles.superservice-international.com/soil_hp/{z}/{x}/{y}.webp",
-  [LAYER.SOIL_LAYER_CATION_EXCHANGE_CAPACITY]:
-    "https://gaia-tiles.superservice-international.com/soil_ecec/{z}/{x}/{y}.webp",
-  // LIME
-  [LAYER.LIME_LAYER_WEIGHTED_AVERAGE]: HP_URL,
-  [LAYER.LIME_LAYER_CEREALS]: PH_URL,
-  [LAYER.LIME_LAYER_LEGUMES]: HP_URL,
-  [LAYER.LIME_LAYER_ROOTS_TUBERS]: PH_URL,
-  [LAYER.LIME_LAYER_OTHER]: HP_URL,
-  // YIELD RESPONSE
-  [LAYER.YIELD_RESPONSE_LAYER_WEIGHTED_AVERAGE]: HP_URL,
-  [LAYER.YIELD_RESPONSE_LAYER_CEREALS]: PH_URL,
-  [LAYER.YIELD_RESPONSE_LAYER_LEGUMES]: HP_URL,
-  [LAYER.YIELD_RESPONSE_LAYER_ROOTS_TUBERS]: PH_URL,
-  [LAYER.YIELD_RESPONSE_LAYER_OTHER]: HP_URL,
-  // PROFITABILITY
-  [`${LAYER.PROFITABILITY_LAYER_WEIGHTED_AVERAGE}_0`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_WEIGHTED_AVERAGE}_20`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_WEIGHTED_AVERAGE}_40`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_WEIGHTED_AVERAGE}_60`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_WEIGHTED_AVERAGE}_80`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_WEIGHTED_AVERAGE}_100`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_CEREALS}_0`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_CEREALS}_20`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_CEREALS}_40`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_CEREALS}_60`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_CEREALS}_80`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_CEREALS}_100`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_LEGUMES}_0`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_LEGUMES}_20`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_LEGUMES}_40`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_LEGUMES}_60`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_LEGUMES}_80`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_LEGUMES}_100`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_ROOTS_TUBERS}_0`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_ROOTS_TUBERS}_20`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_ROOTS_TUBERS}_40`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_ROOTS_TUBERS}_60`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_ROOTS_TUBERS}_80`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_ROOTS_TUBERS}_100`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_OTHER}_0`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_OTHER}_20`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_OTHER}_40`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_OTHER}_60`]: HP_URL,
-  [`${LAYER.PROFITABILITY_LAYER_OTHER}_80`]: PH_URL,
-  [`${LAYER.PROFITABILITY_LAYER_OTHER}_100`]: HP_URL,
-};
 
 const DEFAULT_LATITUDE = -6;
 const DEFAULT_LONGITUDE = 26.793587;
@@ -117,7 +62,7 @@ export default function TheMap() {
   );
   const [layerId] = useQueryState(
     "layer",
-    parseAsString.withDefault(LAYER.SOIL_LAYER_PH)
+    parseAsString.withDefault(SOIL_LAYER_PH_ID)
   );
   const [limePrice] = useQueryState(
     "lime_price",
@@ -129,7 +74,7 @@ export default function TheMap() {
   );
 
   const activeLayer = `${layerId}${
-    layerId.includes(LAYER.PROFITABILITY_ID) ? `_${limePrice}` : ""
+    layerId.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
   }`;
 
   const mapRef = React.useRef<MapRef>(null);
@@ -202,12 +147,12 @@ export default function TheMap() {
           <MagnifyingGlass className="h-4 w-4" weight="bold" />
         </button>
       </div>
-      {Object.keys(LAYER_TILE_URLS).map((layerId) => (
+      {Object.keys(LAYER_MAPPING).map((layerId) => (
         <React.Fragment key={layerId}>
           {activeLayer === layerId && (
             <Source
               id={layerId}
-              tiles={[LAYER_TILE_URLS[layerId]]}
+              tiles={[LAYER_MAPPING[layerId].tileUrl]}
               type="raster"
               tileSize={256}
               scheme="tms"

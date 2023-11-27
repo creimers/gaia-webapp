@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 
-import { SOIL_LAYER_PH, PROFITABILITY_ID } from "@/lib/layers";
+import { SOIL_LAYER_PH_ID, PROFITABILITY_ID } from "@/lib/layers";
 
 import { Button } from "@/components/ui/button";
 
@@ -28,7 +28,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
   const [agreeToLicense, setAgreeToLicense] = React.useState(false);
   const [country, setCountry] = React.useState<Country | undefined>();
   const searchParams = useSearchParams();
-  const layer = searchParams.get("layer") || SOIL_LAYER_PH;
+  const layer = searchParams.get("layer") || SOIL_LAYER_PH_ID;
   const limePrice = searchParams.get("lime_price") || DEFAULT_LIME_PRICE;
 
   const filename = `${layer}${

@@ -2,153 +2,19 @@
 
 import * as React from "react";
 
-import type { Icon } from "@phosphor-icons/react";
-import {
-  Grains,
-  Ruler,
-  Coins,
-  Globe,
-  Download,
-  CaretRight,
-} from "@phosphor-icons/react";
+import { Download, CaretRight } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 
 import * as LAYER from "@/lib/layers";
+import { LAYER_GROUPS } from "@/lib/layers";
 
 import DownloadDialogue from "../download-dialogue";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 import { parseAsString, useQueryState } from "next-usequerystate";
 import Layer from "./layer";
-
-type Layer = {
-  name: string;
-  id: string;
-  info: React.ReactNode;
-};
-
-type LayerGroup = {
-  name: string;
-  id: string;
-  icon: Icon;
-  layers: Layer[];
-};
-
-const SOIL_LAYERS: LayerGroup = {
-  name: "Soil Layers",
-  id: LAYER.SOIL_ID,
-  icon: Globe,
-  layers: [
-    {
-      name: "pH in Water",
-      id: LAYER.SOIL_LAYER_PH,
-      info: "Soil pH in water for areas with more than 10% probability of cropland presence in sub-Saharan Africa. Soil layer obtained from Hengl et al. (2017) and cropland mask from Geosurvey.",
-    },
-    {
-      name: "Exchangable Acidity",
-      id: LAYER.SOIL_LAYER_EXCHANGEABLE_ACIDITY,
-      info: "Soil (exch.) acidity saturation (%) for areas with more than 10% probability of cropland presence in sub-Saharan Africa. Acidity saturation was computed as the ratio between exch. acidity and effective cation exchange capacity (x100). Soil layers obtained from Hengl et al. (2017) and cropland mask from Geosurvey.",
-    },
-    {
-      name: "Cation Exchange Capacity",
-      id: LAYER.SOIL_LAYER_CATION_EXCHANGE_CAPACITY,
-      info: (
-        <>
-          <p>
-            Soil effective cation exchange capacity (ECEC, cmol+/kg) for areas
-            with more than 10% probability of cropland presence in sub-Saharan
-            Africa. ECEC was computed as the sum of exch. bases (Ca2+, Mg2+,
-            Na+, K+) and exch. acidity (Al3+, H+). Soil layers obtained from{" "}
-            <a
-              href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0169748"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Hengl et al. (2017)
-            </a>{" "}
-            and cropland mask from{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://geosurvey.qed.ai/about/"
-            >
-              Geosurvey
-            </a>
-            .
-          </p>
-        </>
-      ),
-    },
-  ],
-};
-
-const LIME_LAYERS: LayerGroup = {
-  name: "Lime Requirements",
-  id: LAYER.LIME_ID,
-  icon: Ruler,
-  layers: [
-    {
-      name: "Weighted Average",
-      id: LAYER.LIME_LAYER_WEIGHTED_AVERAGE,
-      info: "",
-    },
-    { name: "Cereals", id: LAYER.LIME_LAYER_CEREALS, info: "" },
-    { name: "Legumes", id: LAYER.LIME_LAYER_LEGUMES, info: "" },
-    { name: "Roots & Tubers", id: LAYER.LIME_LAYER_ROOTS_TUBERS, info: "" },
-    { name: "Other", id: LAYER.LIME_LAYER_OTHER, info: "" },
-  ],
-};
-
-const YIELD_RESPONSE_LAYERS: LayerGroup = {
-  name: "Yield Response",
-  id: LAYER.YIELD_RESPONSE_ID,
-  icon: Grains,
-  layers: [
-    {
-      name: "Weighted Average",
-      id: LAYER.YIELD_RESPONSE_LAYER_WEIGHTED_AVERAGE,
-      info: "",
-    },
-    { name: "Cereals", id: LAYER.YIELD_RESPONSE_LAYER_CEREALS, info: "" },
-    { name: "Legumes", id: LAYER.YIELD_RESPONSE_LAYER_LEGUMES, info: "" },
-    {
-      name: "Roots & Tubers",
-      id: LAYER.YIELD_RESPONSE_LAYER_ROOTS_TUBERS,
-      info: "",
-    },
-    { name: "Other", id: LAYER.YIELD_RESPONSE_LAYER_OTHER, info: "" },
-  ],
-};
-
-const PROFITABILITY_LAYERS: LayerGroup = {
-  name: "Profitability",
-  id: LAYER.PROFITABILITY_ID,
-  icon: Coins,
-  layers: [
-    {
-      name: "Weighted Average",
-      id: LAYER.PROFITABILITY_LAYER_WEIGHTED_AVERAGE,
-      info: "",
-    },
-    { name: "Cereals", id: LAYER.PROFITABILITY_LAYER_CEREALS, info: "" },
-    { name: "Legumes", id: LAYER.PROFITABILITY_LAYER_LEGUMES, info: "" },
-    {
-      name: "Roots & Tubers",
-      id: LAYER.PROFITABILITY_LAYER_ROOTS_TUBERS,
-      info: "",
-    },
-    { name: "Other", id: LAYER.PROFITABILITY_LAYER_OTHER, info: "" },
-  ],
-};
-
-const LAYER_GROUPS: LayerGroup[] = [
-  SOIL_LAYERS,
-  LIME_LAYERS,
-  YIELD_RESPONSE_LAYERS,
-  PROFITABILITY_LAYERS,
-];
 
 const LAYER_GROUP_LAYER_ID_MAPPING = LAYER_GROUPS.reduce((acc, group) => {
   acc[group.id] = group.layers.map((layer) => layer.id);
@@ -161,7 +27,7 @@ export default function LayerAccordion() {
 
   const [layerId, setLayerId] = useQueryState(
     "layer",
-    parseAsString.withDefault(SOIL_LAYERS.layers[0].id)
+    parseAsString.withDefault(LAYER.SOIL_LAYER_PH_ID)
   );
 
   const [limePrice, setLimePrice] = useQueryState(

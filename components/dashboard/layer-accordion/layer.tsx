@@ -7,13 +7,10 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import type { Layer } from "@/lib/layers";
 
 type Props = {
-  layer: {
-    id: string;
-    name: string;
-    info: React.ReactNode;
-  };
+  layer: Layer;
   activeLayerId?: string;
   handleSetLayerId: (layerId: string) => void;
 };
@@ -34,7 +31,7 @@ export default function Layer({
           className="shrink-0 h-5 w-5"
         />
         <div className="flex items-center space-x-2">
-          <span className="pl-2 block text-lg">{layer.name}</span>
+          <span className="pl-2 block text-lg">{layer.label}</span>
           <Button
             variant="ghost"
             className="block md:hidden"
