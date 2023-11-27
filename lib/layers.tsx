@@ -257,7 +257,106 @@ const LIME_LAYER_CEREALS: Layer = {
   },
 };
 
-const LIME_LAYERS = [LIME_LAYER_ALL_CROPS, LIME_LAYER_CEREALS];
+const LIME_LAYER_LEGUMES: Layer = {
+  id: LIME_LAYER_LEGUMES_ID,
+  label: "Legumes",
+  info: (
+    <p>
+      Crop area weighted lime rate (t CaCO3/ha) estimated with the{" "}
+      <a
+        href="https://doi.org/10.1016/j.geoderma.2023.116421"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Aramburu-Merlos et al. (2023)
+      </a>{" "}
+      method for legume crops (see methods for further information). Legumes:
+      bean, chickpea, lentil, cowpea, pigeonpea, soybean, groundnut.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/lime_legumes_bin/{z}/{x}/{y}.webp",
+  legend: {
+    bins: [
+      { value: "< 0.5", color: "rgb(253, 231, 37)" },
+      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
+      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
+      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
+      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
+      { value: "> 4.5", color: "rgb(68, 1, 84)" },
+    ],
+  },
+};
+
+const LIME_LAYER_ROOTS_TUBERS: Layer = {
+  id: LIME_LAYER_ROOTS_TUBERS_ID,
+  label: "Roots & Tubers",
+  info: (
+    <p>
+      Crop area weighted lime rate (t CaCO3/ha) estimated with the{" "}
+      <a
+        href="https://doi.org/10.1016/j.geoderma.2023.116421"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Aramburu-Merlos et al. (2023)
+      </a>{" "}
+      method for root & tuber crops (see methods for further information). Roots
+      & tubers: potato, sweet potato, cassava.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/lime_rtbs_bin/{z}/{x}/{y}.webp",
+  legend: {
+    bins: [
+      { value: "< 0.5", color: "rgb(253, 231, 37)" },
+      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
+      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
+      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
+      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
+      { value: "> 4.5", color: "rgb(68, 1, 84)" },
+    ],
+  },
+};
+
+const LIME_LAYER_COMMODITIES: Layer = {
+  id: LIME_LAYER_COMMODITIES_ID,
+  label: "Commotidies",
+  info: (
+    <p>
+      Crop area weighted lime rate (t CaCO3/ha) estimated with the{" "}
+      <a
+        href="https://doi.org/10.1016/j.geoderma.2023.116421"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Aramburu-Merlos et al. (2023)
+      </a>{" "}
+      method for commodity crops (see methods for further information).
+      Commodities: coffee, sugarcane, cotton, cocoa, tea, tobacco.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/lime_commodities_bin/{z}/{x}/{y}.webp",
+  legend: {
+    bins: [
+      { value: "< 0.5", color: "rgb(253, 231, 37)" },
+      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
+      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
+      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
+      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
+      { value: "> 4.5", color: "rgb(68, 1, 84)" },
+    ],
+  },
+};
+
+const LIME_LAYERS = [
+  LIME_LAYER_ALL_CROPS,
+  LIME_LAYER_CEREALS,
+  LIME_LAYER_LEGUMES,
+  LIME_LAYER_ROOTS_TUBERS,
+  LIME_LAYER_COMMODITIES,
+];
 
 type LayerGroup = {
   name: string;
@@ -281,7 +380,7 @@ export const LAYER_GROUPS: LayerGroup[] = [
   },
 ];
 
-export const LAYERS = [...SOIL_LAYERS];
+export const LAYERS = [...SOIL_LAYERS, ...LIME_LAYERS];
 
 function generateLayerTileUrlMapping() {
   const mapping: { [key: string]: string } = {};
