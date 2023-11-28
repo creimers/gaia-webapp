@@ -250,10 +250,24 @@ const countries: Country[] = [
 type Props = {
   value: Country | undefined;
   handleUpdate: (value: Country) => void;
+  availableISOCodes?: string[];
 };
 
-export default function CountrySelect({ value, handleUpdate }: Props) {
+export default function CountrySelect({
+  value,
+  handleUpdate,
+  availableISOCodes,
+}: Props) {
   const [open, setOpen] = React.useState(false);
+
+  const availableCountries = React.useMemo(() => {
+    if (!availableISOCodes) {
+      return countries;
+    }
+    return countries.filter((country) =>
+      availableISOCodes.includes(country.iso)
+    );
+  }, [availableISOCodes]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -275,7 +289,7 @@ export default function CountrySelect({ value, handleUpdate }: Props) {
             <CommandEmpty>No country found.</CommandEmpty>
             <CommandGroup>
               {/* <ScrollArea className="h-72"> */}
-              {countries.map((country) => (
+              {availableCountries.map((country) => (
                 <CommandItem
                   key={country.iso}
                   value={country.name}

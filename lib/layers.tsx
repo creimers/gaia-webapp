@@ -193,6 +193,17 @@ const SOIL_LAYERS = [
   SOIL_LAYER_CATION_EXCHANGE_CAPACITY,
 ];
 
+const LIME_LAYER_LEGEND: LayerLegend = {
+  bins: [
+    { value: "< 0.5", color: "rgb(253, 231, 37)" },
+    { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
+    { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
+    { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
+    { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
+    { value: "> 4.5", color: "rgb(68, 1, 84)" },
+  ],
+};
+
 const LIME_LAYER_ALL_CROPS: Layer = {
   id: LIME_LAYER_ALL_CROPS_ID,
   label: "All Crops",
@@ -215,14 +226,8 @@ const LIME_LAYER_ALL_CROPS: Layer = {
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_all_bin/{z}/{x}/{y}.webp",
   legend: {
-    bins: [
-      { value: "< 0.5", color: "rgb(253, 231, 37)" },
-      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
-      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
-      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
-      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
-      { value: "> 4.5", color: "rgb(68, 1, 84)" },
-    ],
+    title: "All Crops [t/ha]",
+    ...LIME_LAYER_LEGEND,
   },
 };
 
@@ -246,14 +251,8 @@ const LIME_LAYER_CEREALS: Layer = {
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_cereals_bin/{z}/{x}/{y}.webp",
   legend: {
-    bins: [
-      { value: "< 0.5", color: "rgb(253, 231, 37)" },
-      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
-      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
-      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
-      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
-      { value: "> 4.5", color: "rgb(68, 1, 84)" },
-    ],
+    title: "Cereals [t/ha]",
+    ...LIME_LAYER_LEGEND,
   },
 };
 
@@ -277,14 +276,8 @@ const LIME_LAYER_LEGUMES: Layer = {
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_legumes_bin/{z}/{x}/{y}.webp",
   legend: {
-    bins: [
-      { value: "< 0.5", color: "rgb(253, 231, 37)" },
-      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
-      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
-      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
-      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
-      { value: "> 4.5", color: "rgb(68, 1, 84)" },
-    ],
+    title: "Legumes [t/ha]",
+    ...LIME_LAYER_LEGEND,
   },
 };
 
@@ -308,14 +301,8 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_rtbs_bin/{z}/{x}/{y}.webp",
   legend: {
-    bins: [
-      { value: "< 0.5", color: "rgb(253, 231, 37)" },
-      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
-      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
-      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
-      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
-      { value: "> 4.5", color: "rgb(68, 1, 84)" },
-    ],
+    title: "Roots & Tubers [t/ha]",
+    ...LIME_LAYER_LEGEND,
   },
 };
 
@@ -339,14 +326,8 @@ const LIME_LAYER_COMMODITIES: Layer = {
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_commodities_bin/{z}/{x}/{y}.webp",
   legend: {
-    bins: [
-      { value: "< 0.5", color: "rgb(253, 231, 37)" },
-      { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
-      { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
-      { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
-      { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
-      { value: "> 4.5", color: "rgb(68, 1, 84)" },
-    ],
+    title: "Commodities [t/ha]",
+    ...LIME_LAYER_LEGEND,
   },
 };
 

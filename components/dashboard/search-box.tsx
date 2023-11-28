@@ -32,6 +32,7 @@ export default function CustomSearchBox({
               value=""
               options={{
                 language: "en",
+                types: "place,address",
                 bbox: [
                   [-17.625, -34.833], // Southwest corner: minimum longitude and latitude
                   [51.279, 37.345], // Northeast corner: maximum longitude and latitude

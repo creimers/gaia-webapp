@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 
-import { SOIL_LAYER_PH_ID, PROFITABILITY_ID } from "@/lib/layers";
+import { SOIL_LAYER_PH_ID, PROFITABILITY_ID, SOIL_ID } from "@/lib/layers";
 
 import { Button } from "@/components/ui/button";
 
@@ -14,6 +14,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
+import { SOIL_DATA_COUNTRY_CODES, SOIL_DATA } from "@/lib/data/soil";
 
 import Citation from "./citation";
 import CountrySelect, { type Country } from "./country-select";
@@ -31,9 +32,25 @@ export default function DownloadDialogue({ open, onClose }: Props) {
   const layer = searchParams.get("layer") || SOIL_LAYER_PH_ID;
   const limePrice = searchParams.get("lime_price") || DEFAULT_LIME_PRICE;
 
-  const filename = `${layer}${
-    layer.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
-  }${country ? `_${country.iso}` : ""}.csv`;
+  const availableCountries = React.useMemo(() => {
+    if (layer.includes(SOIL_ID)) {
+      return SOIL_DATA_COUNTRY_CODES;
+    }
+  }, [layer]);
+
+  // const filename = `${layer}${
+  //   layer.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
+  // }${country ? `_${country.iso}` : ""}.csv`;
+
+  const fileURL = React.useMemo(() => {
+    if (!country) {
+      return "";
+    }
+    if (layer.includes(SOIL_ID)) {
+      return SOIL_DATA[country.iso];
+    }
+    return "";
+  }, [layer, limePrice, country]);
 
   function closeDialogue() {
     setAgreeToLicense(false);
@@ -42,15 +59,13 @@ export default function DownloadDialogue({ open, onClose }: Props) {
   }
 
   async function downloadDataset() {
-    // const filename = `${layer}${limePrice ? `_${limePrice}` : ""}.csv`;
-    const filename = "test.csv";
-    const url = `/data/${filename}`;
-    const response = await fetch(url);
+    const response = await fetch(fileURL);
     if (response.ok) {
       const data = await response.blob();
       const a = document.createElement("a");
       a.href = window.URL.createObjectURL(data);
-      a.download = filename;
+      const filename = fileURL.split("/").pop();
+      a.download = filename!;
       a.click();
       closeDialogue();
     }
@@ -66,7 +81,11 @@ export default function DownloadDialogue({ open, onClose }: Props) {
           <div className="space-y-4 text-base py-4 text-gray-800">
             <div>
               <label className="font-semibold mb-2 block">Country</label>
-              <CountrySelect value={country} handleUpdate={setCountry} />
+              <CountrySelect
+                value={country}
+                handleUpdate={setCountry}
+                availableISOCodes={availableCountries}
+              />
             </div>
             <Citation />
             <License />
