@@ -193,6 +193,63 @@ const SOIL_LAYERS = [
   SOIL_LAYER_CATION_EXCHANGE_CAPACITY,
 ];
 
+const SOIL_LAYER_PH_PLASMA = {
+  ...SOIL_LAYER_PH,
+  id: SOIL_LAYER_PH.id + "_plasma",
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/soil_ph_bin_plasma/{z}/{x}/{y}.webp",
+  legend: {
+    bins: [
+      { value: "< 4.5", color: "rgb(240, 249, 33)" },
+      { value: "4.5-5.0", color: "rgb(252, 166, 54)" },
+      { value: "5.0-5.5", color: "rgb(225, 100, 98)" },
+      { value: "5.5-6.0", color: "rgb(177, 42, 144)" },
+      { value: "6.0-6.5", color: "rgb(106, 0, 168)" },
+      { value: "> 6.5", color: "rgb(13, 8, 135)" },
+    ],
+  },
+};
+
+const SOIL_LAYER_HP_PLASMA = {
+  ...SOIL_LAYER_HP,
+  id: SOIL_LAYER_HP.id + "_plasma",
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/soil_hp_bin_plasma/{z}/{x}/{y}.webp",
+  legend: {
+    bins: [
+      { value: "< 10", color: "rgb(240, 249, 33)" },
+      { value: "10-20", color: "rgb(252, 166, 54)" },
+      { value: "20-30", color: "rgb(225, 100, 98)" },
+      { value: "30-40", color: "rgb(177, 42, 144)" },
+      { value: "40-50", color: "rgb(106, 0, 168)" },
+      { value: "> 50", color: "rgb(13, 8, 135)" },
+    ],
+  },
+};
+
+const SOIL_LAYER_CATION_EXCHANGE_CAPACITY_PLASMA = {
+  ...SOIL_LAYER_CATION_EXCHANGE_CAPACITY,
+  id: SOIL_LAYER_CATION_EXCHANGE_CAPACITY.id + "_plasma",
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/soil_ecec_bin_plasma/{z}/{x}/{y}.webp",
+  legend: {
+    bins: [
+      { value: "< 5", color: "rgb(240, 249, 33)" },
+      { value: "5-10", color: "rgb(252, 166, 54)" },
+      { value: "10-15", color: "rgb(225, 100, 98)" },
+      { value: "15-20", color: "rgb(177, 42, 144)" },
+      { value: "20-25", color: "rgb(106, 0, 168)" },
+      { value: "> 25", color: "rgb(13, 8, 135)" },
+    ],
+  },
+};
+
+const SOIL_LAYERS_PLASMA = [
+  SOIL_LAYER_PH_PLASMA,
+  SOIL_LAYER_HP_PLASMA,
+  SOIL_LAYER_CATION_EXCHANGE_CAPACITY_PLASMA,
+];
+
 const LIME_LAYER_LEGEND: LayerLegend = {
   bins: [
     { value: "< 0.5", color: "rgb(253, 231, 37)" },
@@ -354,6 +411,12 @@ export const LAYER_GROUPS: LayerGroup[] = [
     layers: SOIL_LAYERS,
   },
   {
+    name: "Soil Layers Plasma",
+    id: SOIL_ID + "_plasma",
+    icon: Globe,
+    layers: SOIL_LAYERS_PLASMA,
+  },
+  {
     name: "Lime Layers",
     id: LIME_ID,
     icon: Ruler,
@@ -361,7 +424,7 @@ export const LAYER_GROUPS: LayerGroup[] = [
   },
 ];
 
-export const LAYERS = [...SOIL_LAYERS, ...LIME_LAYERS];
+export const LAYERS = [...SOIL_LAYERS, ...SOIL_LAYERS_PLASMA, ...LIME_LAYERS];
 
 function generateLayerTileUrlMapping() {
   const mapping: { [key: string]: string } = {};
