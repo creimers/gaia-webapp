@@ -9,9 +9,11 @@ export default function TextPageLayout({
         {children}
       </main>
       <footer className="bg-green-900 p-8 text-white font-light">
-        <div className="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="mb-2 font-semibold text-lg">Ethiopia Office</h3>
+            <h3 className="mb-2 font-semibold text-lg">
+              CIMMYT-Ethiopia Office
+            </h3>
             <p>
               ILRI Sholla Campus <br />
               CMC Road <br />
@@ -19,7 +21,7 @@ export default function TextPageLayout({
             </p>
           </div>
           <div>
-            <h3 className="mb-2 font-semibold text-lg">Kenya Office</h3>
+            <h3 className="mb-2 font-semibold text-lg">CIMMYT-Kenya Office</h3>
             <p>
               ICRAF House <br />
               United Nations Avenue, Gigiri <br />
@@ -27,7 +29,9 @@ export default function TextPageLayout({
             </p>
           </div>
           <div>
-            <h3 className="mb-2 font-semibold text-lg">Zimbabwe Office</h3>
+            <h3 className="mb-2 font-semibold text-lg">
+              CIMMYT-Zimbabwe Office
+            </h3>
             <p>
               12.5 KM Peg, Mazowe Road, Mount Pleasant <br />
               Harare
@@ -35,9 +39,10 @@ export default function TextPageLayout({
           </div>
           <div>
             <h3 className="mb-2 font-semibold text-lg">Email</h3>
+            <p>João Vasco Silva</p>
             <p>
-              <a href="mailto:gaia@cgiar.org" className="hover:underline">
-                gaia@cgiar.org
+              <a href="mailto:j.silva@cgiar.org" className="hover:underline">
+                j.silva@cgiar.org
               </a>
             </p>
           </div>
