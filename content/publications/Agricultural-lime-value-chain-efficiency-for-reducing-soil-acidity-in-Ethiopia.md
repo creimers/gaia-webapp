@@ -1,5 +1,7 @@
 ---
-title: Agricultural lime value chain efficiency for reducing soil acidity in Ethiopia
+title: >-
+  Agricultural lime value chain efficiency for reducing soil acidity in
+  Ethiopia 
 authors: 'Ali M. Oumer., Samuel Diro, Geremew Taye, Tadele Mamo, Moti Jaleta'
 year: '2023'
 journal: Soil Security
