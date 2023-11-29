@@ -411,12 +411,6 @@ export const LAYER_GROUPS: LayerGroup[] = [
     layers: SOIL_LAYERS,
   },
   {
-    name: "Soil Layers Plasma",
-    id: SOIL_ID + "_plasma",
-    icon: Globe,
-    layers: SOIL_LAYERS_PLASMA,
-  },
-  {
     name: "Lime Layers",
     id: LIME_ID,
     icon: Ruler,
@@ -424,7 +418,7 @@ export const LAYER_GROUPS: LayerGroup[] = [
   },
 ];
 
-export const LAYERS = [...SOIL_LAYERS, ...SOIL_LAYERS_PLASMA, ...LIME_LAYERS];
+export const LAYERS = [...SOIL_LAYERS, ...LIME_LAYERS];
 
 function generateLayerTileUrlMapping() {
   const mapping: { [key: string]: string } = {};
