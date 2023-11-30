@@ -1,7 +1,12 @@
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 
-import { SOIL_LAYER_PH_ID, PROFITABILITY_ID, SOIL_ID } from "@/lib/layers";
+import {
+  SOIL_LAYER_PH_ID,
+  PROFITABILITY_ID,
+  SOIL_ID,
+  LIME_ID,
+} from "@/lib/layers";
 
 import { Button } from "@/components/ui/button";
 
@@ -15,6 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 import { SOIL_DATA_COUNTRY_CODES, SOIL_DATA } from "@/lib/data/soil";
+import { LIME_DATA_COUNTRY_CODES, LIME_DATA } from "@/lib/data/lime";
 
 import Citation from "./citation";
 import CountrySelect, { type Country } from "./country-select";
@@ -35,6 +41,8 @@ export default function DownloadDialogue({ open, onClose }: Props) {
   const availableCountries = React.useMemo(() => {
     if (layer.includes(SOIL_ID)) {
       return SOIL_DATA_COUNTRY_CODES;
+    } else if (layer.includes(LIME_ID)) {
+      return LIME_DATA_COUNTRY_CODES;
     }
   }, [layer]);
 
@@ -48,6 +56,8 @@ export default function DownloadDialogue({ open, onClose }: Props) {
     }
     if (layer.includes(SOIL_ID)) {
       return SOIL_DATA[country.iso];
+    } else if (layer.includes(LIME_ID)) {
+      return LIME_DATA[country.iso];
     }
     return "";
   }, [layer, limePrice, country]);

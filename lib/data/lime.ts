@@ -1,0 +1,93 @@
+// lime_table_allcountries.xlsx
+// lime_table_angola.xlsx
+// lime_table_benin.xlsx
+// lime_table_botswana.xlsx
+// lime_table_burkina_faso.xlsx
+// lime_table_burundi.xlsx
+// lime_table_cameroon.xlsx
+// lime_table_central_african_republic.xlsx
+// lime_table_chad.xlsx
+// lime_table_cote_d_ivoire.xlsx
+// lime_table_democratic_republic_of_the_congo.xlsx
+// lime_table_djibouti.xlsx
+// lime_table_equatorial_guinea.xlsx
+// lime_table_eritrea.xlsx
+// lime_table_ethiopia.xlsx
+// lime_table_gabon.xlsx
+// lime_table_gambia.xlsx
+// lime_table_ghana.xlsx
+// lime_table_guinea-bissau.xlsx
+// lime_table_guinea.xlsx
+// lime_table_kenya.xlsx
+// lime_table_liberia.xlsx
+// lime_table_madagascar.xlsx
+// lime_table_malawi.xlsx
+// lime_table_mali.xlsx
+// lime_table_mauritania.xlsx
+// lime_table_mozambique.xlsx
+// lime_table_namibia.xlsx
+// lime_table_niger.xlsx
+// lime_table_nigeria.xlsx
+// lime_table_republic_of_the_congo.xlsx
+// lime_table_rwanda.xlsx
+// lime_table_senegal.xlsx
+// lime_table_sierra_leone.xlsx
+// lime_table_somalia.xlsx
+// lime_table_south_africa.xlsx
+// lime_table_south_sudan.xlsx
+// lime_table_sudan.xlsx
+// lime_table_swaziland.xlsx
+// lime_table_tanzania.xlsx
+// lime_table_togo.xlsx
+// lime_table_uganda.xlsx
+// lime_table_zambia.xlsx
+// lime_table_zimbabwe.xlsx
+
+export const LIME_DATA: { [key: string]: string } = {
+  ALL: "/data/lime/lime_table_allcountries.xlsx",
+  AO: "/data/lime/lime_table_angola.xlsx",
+  BJ: "/data/lime/lime_table_benin.xlsx",
+  BW: "/data/lime/lime_table_botswana.xlsx",
+  BF: "/data/lime/lime_table_burkina_faso.xlsx",
+  BI: "/data/lime/lime_table_burundi.xlsx",
+  CM: "/data/lime/lime_table_cameroon.xlsx",
+  CF: "/data/lime/lime_table_central_african_republic.xlsx",
+  TD: "/data/lime/lime_table_chad.xlsx",
+  CI: "/data/lime/lime_table_cote_d_ivoire.xlsx",
+  CD: "/data/lime/lime_table_democratic_republic_of_the_congo.xlsx",
+  DJ: "/data/lime/lime_table_djibouti.xlsx",
+  GQ: "/data/lime/lime_table_equatorial_guinea.xlsx",
+  ER: "/data/lime/lime_table_eritrea.xlsx",
+  ET: "/data/lime/lime_table_ethiopia.xlsx",
+  GA: "/data/lime/lime_table_gabon.xlsx",
+  GM: "/data/lime/lime_table_gambia.xlsx",
+  GH: "/data/lime/lime_table_ghana.xlsx",
+  GW: "/data/lime/lime_table_guinea-bissau.xlsx",
+  GN: "/data/lime/lime_table_guinea.xlsx",
+  KE: "/data/lime/lime_table_kenya.xlsx",
+  LR: "/data/lime/lime_table_liberia.xlsx",
+  MG: "/data/lime/lime_table_madagascar.xlsx",
+  MW: "/data/lime/lime_table_malawi.xlsx",
+  ML: "/data/lime/lime_table_mali.xlsx",
+  MR: "/data/lime/lime_table_mauritania.xlsx",
+  MZ: "/data/lime/lime_table_mozambique.xlsx",
+  NA: "/data/lime/lime_table_namibia.xlsx",
+  NE: "/data/lime/lime_table_niger.xlsx",
+  NG: "/data/lime/lime_table_nigeria.xlsx",
+  CG: "/data/lime/lime_table_republic_of_the_congo.xlsx",
+  RW: "/data/lime/lime_table_rwanda.xlsx",
+  SN: "/data/lime/lime_table_senegal.xlsx",
+  SL: "/data/lime/lime_table_sierra_leone.xlsx",
+  SO: "/data/lime/lime_table_somalia.xlsx",
+  ZA: "/data/lime/lime_table_south_africa.xlsx",
+  SS: "/data/lime/lime_table_south_sudan.xlsx",
+  SD: "/data/lime/lime_table_sudan.xlsx",
+  SZ: "/data/lime/lime_table_swaziland.xlsx",
+  TZ: "/data/lime/lime_table_tanzania.xlsx",
+  TG: "/data/lime/lime_table_togo.xlsx",
+  UG: "/data/lime/lime_table_uganda.xlsx",
+  ZM: "/data/lime/lime_table_zambia.xlsx",
+  ZW: "/data/lime/lime_table_zimbabwe.xlsx",
+};
+
+export const LIME_DATA_COUNTRY_CODES = Object.keys(LIME_DATA);
