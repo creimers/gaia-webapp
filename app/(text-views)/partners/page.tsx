@@ -147,6 +147,25 @@ const sections: { [key: string]: Partner[] } = {
       team: [{ name: "Vicky Ruganzu", location: "Kigali, Rwanda" }],
     },
     {
+      name: "Southern Agricultural Corridor of Tanzania (SAGCOT)",
+      homepage: "https://sagcot.co.tz",
+
+      logo: (
+        <Image
+          src="/logos/sagcot.png"
+          height={583}
+          width={1000}
+          alt="SAGCOT logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [
+        { name: "Geoffrey Kirenga", location: "Dar es Salaam, Tanzania" },
+        { name: "Maria Ijumba", location: "Dar es Salaam, Tanzania" },
+        { name: "Adam Ndatulu", location: "Dar es Salaam, Tanzania" },
+      ],
+    },
+    {
       name: "Tanzania Agricultural Research Institute (TARI)",
       homepage: "https://www.tari.go.tz/",
       logo: (
