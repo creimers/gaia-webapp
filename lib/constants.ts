@@ -5,14 +5,21 @@ export const ROUTES = [
     pathname: "/methods",
     title: "Methods",
     children: [
-      { pathname: "/methods/data-sources", title: "Data sources" },
-      { pathname: "/methods/yield-response", title: "Yield response" },
+      {
+        pathname: "/methods/what-is-soil-acidity",
+        title: "What is soil acidity?",
+      },
+      { pathname: "/methods/framework", title: "Framework" },
+      { pathname: "/methods/data-sources", title: "Data Sources" },
       { pathname: "/methods/lime-requirements", title: "Lime requirements" },
       {
-        pathname: "/methods/profitability-assessment",
-        title: "Profitability assessment",
+        pathname: "/methods/crop-yield-response",
+        title: "Crop yield response",
       },
-      { pathname: "/methods/software", title: "Software" },
+      {
+        pathname: "/methods/profitability",
+        title: "Profitability",
+      },
     ],
   },
   { pathname: "/publications", title: "Publications" },
