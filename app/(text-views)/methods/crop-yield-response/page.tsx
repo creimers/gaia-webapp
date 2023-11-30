@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Page() {
   return (
     <div className="prose">
-      <h1>Crop Yield response</h1>
+      <h1>Crop yield response</h1>
       <p>
         Crop yield response to changes in acidity saturation due to liming were
         derived from empirical plateau-linear decay functions (Figure 1). Prior
@@ -25,6 +25,7 @@ export default function Page() {
           width="742"
           height="641"
           alt="figure 1"
+          className="w-2/3"
         />
         <figcaption>
           Figure 1 | Methodological approach to estimate crop yield response to
