@@ -8,6 +8,7 @@ export default function Logo() {
       clipRule="evenodd"
       viewBox="0 0 48 55"
       className="max-h-full"
+      style={{ maxHeight: "100%" }}
     >
       <g transform="translate(-919.011 -495.211)">
         <g transform="translate(445.911 493.211)">
