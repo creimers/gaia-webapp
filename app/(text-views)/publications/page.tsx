@@ -18,15 +18,15 @@ export default async function Publications({ searchParams }: Props) {
   );
   publications = publications.reverse();
   let themPublications = publications as Publication[];
-  if (
-    searchParams.type &&
-    PUBLICATION_TYPES.includes(searchParams.type as string)
-  ) {
-    console.log(searchParams.type);
-    themPublications = themPublications.filter((pub) => {
-      return pub.publicationType[0] === searchParams.type;
-    });
-  }
+  // if (
+  //   searchParams.type &&
+  //   PUBLICATION_TYPES.includes(searchParams.type as string)
+  // ) {
+  //   console.log(searchParams.type);
+  //   themPublications = themPublications.filter((pub) => {
+  //     return pub.publicationType[0] === searchParams.type;
+  //   });
+  // }
 
   return (
     <div>
