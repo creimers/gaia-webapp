@@ -147,7 +147,7 @@ const sections: { [key: string]: Partner[] } = {
       team: [{ name: "Vicky Ruganzu", location: "Kigali, Rwanda" }],
     },
     {
-      name: "Southern Agricultural Corridor of Tanzania (SAGCOT)",
+      name: "Southern Agricultural Growth Corridor of Tanzania (SAGCOT)",
       homepage: "https://sagcot.co.tz",
 
       logo: (
