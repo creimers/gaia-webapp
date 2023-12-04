@@ -49,6 +49,7 @@ export type Layer = {
   label: string;
   info: React.ReactNode;
   tileUrl: string;
+  rawTileUrl?: string;
   legend: LayerLegend;
 };
 
@@ -83,6 +84,8 @@ export const SOIL_LAYER_PH: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/soil_ph_bin_5/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/soil_ph.tif",
   legend: {
     bins: [
       { value: "< 5.0", color: "rgb(253, 231, 37)" },
@@ -129,6 +132,8 @@ export const SOIL_LAYER_HP: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/soil_hp_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/soil_hp.tif",
   legend: {
     bins: [
       { value: "< 10", color: "rgb(253, 231, 37)" },
@@ -175,6 +180,8 @@ export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/soil_ecec_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/soil_ecec.tif",
   legend: {
     bins: [
       { value: "< 5", color: "rgb(253, 231, 37)" },
@@ -225,6 +232,8 @@ const LIME_LAYER_ALL_CROPS: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_all_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/lime_all.tif",
   legend: {
     title: "All Crops [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -250,6 +259,8 @@ const LIME_LAYER_CEREALS: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_cereals_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/lime_cereals.tif",
   legend: {
     title: "Cereals [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -275,6 +286,8 @@ const LIME_LAYER_LEGUMES: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_legumes_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/lime_legumes.tif",
   legend: {
     title: "Legumes [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -300,6 +313,8 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_rtbs_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/lime_rtbs.tif",
   legend: {
     title: "Roots & Tubers [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -325,6 +340,8 @@ const LIME_LAYER_COMMODITIES: Layer = {
   ),
   tileUrl:
     "https://gaia-tiles.superservice-international.com/lime_commodities_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/lime_commodities.tif",
   legend: {
     title: "Commodities [t/ha]",
     ...LIME_LAYER_LEGEND,
