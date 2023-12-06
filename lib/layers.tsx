@@ -7,6 +7,7 @@ import {
   Download,
   CaretRight,
 } from "@phosphor-icons/react";
+import Link from "next/link";
 
 export const SOIL_ID = "soil";
 export const SOIL_LAYER_PH_ID = `${SOIL_ID}_ph_in_water`;
@@ -20,12 +21,12 @@ export const LIME_LAYER_LEGUMES_ID = `${LIME_ID}_legumes`;
 export const LIME_LAYER_ROOTS_TUBERS_ID = `${LIME_ID}_roots_tubers`;
 export const LIME_LAYER_COMMODITIES_ID = `${LIME_ID}_commodities`;
 
-export const YIELD_RESPONSE_ID = "yield_response";
-export const YIELD_RESPONSE_LAYER_ALL_CROPS_ID = `${YIELD_RESPONSE_ID}_all_crops`;
-export const YIELD_RESPONSE_LAYER_CEREALS_ID = `${YIELD_RESPONSE_ID}_cereals`;
-export const YIELD_RESPONSE_LAYER_LEGUMES_ID = `${YIELD_RESPONSE_ID}_legumes`;
-export const YIELD_RESPONSE_LAYER_ROOTS_TUBERS_ID = `${YIELD_RESPONSE_ID}_roots_tubers`;
-export const YIELD_RESPONSE_LAYER_COMMODITIES_ID = `${YIELD_RESPONSE_ID}_commodities`;
+export const YIELD_LOSS_ID = "yield_loss";
+export const YIELD_LOSS_LAYER_ALL_CROPS_ID = `${YIELD_LOSS_ID}_all_crops`;
+export const YIELD_LOSS_LAYER_CEREALS_ID = `${YIELD_LOSS_ID}_cereals`;
+export const YIELD_LOSS_LAYER_LEGUMES_ID = `${YIELD_LOSS_ID}_legumes`;
+export const YIELD_LOSS_LAYER_ROOTS_TUBERS_ID = `${YIELD_LOSS_ID}_roots_tubers`;
+export const YIELD_LOSS_LAYER_COMMODITIES_ID = `${YIELD_LOSS_ID}_commodities`;
 
 export const PROFITABILITY_ID = "profitability";
 export const PROFITABILITY_LAYER_ALL_CROPS_ID = `${PROFITABILITY_ID}_all_crops`;
@@ -224,10 +225,12 @@ const LIME_LAYER_ALL_CROPS: Layer = {
       >
         Aramburu-Merlos et al. (2023)
       </a>{" "}
-      method for 23 crops (see methods for further information). Crops: maize,
-      sorghum, wheat, barley, pearl and finger millet, bean, chickpea, lentil,
-      cowpea, pigeonpea, soybean, groundnut, potato, sweet potato, cassava,
-      coffee, sugarcane, cotton, cocoa, tea, tobacco.
+      method for 23 crops (see{" "}
+      <Link href="/methods/lime-requirements">methods</Link> for further
+      information). Crops: maize, sorghum, wheat, barley, pearl and finger
+      millet, bean, chickpea, lentil, cowpea, pigeonpea, soybean, groundnut,
+      potato, sweet potato, cassava, coffee, sugarcane, cotton, cocoa, tea,
+      tobacco.
     </p>
   ),
   tileUrl:
@@ -253,8 +256,10 @@ const LIME_LAYER_CEREALS: Layer = {
       >
         Aramburu-Merlos et al. (2023)
       </a>{" "}
-      method for cereal crops (see methods for further information). Cereals:
-      maize, sorghum, wheat, barley, pearl and finger millet.
+      method for cereal crops (see{" "}
+      <Link href="/methods/lime-requirements">methods</Link> for further
+      information). Cereals: maize, sorghum, wheat, barley, pearl and finger
+      millet.
     </p>
   ),
   tileUrl:
@@ -280,8 +285,10 @@ const LIME_LAYER_LEGUMES: Layer = {
       >
         Aramburu-Merlos et al. (2023)
       </a>{" "}
-      method for legume crops (see methods for further information). Legumes:
-      bean, chickpea, lentil, cowpea, pigeonpea, soybean, groundnut.
+      method for legume crops (see{" "}
+      <Link href="/methods/lime-requirements">methods</Link> for further
+      information). Legumes: bean, chickpea, lentil, cowpea, pigeonpea, soybean,
+      groundnut.
     </p>
   ),
   tileUrl:
@@ -307,8 +314,9 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
       >
         Aramburu-Merlos et al. (2023)
       </a>{" "}
-      method for root & tuber crops (see methods for further information). Roots
-      & tubers: potato, sweet potato, cassava.
+      method for root & tuber crops (see{" "}
+      <Link href="/methods/lime-requirements">methods</Link> for further
+      information). Roots & tubers: potato, sweet potato, cassava.
     </p>
   ),
   tileUrl:
@@ -334,8 +342,9 @@ const LIME_LAYER_COMMODITIES: Layer = {
       >
         Aramburu-Merlos et al. (2023)
       </a>{" "}
-      method for commodity crops (see methods for further information).
-      Commodities: coffee, sugarcane, cotton, cocoa, tea, tobacco.
+      method for commodity crops (see{" "}
+      <Link href="/methods/lime-requirements">methods</Link> for further
+      information). Commodities: coffee, sugarcane, cotton, cocoa, tea, tobacco.
     </p>
   ),
   tileUrl:
@@ -356,6 +365,134 @@ const LIME_LAYERS = [
   LIME_LAYER_COMMODITIES,
 ];
 
+const YIELD_LOSS_LAYER_LEGEND: LayerLegend = {
+  bins: [
+    { value: "No yield loss", color: "rgb(211, 211, 211)" },
+    { value: "0-20", color: "rgb(253, 231, 37)" },
+    { value: "20-40", color: "rgb(53, 183, 121)" },
+    { value: "40-60", color: "rgb(49, 104, 142)" },
+    { value: "60-80", color: "rgb(68, 1, 84)" },
+  ],
+};
+
+const YIELD_LOSS_ALL_CROPS: Layer = {
+  id: YIELD_LOSS_LAYER_ALL_CROPS_ID,
+  label: "All Crops",
+  info: (
+    <p>
+      Crop area weighted yield loss (% of yield in non-acidic soil) estimated
+      with plateau-linear decay functions for 23 crops (see{" "}
+      <Link href="/methods/crop-yield-response">methods</Link> for further
+      information). Crops: maize, sorghum, wheat, barley, pearl and finger
+      millet, bean, chickpea, lentil, cowpea, pigeonpea, soybean, groundnut,
+      potato, sweet potato, cassava, coffee, sugarcane, cotton, cocoa, tea,
+      tobacco.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/yield_loss_all_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/yield_loss_all.tif",
+  legend: {
+    title: "All Crops [%]",
+    ...YIELD_LOSS_LAYER_LEGEND,
+  },
+};
+
+const YIELD_LOSS_LAYER_CEREALS: Layer = {
+  id: YIELD_LOSS_LAYER_CEREALS_ID,
+  label: "Cereals",
+  info: (
+    <p>
+      Crop area weighted yield loss (% of yield in non-acidic soil) estimated
+      with plateau-linear decay functions for cereal crops (see{" "}
+      <Link href="/methods/crop-yield-response">methods</Link> for further
+      information). Cereals: maize, sorghum, wheat, barley, pearl and finger
+      millet.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/yield_loss_cereals_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/yield_loss_cereals.tif",
+  legend: {
+    title: "Cereals [%]",
+    ...YIELD_LOSS_LAYER_LEGEND,
+  },
+};
+
+const YIELD_LOSS_LAYER_LEGUMES: Layer = {
+  id: YIELD_LOSS_LAYER_LEGUMES_ID,
+  label: "Legumes",
+  info: (
+    <p>
+      Crop area weighted lyield loss (% of yield in non-acidic soil) estimated
+      with plateau-linear decay functions for legume crops (see{" "}
+      <Link href="/methods/crop-yield-response">methods</Link> for further
+      information). Legumes: bean, chickpea, lentil, cowpea, pigeonpea, soybean,
+      groundnut.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/yield_loss_legumes_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/yield_loss_legumes.tif",
+  legend: {
+    title: "Legumes [%]",
+    ...YIELD_LOSS_LAYER_LEGEND,
+  },
+};
+
+const YIELD_LOSS_LAYER_ROOTS_TUBERS: Layer = {
+  id: YIELD_LOSS_LAYER_ROOTS_TUBERS_ID,
+  label: "Roots & Tubers",
+  info: (
+    <p>
+      Crop area weighted yield loss (% of yield in non-acidic soil) estimated
+      with plateau-linear decay functions for root & tuber crops (see{" "}
+      <Link href="/methods/crop-yield-response">methods</Link> for further
+      information). Roots & tubers: potato, sweet potato, cassava.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/yield_loss_rtbs_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/yield_loss_rtbs.tif",
+  legend: {
+    title: "Roots & Tubers [%]",
+    ...YIELD_LOSS_LAYER_LEGEND,
+  },
+};
+
+const YIELD_LOSS_LAYER_COMMODITIES: Layer = {
+  id: YIELD_LOSS_LAYER_COMMODITIES_ID,
+  label: "Commodities",
+  info: (
+    <p>
+      Crop area weighted yield loss (% of yield in non-acidic soil) estimated
+      with plateau-linear decay functions for commodity crops (see{" "}
+      <Link href="/methods/crop-yield-response">methods</Link> for further
+      information). Commodities: coffee, sugarcane, cotton, cocoa, tea, tobacco.
+    </p>
+  ),
+  tileUrl:
+    "https://gaia-tiles.superservice-international.com/yield_loss_commodities_bin/{z}/{x}/{y}.webp",
+  rawTileUrl:
+    "https://gaia-tiles.superservice-international.com/raw/yield_loss_commodities.tif",
+  legend: {
+    title: "Commodities [%]",
+    ...YIELD_LOSS_LAYER_LEGEND,
+  },
+};
+
+const YIELD_LOSS_LAYERS = [
+  YIELD_LOSS_ALL_CROPS,
+  YIELD_LOSS_LAYER_CEREALS,
+  YIELD_LOSS_LAYER_LEGUMES,
+  YIELD_LOSS_LAYER_ROOTS_TUBERS,
+  YIELD_LOSS_LAYER_COMMODITIES,
+];
+
 type LayerGroup = {
   name: string;
   id: string;
@@ -365,20 +502,26 @@ type LayerGroup = {
 
 export const LAYER_GROUPS: LayerGroup[] = [
   {
-    name: "Soil Layers",
+    name: "Soil Property Layers",
     id: SOIL_ID,
     icon: Globe,
     layers: SOIL_LAYERS,
   },
   {
-    name: "Lime Layers",
+    name: "Lime Requirement Layers",
     id: LIME_ID,
     icon: Ruler,
     layers: LIME_LAYERS,
   },
+  {
+    name: "Yield Loss Layers",
+    id: YIELD_LOSS_ID,
+    icon: Grains,
+    layers: YIELD_LOSS_LAYERS,
+  },
 ];
 
-export const LAYERS = [...SOIL_LAYERS, ...LIME_LAYERS];
+export const LAYERS = [...SOIL_LAYERS, ...LIME_LAYERS, ...YIELD_LOSS_LAYERS];
 
 function generateLayerTileUrlMapping() {
   const mapping: { [key: string]: string } = {};
