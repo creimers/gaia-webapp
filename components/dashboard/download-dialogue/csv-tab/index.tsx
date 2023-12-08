@@ -9,6 +9,7 @@ import { PROFITABILITY_ID } from "@/lib/layers/profitability";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 import { SOIL_DATA_COUNTRY_CODES, SOIL_DATA } from "@/lib/data/soil";
 import { LIME_DATA_COUNTRY_CODES, LIME_DATA } from "@/lib/data/lime";
+import { PROFIT_DATA_COUNTRY_CODES, PROFIT_DATA } from "@/lib/data/profit";
 
 import Citation from "../citation";
 import CountrySelect, { type Country } from "./country-select";
@@ -36,6 +37,8 @@ export default function CSVTab({ onClose }: Props) {
       return SOIL_DATA_COUNTRY_CODES;
     } else if (layer.includes(LIME_ID)) {
       return LIME_DATA_COUNTRY_CODES;
+    } else if (layer.includes(PROFITABILITY_ID)) {
+      return PROFIT_DATA_COUNTRY_CODES;
     }
   }, [layer]);
 
@@ -47,6 +50,8 @@ export default function CSVTab({ onClose }: Props) {
       return SOIL_DATA[country.iso];
     } else if (layer.includes(LIME_ID)) {
       return LIME_DATA[country.iso];
+    } else if (layer.includes(PROFITABILITY_ID)) {
+      return PROFIT_DATA[country.iso];
     }
     return "";
   }

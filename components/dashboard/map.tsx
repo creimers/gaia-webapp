@@ -15,8 +15,8 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 
 import { LAYER_MAPPING } from "@/lib/layers";
 import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
-import { PROFITABILITY_ID } from "@/lib/layers/profitability";
-import { DEFAULT_LIME_PRICE } from "@/lib/constants";
+// import { PROFITABILITY_ID } from "@/lib/layers/profitability";
+// import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 import dynamic from "next/dynamic";
 import Legend from "./legend";
@@ -62,18 +62,19 @@ export default function TheMap() {
     "layer",
     parseAsString.withDefault(SOIL_LAYER_PH_ID)
   );
-  const [limePrice] = useQueryState(
-    "lime_price",
-    parseAsString.withDefault(DEFAULT_LIME_PRICE)
-  );
+  // const [limePrice] = useQueryState(
+  //   "lime_price",
+  //   parseAsString.withDefault(DEFAULT_LIME_PRICE)
+  // );
   const [layerOpacity] = useQueryState(
     "layer_opacity",
     parseAsFloat.withDefault(1)
   );
 
-  const activeLayer = `${layerId}${
-    layerId.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
-  }`;
+  const activeLayer = layerId;
+  // const activeLayer = `${layerId}${
+  //   layerId.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
+  // }`;
 
   const mapRef = React.useRef<MapRef>(null);
 

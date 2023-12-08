@@ -5,6 +5,7 @@ import { Layer } from "@/lib/interfaces";
 import { SOIL_ID, SOIL_LAYERS } from "./soil";
 import { LIME_ID, LIME_LAYERS } from "./lime";
 import { YIELD_LOSS_ID, YIELD_LOSS_LAYERS } from "./yield-loss";
+import { PROFITABILITY_ID, PROFITABILITY_LAYERS } from "./profitability";
 
 type LayerGroup = {
   name: string;
@@ -32,9 +33,20 @@ export const LAYER_GROUPS: LayerGroup[] = [
     icon: Grains,
     layers: YIELD_LOSS_LAYERS,
   },
+  {
+    name: "Profitability Layers",
+    id: PROFITABILITY_ID,
+    icon: Coins,
+    layers: PROFITABILITY_LAYERS,
+  },
 ];
 
-export const LAYERS = [...SOIL_LAYERS, ...LIME_LAYERS, ...YIELD_LOSS_LAYERS];
+export const LAYERS = [
+  ...SOIL_LAYERS,
+  ...LIME_LAYERS,
+  ...YIELD_LOSS_LAYERS,
+  ...PROFITABILITY_LAYERS,
+];
 
 function generateLayerTileUrlMapping() {
   const mapping: { [key: string]: string } = {};

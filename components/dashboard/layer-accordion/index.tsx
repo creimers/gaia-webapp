@@ -9,11 +9,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
-import { PROFITABILITY_ID } from "@/lib/layers/profitability";
+// import { PROFITABILITY_ID } from "@/lib/layers/profitability";
 import { LAYER_GROUPS } from "@/lib/layers";
 
 import DownloadDialogue from "../download-dialogue";
-import { DEFAULT_LIME_PRICE } from "@/lib/constants";
+// import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 import { parseAsString, useQueryState } from "next-usequerystate";
 import Layer from "./layer";
 
@@ -31,15 +31,15 @@ export default function LayerAccordion() {
     parseAsString.withDefault(SOIL_LAYER_PH_ID)
   );
 
-  const [limePrice, setLimePrice] = useQueryState(
-    "lime_price",
-    parseAsString.withDefault(DEFAULT_LIME_PRICE)
-  );
+  // const [limePrice, setLimePrice] = useQueryState(
+  //   "lime_price",
+  //   parseAsString.withDefault(DEFAULT_LIME_PRICE)
+  // );
 
-  function updateLimePrice(e: React.ChangeEvent<HTMLInputElement>) {
-    const price = e.target.value;
-    setLimePrice(price);
-  }
+  // function updateLimePrice(e: React.ChangeEvent<HTMLInputElement>) {
+  //   const price = e.target.value;
+  //   setLimePrice(price);
+  // }
 
   React.useEffect(() => {
     for (const group of LAYER_GROUPS) {
@@ -96,7 +96,7 @@ export default function LayerAccordion() {
                     />
                   ))}
                 </div>
-                {group.id === PROFITABILITY_ID && (
+                {/* {group.id === PROFITABILITY_ID && (
                   <div className="space-y-2">
                     <div className="text-lg font-semibold">
                       Lime Price: ${limePrice}
@@ -115,7 +115,7 @@ export default function LayerAccordion() {
                       <div>$ 100</div>
                     </div>
                   </div>
-                )}
+                )} */}
                 <div className="flex justify-center">
                   <Button
                     variant={"secondary"}
