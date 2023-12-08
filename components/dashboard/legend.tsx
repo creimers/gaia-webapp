@@ -1,12 +1,12 @@
 import { useQueryState, parseAsString } from "next-usequerystate";
 
-import * as LAYER from "@/lib/layers";
+import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
 import { LAYER_MAPPING } from "@/lib/layers";
 
 export default function Legend() {
   const [layerId] = useQueryState(
     "layer",
-    parseAsString.withDefault(LAYER.SOIL_LAYER_PH_ID)
+    parseAsString.withDefault(SOIL_LAYER_PH_ID)
   );
   const layer = LAYER_MAPPING[layerId];
   const legend = LAYER_MAPPING[layerId].legend;
@@ -25,9 +25,6 @@ export default function Legend() {
             <div>{bin.value}</div>
           </div>
         ))}
-        {/* <div>{legend?.max}</div>
-        <div className="viridis h-12 w-6"></div>
-        <div>{legend?.min}</div> */}
       </div>
     </div>
   );

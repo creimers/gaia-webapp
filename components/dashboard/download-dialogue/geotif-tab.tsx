@@ -1,7 +1,8 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { SOIL_LAYER_PH_ID, LAYER_MAPPING } from "@/lib/layers";
+import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
+import { LAYER_MAPPING } from "@/lib/layers";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 import { parseAsString, useQueryState } from "next-usequerystate";

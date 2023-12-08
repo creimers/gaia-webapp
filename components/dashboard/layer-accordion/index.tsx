@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 
-import * as LAYER from "@/lib/layers";
+import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
+import { PROFITABILITY_ID } from "@/lib/layers/profitability";
 import { LAYER_GROUPS } from "@/lib/layers";
 
 import DownloadDialogue from "../download-dialogue";
@@ -27,7 +28,7 @@ export default function LayerAccordion() {
 
   const [layerId, setLayerId] = useQueryState(
     "layer",
-    parseAsString.withDefault(LAYER.SOIL_LAYER_PH_ID)
+    parseAsString.withDefault(SOIL_LAYER_PH_ID)
   );
 
   const [limePrice, setLimePrice] = useQueryState(
@@ -95,7 +96,7 @@ export default function LayerAccordion() {
                     />
                   ))}
                 </div>
-                {group.id === LAYER.PROFITABILITY_ID && (
+                {group.id === PROFITABILITY_ID && (
                   <div className="space-y-2">
                     <div className="text-lg font-semibold">
                       Lime Price: ${limePrice}

@@ -3,12 +3,9 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 
-import {
-  SOIL_LAYER_PH_ID,
-  PROFITABILITY_ID,
-  SOIL_ID,
-  LIME_ID,
-} from "@/lib/layers";
+import { SOIL_ID, SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
+import { LIME_ID } from "@/lib/layers/lime";
+import { PROFITABILITY_ID } from "@/lib/layers/profitability";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 import { SOIL_DATA_COUNTRY_CODES, SOIL_DATA } from "@/lib/data/soil";
 import { LIME_DATA_COUNTRY_CODES, LIME_DATA } from "@/lib/data/lime";

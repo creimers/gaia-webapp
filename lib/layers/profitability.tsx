@@ -1,0 +1,6 @@
+export const PROFITABILITY_ID = "profitability";
+export const PROFITABILITY_LAYER_ALL_CROPS_ID = `${PROFITABILITY_ID}_all_crops`;
+export const PROFITABILITY_LAYER_CEREALS_ID = `${PROFITABILITY_ID}_cereals`;
+export const PROFITABILITY_LAYER_LEGUMES_ID = `${PROFITABILITY_ID}_legumes`;
+export const PROFITABILITY_LAYER_ROOTS_TUBERS_ID = `${PROFITABILITY_ID}_roots_tubers`;
+export const PROFITABILITY_LAYER_COMMODITIES_ID = `${PROFITABILITY_ID}_commodities`;

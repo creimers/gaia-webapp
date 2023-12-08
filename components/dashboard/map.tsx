@@ -13,11 +13,9 @@ import type { RasterPaint } from "mapbox-gl";
 
 import { MagnifyingGlass } from "@phosphor-icons/react";
 
-import {
-  LAYER_MAPPING,
-  PROFITABILITY_ID,
-  SOIL_LAYER_PH_ID,
-} from "@/lib/layers";
+import { LAYER_MAPPING } from "@/lib/layers";
+import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
+import { PROFITABILITY_ID } from "@/lib/layers/profitability";
 import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 
 import dynamic from "next/dynamic";

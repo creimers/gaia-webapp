@@ -7,7 +7,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
-import type { Layer } from "@/lib/layers";
+import type { Layer } from "@/lib/interfaces";
 
 type Props = {
   layer: Layer;
