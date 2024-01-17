@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -8,20 +9,23 @@ export default function Page() {
         Our approach to assess how profitable investments in agricultural lime
         are in sub-Saharan Africa consisted of 3 main steps (Figure 1), as
         explained below and in the respective pages. Information about the data
-        sources and software used in each step can be found here. First, the
-        amount of lime required to remediate acid soils (i.e., the lime rate
-        required to overcome crop-specific production constraints due to soil
-        acidity) was estimated from gridded soil data with different lime
-        requirement models. See further information here. Second, the yield
-        response of 23 crops to liming was estimated with empirical functions
-        using gridded soil data. Together with gridded data on crop harvested
-        area and physical production, these yield responses were used to
-        estimate local crop production increases from remediation of acid soils.
-        Finally, the amount of lime required and the additional production
-        attributable to such lime applications were combined with crop and lime
-        price data to assess the profitability and returns on investments to
-        liming. A sensitivity analysis was conducted to test the robustness of
-        the results to modeling assumptions.
+        sources and software used in each step can be found{" "}
+        <Link href="/methods/data-sources">here</Link>. First, the amount of
+        lime required to remediate acid soils (i.e., the lime rate required to
+        overcome crop-specific production constraints due to soil acidity) was
+        estimated from gridded soil data with different lime requirement models.
+        See further information{" "}
+        <Link href="/methods/lime-requirements">here</Link>. Second, the{" "}
+        <Link href="/methods/crop-yield-response">yield response</Link> of 23
+        crops to liming was estimated with empirical functions using gridded
+        soil data. Together with gridded data on crop harvested area and
+        physical production, these yield responses were used to estimate local
+        crop production increases from remediation of acid soils. Finally, the
+        amount of lime required and the additional production attributable to
+        such lime applications were combined with crop and lime price data to
+        assess the <Link href="/methods/profitability">profitability</Link> and
+        returns on investments to liming. A sensitivity analysis was conducted
+        to test the robustness of the results to modeling assumptions.
       </p>
       <figure>
         <Image

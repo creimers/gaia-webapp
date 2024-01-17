@@ -113,7 +113,8 @@ export default function Home() {
               economists from international and national research organizations
               that ensure the development of sound data and knowledge products
               and local engagements with farmers, private sector, and
-              governments. See our list of partners here. We can support future
+              governments. See our list of partners{" "}
+              <Link href="/partners">here</Link>. We can support future
               investments in:
             </p>
             <ol>
