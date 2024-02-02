@@ -33,9 +33,9 @@ const YIELD_LOSS_ALL_CROPS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/yield_loss_all_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/yloss_all/{z}/{x}/{y}.webp",
   rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yield_loss_all.tif",
+    "https://gaia-tiles.superservice-international.com/raw/yloss_all.tif",
   legend: {
     title: "All Crops [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -55,9 +55,9 @@ const YIELD_LOSS_LAYER_CEREALS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/yield_loss_cereals_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/yloss_cereals/{z}/{x}/{y}.webp",
   rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yield_loss_cereals.tif",
+    "https://gaia-tiles.superservice-international.com/raw/yloss_cereals.tif",
   legend: {
     title: "Cereals [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -77,9 +77,9 @@ const YIELD_LOSS_LAYER_LEGUMES: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/yield_loss_legumes_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/yloss_legumes/{z}/{x}/{y}.webp",
   rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yield_loss_legumes.tif",
+    "https://gaia-tiles.superservice-international.com/raw/yloss_legumes.tif",
   legend: {
     title: "Legumes [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -98,9 +98,9 @@ const YIELD_LOSS_LAYER_ROOTS_TUBERS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/yield_loss_rtbs_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/yloss_rtbs/{z}/{x}/{y}.webp",
   rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yield_loss_rtbs.tif",
+    "https://gaia-tiles.superservice-international.com/raw/yloss_rtbs.tif",
   legend: {
     title: "Roots & Tubers [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -119,9 +119,9 @@ const YIELD_LOSS_LAYER_COMMODITIES: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/yield_loss_commodities_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/yloss_other/{z}/{x}/{y}.webp",
   rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yield_loss_commodities.tif",
+    "https://gaia-tiles.superservice-international.com/raw/yloss_other.tif",
   legend: {
     title: "Commodities [%]",
     ...YIELD_LOSS_LAYER_LEGEND,

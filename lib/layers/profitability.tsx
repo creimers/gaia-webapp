@@ -32,7 +32,7 @@ export const PROFITABILITY_LAYER_ALL_CROPS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_all_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/profit_all/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/profit_all.tif",
   legend: {
@@ -53,7 +53,7 @@ export const PROFITABILITY_LAYER_CEREALS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_cereals_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/profit_cereals/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/profit_cereals.tif",
   legend: {
@@ -74,7 +74,7 @@ export const PROFITABILITY_LAYER_LEGUMES: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_legumes_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/profit_legumes/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/profit_legumes.tif",
   legend: {
@@ -94,7 +94,7 @@ export const PROFITABILITY_LAYER_ROOTS_TUBERS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_rtbs_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/profit_rtbs/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/profit_rtbs.tif",
   legend: {
@@ -114,9 +114,9 @@ export const PROFITABILITY_LAYER_COMMODITIES: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_commodities_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/profit_other/{z}/{x}/{y}.webp",
   rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/profit_commodities.tif",
+    "https://gaia-tiles.superservice-international.com/raw/profit_other.tif",
   legend: {
     title: "Commodities [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,

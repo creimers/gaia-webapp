@@ -25,7 +25,7 @@ export default function DownloadDialogue({ open, onClose }: Props) {
         </DialogHeader>
         <Tabs defaultValue="csv">
           <TabsList className="grid grid-cols-2 gap-3">
-            <TabsTrigger value="csv">CSV</TabsTrigger>
+            <TabsTrigger value="csv">Excel</TabsTrigger>
             <TabsTrigger value="geotif">Geotif</TabsTrigger>
           </TabsList>
           <TabsContent value="csv">

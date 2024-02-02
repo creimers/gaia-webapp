@@ -41,7 +41,7 @@ const LIME_LAYER_ALL_CROPS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_all_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/lime_all/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/lime_all.tif",
   legend: {
@@ -70,7 +70,7 @@ const LIME_LAYER_CEREALS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_cereals_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/lime_cereals/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/lime_cereals.tif",
   legend: {
@@ -99,7 +99,7 @@ const LIME_LAYER_LEGUMES: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_legumes_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/lime_legumes/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/lime_legumes.tif",
   legend: {
@@ -127,7 +127,7 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_rtbs_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/lime_rtbs/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/lime_rtbs.tif",
   legend: {
@@ -155,9 +155,9 @@ const LIME_LAYER_COMMODITIES: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_commodities_bin/{z}/{x}/{y}.webp",
+    "https://gaia-tiles.superservice-international.com/lime_other/{z}/{x}/{y}.webp",
   rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/lime_commodities.tif",
+    "https://gaia-tiles.superservice-international.com/raw/lime_other.tif",
   legend: {
     title: "Commodities [t/ha]",
     ...LIME_LAYER_LEGEND,
