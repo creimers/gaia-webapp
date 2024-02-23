@@ -105,12 +105,13 @@ export const PROFITABILITY_LAYER_ROOTS_TUBERS: Layer = {
 
 export const PROFITABILITY_LAYER_COMMODITIES: Layer = {
   id: PROFITABILITY_LAYER_COMMODITIES_ID,
-  label: "Commodities",
+  label: "Non-food crops",
   info: (
     <p>
-      Crop area weighted profitability of liming (US$/ha) for commodities (see{" "}
-      <Link href="/methods/profitability">methods</Link> for further
-      information). Commodities: coffee, sugarcane, cotton, cocoa, tea, tobacco.
+      Crop area weighted profitability of liming (US$/ha) for non-food crops
+      (see <Link href="/methods/profitability">methods</Link> for further
+      information). Non-food crops: coffee, sugarcane, cotton, cocoa, tea,
+      tobacco.
     </p>
   ),
   tileUrl:
@@ -118,7 +119,7 @@ export const PROFITABILITY_LAYER_COMMODITIES: Layer = {
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/profit_other.tif",
   legend: {
-    title: "Commodities [US$/ha]",
+    title: "Non-food crops [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
   },
 };

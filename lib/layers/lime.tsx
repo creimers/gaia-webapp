@@ -138,7 +138,7 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
 
 const LIME_LAYER_COMMODITIES: Layer = {
   id: LIME_LAYER_COMMODITIES_ID,
-  label: "Commodities",
+  label: "Non-food crops",
   info: (
     <p>
       Crop area weighted lime rate (t CaCO3/ha) estimated with the{" "}
@@ -151,7 +151,8 @@ const LIME_LAYER_COMMODITIES: Layer = {
       </a>{" "}
       method for commodity crops (see{" "}
       <Link href="/methods/lime-requirements">methods</Link> for further
-      information). Commodities: coffee, sugarcane, cotton, cocoa, tea, tobacco.
+      information). Non-food crops: coffee, sugarcane, cotton, cocoa, tea,
+      tobacco.
     </p>
   ),
   tileUrl:
@@ -159,7 +160,7 @@ const LIME_LAYER_COMMODITIES: Layer = {
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/lime_other.tif",
   legend: {
-    title: "Commodities [t/ha]",
+    title: "Non-food crops [t/ha]",
     ...LIME_LAYER_LEGEND,
   },
 };

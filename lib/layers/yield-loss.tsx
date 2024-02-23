@@ -109,13 +109,14 @@ const YIELD_LOSS_LAYER_ROOTS_TUBERS: Layer = {
 
 const YIELD_LOSS_LAYER_COMMODITIES: Layer = {
   id: YIELD_LOSS_LAYER_COMMODITIES_ID,
-  label: "Commodities",
+  label: "Non-food crops",
   info: (
     <p>
       Crop area weighted yield loss (% of yield in non-acidic soil) estimated
       with plateau-linear decay functions for commodity crops (see{" "}
       <Link href="/methods/crop-yield-response">methods</Link> for further
-      information). Commodities: coffee, sugarcane, cotton, cocoa, tea, tobacco.
+      information). Non-food crops: coffee, sugarcane, cotton, cocoa, tea,
+      tobacco.
     </p>
   ),
   tileUrl:
@@ -123,7 +124,7 @@ const YIELD_LOSS_LAYER_COMMODITIES: Layer = {
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/yloss_other.tif",
   legend: {
-    title: "Commodities [%]",
+    title: "Non-food crops [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
   },
 };
