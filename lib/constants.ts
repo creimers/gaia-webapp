@@ -1,6 +1,7 @@
 export const ROUTES = [
   { pathname: "/", title: "About" },
   { pathname: "/data", title: "Data" },
+  { pathname: "/profitability", title: "Profitability" },
   {
     pathname: "/methods",
     title: "Methods",

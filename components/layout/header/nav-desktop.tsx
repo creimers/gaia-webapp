@@ -15,7 +15,7 @@ export default function NavDesktop() {
   const pathname = usePathname();
   return (
     <nav className="hidden md:block text-sm lg:text-base">
-      <ul className="flex space-x-2 items-center">
+      <ul className="flex space-x-0 lg:space-x-2 items-center">
         {ROUTES.map((route) => {
           const active =
             route.pathname == "/"
