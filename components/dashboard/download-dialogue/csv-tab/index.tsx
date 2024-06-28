@@ -13,7 +13,7 @@ import { PROFIT_DATA_COUNTRY_CODES, PROFIT_DATA } from "@/lib/data/profit";
 
 import Citation from "../citation";
 import CountrySelect, { type Country } from "./country-select";
-import License from "../license";
+import License from "../../../license";
 import { parseAsString, useQueryState } from "next-usequerystate";
 
 type Props = {

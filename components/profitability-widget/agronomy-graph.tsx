@@ -37,55 +37,69 @@ export default function AgronomyGraph({
     },
   ];
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <ComposedChart
-        data={enhancedData}
-        margin={{ top: 5, right: 5, bottom: 15, left: 5 }}
-      >
-        <XAxis
-          dataKey="tha"
-          domain={[0, 8]}
-          tickCount={5}
-          type="number"
-          label={{
-            value: "Lime application rate [MT/ha]",
-            offset: -10,
-            position: "insideBottom",
-          }}
-        />
-        <YAxis domain={[0, 3]} tickCount={4} type="number" allowDataOverflow>
-          <Label
-            value="Yield response attributed to liming [MT/ha]"
-            angle={-90}
-            position="insideLeft"
-            offset={20}
-            style={{ textAnchor: "middle" }}
+    <div className="relative">
+      <div className="absolute top-10 left-24 z-10">
+        <div className="flex justify-between space-x-4">
+          <span>Output price:</span>
+          <span className="font-mono">{outputPrice} USD/MT</span>
+        </div>
+        <div className="flex justify-between">
+          <span>Lime price:</span>{" "}
+          <span className="font-mono">{limePrice} USD/MT</span>
+        </div>
+      </div>
+      <ResponsiveContainer width="100%" height={400}>
+        <ComposedChart
+          data={enhancedData}
+          margin={{ top: 5, right: 5, bottom: 15, left: 5 }}
+        >
+          <XAxis
+            dataKey="tha"
+            domain={[0, 8]}
+            tickCount={5}
+            type="number"
+            label={{
+              value: "Lime application rate [MT/ha]",
+              offset: -10,
+              position: "insideBottom",
+            }}
           />
-        </YAxis>
-        <Area
-          dataKey="area_green"
-          fill="#bae1be"
-          stroke="transparent"
-          type="monotone"
-          fillOpacity="1"
-          isAnimationActive={false}
-        />
-        <Area
-          dataKey="area_red"
-          fill="#ffc5cf"
-          fillOpacity="1"
-          type="monotone"
-          stroke="transparent"
-          isAnimationActive={false}
-        />
-        <Line
-          dataKey="yield_response"
-          stroke="green"
-          strokeWidth="3"
-          isAnimationActive={false}
-        />
-        {/* <Tooltip /> */}
-      </ComposedChart>
-    </ResponsiveContainer>
+          <YAxis domain={[0, 3]} tickCount={4} type="number" allowDataOverflow>
+            <Label
+              value="Yield response attributed to liming [MT/ha]"
+              angle={-90}
+              position="insideLeft"
+              offset={20}
+              style={{ textAnchor: "middle" }}
+            />
+          </YAxis>
+          <CartesianGrid stroke="#f5f5f5" />
+          <Area
+            dataKey="area_green"
+            fill="#bae1be"
+            stroke="transparent"
+            type="monotone"
+            fillOpacity="1"
+            isAnimationActive={false}
+          />
+          <Area
+            dataKey="area_red"
+            fill="#ffc5cf"
+            fillOpacity="1"
+            type="monotone"
+            stroke="transparent"
+            isAnimationActive={false}
+          />
+          <Line
+            dataKey="yield_response"
+            stroke="green"
+            strokeWidth="3"
+            isAnimationActive={false}
+            dot={{ r: 5, fill: "green" }}
+          />
+          {/* <Tooltip /> */}
+        </ComposedChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

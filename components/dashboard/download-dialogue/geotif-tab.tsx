@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 
 import Citation from "./citation";
-import License from "./license";
+import License from "../../license";
 import { cn } from "@/lib/utils";
 
 type Props = {
