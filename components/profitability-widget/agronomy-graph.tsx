@@ -92,10 +92,10 @@ export default function AgronomyGraph({
           />
           <Line
             dataKey="yield_response"
-            stroke="green"
-            strokeWidth="3"
+            stroke="black"
+            strokeWidth="2"
             isAnimationActive={false}
-            dot={{ r: 5, fill: "green" }}
+            dot={{ r: 5, fill: "black" }}
           />
           {/* <Tooltip /> */}
         </ComposedChart>

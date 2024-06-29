@@ -74,7 +74,7 @@ export default function ProfitGraph({
 
   return (
     <div className="space-y-4 relative">
-      <div className="absolute bottom-24 left-24 z-10">
+      <div className="absolute bottom-32 sm:bottom-24 left-20 md:left-24 z-10">
         <div className="flex justify-between space-x-4">
           <span>Output price:</span>
           <span className="font-mono">{outputPrice} USD/MT</span>
@@ -119,10 +119,10 @@ export default function ProfitGraph({
           />
           <Line
             dataKey="netRevenueFirstYear"
-            stroke="green"
+            stroke="black"
             strokeWidth="2"
             isAnimationActive={false}
-            dot={{ r: 5, fill: "green" }}
+            dot={{ r: 5, fill: "black" }}
           />
           <Line
             dataKey="npv"
@@ -136,13 +136,17 @@ export default function ProfitGraph({
           {/* <Legend verticalAlign="top" /> */}
         </LineChart>
       </ResponsiveContainer>
-      <div className="flex space-x-4 justify-center text-sm">
+      <div className="flex space-x-6 justify-center text-sm">
         <div className="flex items-center space-x-2">
-          <span className="bg-green-700 h-4 w-4 rounded-full"></span>
+          <span className="bg-black h-0.5 w-4"></span>
           <span>Net revenue [USD], year of application</span>
         </div>
         <div className="flex items-center space-x-2">
-          <span className="bg-black h-4 w-4 rounded-full"></span>
+          <div className="flex space-x-1">
+            <span className="bg-black h-0.5 w-2"></span>
+            <span className="bg-black h-0.5 w-2"></span>
+            <span className="bg-black h-0.5 w-2"></span>
+          </div>
           <span>Net Present Value [USD]</span>
         </div>
       </div>
