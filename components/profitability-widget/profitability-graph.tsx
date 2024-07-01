@@ -8,6 +8,7 @@ import {
   YAxis,
   CartesianGrid,
   Label,
+  Tooltip,
 } from "recharts";
 import { Datapoint } from "./data";
 
@@ -39,6 +40,29 @@ function calculateNetRevenueFirstYear(
 ) {
   return datapoint.yield_response * outputPrice - datapoint.tha * limePrice;
 }
+
+const CustomTooltip = ({
+  active,
+  payload,
+}: {
+  active: boolean;
+  payload: any;
+}) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white p-4 shadow rounded z-50">
+        <p>Lime rate: {payload[0].payload.tha} ton/ha</p>
+        <p>
+          First year profit: {parseInt(payload[0].payload.netRevenueFirstYear)}{" "}
+          USD/ha
+        </p>
+        <p>Net present value: {parseInt(payload[0].payload.npv)} USD/ha</p>
+      </div>
+    );
+  }
+
+  return null;
+};
 
 type Props = {
   data: Datapoint[];
@@ -74,7 +98,7 @@ export default function ProfitGraph({
 
   return (
     <div className="space-y-4 relative">
-      <div className="absolute bottom-32 sm:bottom-24 left-20 md:left-24 z-10">
+      <div className="absolute bottom-32 sm:bottom-24 left-20 md:left-24 z-0">
         <div className="flex justify-between space-x-4">
           <span>Output price:</span>
           <span className="font-mono">{outputPrice} USD/MT</span>
@@ -95,14 +119,14 @@ export default function ProfitGraph({
             tickCount={5}
             type="number"
             label={{
-              value: "Lime application rate [MT/ha]",
+              value: "Lime application rate (ton/ha)",
               offset: -10,
               position: "insideBottom",
             }}
           />
           <YAxis type="number">
             <Label
-              value="USD"
+              value="Profitability of liming (USD/ha)"
               angle={-90}
               position="insideLeft"
               offset={10}
@@ -132,14 +156,15 @@ export default function ProfitGraph({
             isAnimationActive={false}
             dot={{ r: 5, fill: "black", strokeDasharray: "0" }}
           />
-          {/* <Tooltip /> */}
+          {/* @ts-ignore */}
+          <Tooltip content={<CustomTooltip />} />
           {/* <Legend verticalAlign="top" /> */}
         </LineChart>
       </ResponsiveContainer>
       <div className="flex space-x-6 justify-center text-sm">
         <div className="flex items-center space-x-2">
           <span className="bg-black h-0.5 w-4"></span>
-          <span>Net revenue [USD], year of application</span>
+          <span>First-year profit</span>
         </div>
         <div className="flex items-center space-x-2">
           <div className="flex space-x-1">
@@ -147,7 +172,7 @@ export default function ProfitGraph({
             <span className="bg-black h-0.5 w-2"></span>
             <span className="bg-black h-0.5 w-2"></span>
           </div>
-          <span>Net Present Value [USD]</span>
+          <span>Net Present Value profit</span>
         </div>
       </div>
     </div>

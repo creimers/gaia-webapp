@@ -48,14 +48,14 @@ export default function DownloadDialogue({ open, onClose }: Props) {
               <strong>Suggested citation</strong>
             </p>
             <p>
-              Silva, J.V., Aramburu-Merlos, F., Baudron, F., Gameda, S., Meliyo,
-              J., Ruganzu, V., Desalegn, T., Sida, T.S., Jaleta, M., Chamberlin,
-              J., Hijmans, R.J. 2023.{" "}
+              João Vasco Silva, Tesfaye Sida, Samuel Gameda, Temesgn Desalegn,
+              Joel Meliyo, Sibaway Mwango, Vicky Ruganzu, Bisrat Gebrekidan,
+              Moti Jaleta, Jordan Chamberlin, Frédéric Baudron
             </p>
             <p>
               <strong>
-                The burden of acid soils for crop production in sub-Saharan
-                Africa.
+                Unpacking the acid soil complex to explain crop yield responses
+                to lime in East Africa.
               </strong>
             </p>
             <p>In preparation.</p>

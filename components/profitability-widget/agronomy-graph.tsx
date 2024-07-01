@@ -7,13 +7,34 @@ import {
   Area,
   CartesianGrid,
   Tooltip,
-  Legend,
   ComposedChart,
   Label,
 } from "recharts";
 
 import { Datapoint } from "./data";
-import { YIELD_LOSS_LAYERS } from "@/lib/layers/yield-loss";
+
+const CustomTooltip = ({
+  active,
+  payload,
+}: {
+  active?: boolean | undefined;
+  payload?: any;
+}) => {
+  if (active && payload && payload.length) {
+    console.log(payload);
+    return (
+      <div className="bg-white p-4 shadow rounded z-50">
+        <p>Lime rate: {payload[0].payload.tha} ton/ha</p>
+        <p>
+          Yield response: {Number(payload[payload.length - 1].value).toFixed(2)}{" "}
+          ton/ha
+        </p>
+      </div>
+    );
+  }
+
+  return null;
+};
 
 type Props = {
   data: Datapoint[];
@@ -59,21 +80,20 @@ export default function AgronomyGraph({
             tickCount={5}
             type="number"
             label={{
-              value: "Lime application rate [MT/ha]",
+              value: "Lime application rate (ton/ha)",
               offset: -10,
               position: "insideBottom",
             }}
           />
           <YAxis domain={[0, 3]} tickCount={4} type="number" allowDataOverflow>
             <Label
-              value="Yield response attributed to liming [MT/ha]"
+              value="Crop yield response to liming (ton/ha)"
               angle={-90}
               position="insideLeft"
               offset={20}
               style={{ textAnchor: "middle" }}
             />
           </YAxis>
-          <CartesianGrid stroke="#f5f5f5" />
           <Area
             dataKey="area_green"
             fill="#bae1be"
@@ -90,6 +110,7 @@ export default function AgronomyGraph({
             stroke="transparent"
             isAnimationActive={false}
           />
+          <CartesianGrid stroke="white" />
           <Line
             dataKey="yield_response"
             stroke="black"
@@ -97,7 +118,8 @@ export default function AgronomyGraph({
             isAnimationActive={false}
             dot={{ r: 5, fill: "black" }}
           />
-          {/* <Tooltip /> */}
+
+          <Tooltip content={(props) => <CustomTooltip {...props} />} />
         </ComposedChart>
       </ResponsiveContainer>
     </div>

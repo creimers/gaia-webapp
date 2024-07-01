@@ -10,12 +10,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Label } from "../ui/label";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 import { data, locations } from "./data";
 import CustomSlider from "./custom-slider";
 import AgronomyGraph from "./agronomy-graph";
-import { Button } from "../ui/button";
 import ProfitGraph from "./profitability-graph";
 import DownloadDialogue from "./download-dialog";
 
@@ -86,23 +86,23 @@ export default function ProfitabilityWidget() {
             </Select>
           </FormItem>
           <FormItem>
-            <Label>Output price [USD/MT]</Label>
+            <Label>Output price [USD/ton]</Label>
 
             <CustomSlider
               value={outputPrice}
               onChange={setOutputPrice}
-              min={50}
+              min={100}
               max={500}
               step={5}
             />
           </FormItem>
           <FormItem>
-            <Label>Lime price [USD/MT]</Label>
+            <Label>Lime price [USD/ton]</Label>
             <CustomSlider
               value={limePrice}
               onChange={setLimePrice}
-              min={50}
-              max={300}
+              min={0}
+              max={200}
               step={5}
             />
           </FormItem>
@@ -182,13 +182,13 @@ export default function ProfitabilityWidget() {
                 The values plotted in{" "}
                 <span className="text-green-600">green</span> are estimated
                 responses to lime treatments, where the additional yield
-                (relative to yield wiht zero lime) is plotted on the y-axis and
+                (relative to yield with zero lime) is plotted on the y-axis and
                 the amount of lime is plotted on the x-axis. Use the sliders to
                 adjust the assumed farmgate maize and lime prices and observe
                 how the profitability of the lime investments change in
-                response. The goal is to allow users to explore how positive
-                agronomic responses to lime may or may not actually be
-                profitable for a farmer.
+                response. The goal is to explore how positive agronomic
+                responses to lime may or may not actually be profitable for a
+                farmer.
               </p>
             </div>
           </TabsContent>
