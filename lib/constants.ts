@@ -24,6 +24,7 @@ export const ROUTES = [
     ],
   },
   { pathname: "/publications", title: "Publications" },
+  { pathname: "/downloads", title: "Downloads" },
   { pathname: "/partners", title: "Partners" },
 ];
 

@@ -71,6 +71,32 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "download",
+        label: "Downloads",
+        path: "content/downloads",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "country",
+            label: "Country",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "url",
+            label: "URL",
+            required: true,
+          },
+        ],
+      },
     ],
   },
 });
