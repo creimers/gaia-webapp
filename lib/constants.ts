@@ -1,7 +1,7 @@
 export const ROUTES = [
   { pathname: "/", title: "About" },
   { pathname: "/data", title: "Spatial Data" },
-  { pathname: "/agronomy", title: "Agronomy Data" },
+  { pathname: "/profitability", title: "Agronomy Data" },
   {
     pathname: "/methods",
     title: "Methods",
