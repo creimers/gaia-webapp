@@ -21,7 +21,7 @@ def main(file_path):
                 "se": float(row[3]),
                 "df": float(row[4]),
                 "lower_cl": float(row[5]),
-                "uppder_cl": float(row[6]),
+                "upper_cl": float(row[6]),
             }
             grouped_data[site][crop].append(datapoint)
     for location in grouped_data:
@@ -34,6 +34,8 @@ def main(file_path):
             zero_reference = grouped_data[location][crop][0]["emmean"]
             for i, datapoint in enumerate(grouped_data[location][crop]):
                 datapoint["yield_response"] = datapoint["emmean"] - zero_reference
+                datapoint["yield_response_lower"] = datapoint["lower_cl"] - zero_reference
+                datapoint["yield_response_upper"] = datapoint["upper_cl"] - zero_reference
 
     pprint.pprint(grouped_data)
 

@@ -21,7 +21,6 @@ const CustomTooltip = ({
   payload?: any;
 }) => {
   if (active && payload && payload.length) {
-    console.log(payload);
     return (
       <div className="bg-white p-4 shadow rounded z-50">
         <p>Lime rate: {payload[0].payload.tha} ton/ha</p>
@@ -41,6 +40,7 @@ type Props = {
   priceRatio: number;
   outputPrice: number;
   limePrice: number;
+  showConficenceInterval?: boolean;
 };
 
 export default function AgronomyGraph({
@@ -48,9 +48,15 @@ export default function AgronomyGraph({
   priceRatio,
   outputPrice,
   limePrice,
+  showConficenceInterval,
 }: Props) {
   const enhancedData = [
-    ...data.map((d) => ({ ...d, area_green: 3, area_red: d.tha / priceRatio })),
+    ...data.map((d) => ({
+      ...d,
+      confidenceInterval: [d.yield_response_upper, d.yield_response_lower],
+      area_green: 3,
+      area_red: d.tha / priceRatio,
+    })),
     {
       area_green: 3,
       tha: 8,
@@ -110,6 +116,16 @@ export default function AgronomyGraph({
             stroke="transparent"
             isAnimationActive={false}
           />
+          {showConficenceInterval && (
+            <Area
+              dataKey="confidenceInterval"
+              fill="white"
+              fillOpacity="0.4"
+              // type="monotone"
+              stroke="transparent"
+              isAnimationActive={false}
+            />
+          )}
           <CartesianGrid stroke="white" />
           <Line
             dataKey="yield_response"

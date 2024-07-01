@@ -3,12 +3,14 @@
 import {
   ResponsiveContainer,
   LineChart,
+  Area,
   Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Label,
   Tooltip,
+  ComposedChart,
 } from "recharts";
 import { Datapoint } from "./data";
 
@@ -17,10 +19,10 @@ function calculateNetPresentValue(
   discountRate: number,
   limePrice: number,
   outputPrice: number,
-  datapoint: Datapoint
+  yieldResponse: number,
+  limeRate: number
 ) {
-  const yieldResponse = datapoint.yield_response;
-  const priceOfLimeApplication = datapoint.tha * limePrice;
+  const priceOfLimeApplication = limeRate * limePrice;
   const valueForYears = [...Array(decayPeriod)].map((_, year) => {
     const limeFactorYear = 1 - year / decayPeriod;
 
@@ -36,9 +38,10 @@ function calculateNetPresentValue(
 function calculateNetRevenueFirstYear(
   limePrice: number,
   outputPrice: number,
-  datapoint: Datapoint
+  yieldResponse: number,
+  limeRate: number
 ) {
-  return datapoint.yield_response * outputPrice - datapoint.tha * limePrice;
+  return yieldResponse * outputPrice - limeRate * limePrice;
 }
 
 const CustomTooltip = ({
@@ -70,6 +73,7 @@ type Props = {
   limePrice: number;
   decayPeriod: number;
   discountRate: number;
+  showConficenceInterval?: boolean;
 };
 
 export default function ProfitGraph({
@@ -78,23 +82,69 @@ export default function ProfitGraph({
   limePrice,
   decayPeriod,
   discountRate,
+  showConficenceInterval,
 }: Props) {
-  const withRevenueAndNvp = data.map((d) => ({
-    ...d,
-    npv: calculateNetPresentValue(
+  const withRevenueAndNvp = data.map((d) => {
+    const npv = calculateNetPresentValue(
       decayPeriod,
       discountRate,
       limePrice,
       outputPrice,
-      d
-    ),
-    netRevenueFirstYear: calculateNetRevenueFirstYear(
+      d.yield_response,
+      d.tha
+    );
+
+    const npvLower = calculateNetPresentValue(
+      decayPeriod,
+      discountRate,
       limePrice,
       outputPrice,
-      d
-    ),
-    red_y: 0,
-  }));
+      d.yield_response_lower,
+      d.tha
+    );
+    const npvUpper = calculateNetPresentValue(
+      decayPeriod,
+      discountRate,
+      limePrice,
+      outputPrice,
+      d.yield_response_upper,
+      d.tha
+    );
+    const npvCI = [npvUpper, npvLower];
+
+    const netRevenueFirstYear = calculateNetRevenueFirstYear(
+      limePrice,
+      outputPrice,
+      d.yield_response,
+      d.tha
+    );
+    const netRevenueFirstYearLower = calculateNetRevenueFirstYear(
+      limePrice,
+      outputPrice,
+      d.yield_response_lower,
+      d.tha
+    );
+    const netRevenueFirstYearUpper = calculateNetRevenueFirstYear(
+      limePrice,
+      outputPrice,
+      d.yield_response_upper,
+      d.tha
+    );
+
+    const netRevenueFirstYearCI = [
+      netRevenueFirstYearUpper,
+      netRevenueFirstYearLower,
+    ];
+
+    return {
+      ...d,
+      npv,
+      npvCI,
+      netRevenueFirstYear,
+      netRevenueFirstYearCI,
+      red_y: 0,
+    };
+  });
 
   return (
     <div className="space-y-4 relative">
@@ -109,7 +159,7 @@ export default function ProfitGraph({
         </div>
       </div>
       <ResponsiveContainer width="100%" height={400}>
-        <LineChart
+        <ComposedChart
           data={[...withRevenueAndNvp, { tha: 8, red_y: 0 }]}
           margin={{ top: 15, right: 5, bottom: 15, left: 5 }}
         >
@@ -133,6 +183,26 @@ export default function ProfitGraph({
               style={{ textAnchor: "middle" }}
             />
           </YAxis>
+          {showConficenceInterval && (
+            <>
+              <Area
+                dataKey="npvCI"
+                fill="gray"
+                fillOpacity="0.1"
+                // type="monotone"
+                stroke="transparent"
+                isAnimationActive={false}
+              />
+              <Area
+                dataKey="netRevenueFirstYearCI"
+                fill="green"
+                fillOpacity="0.1"
+                // type="monotone"
+                stroke="transparent"
+                isAnimationActive={false}
+              />
+            </>
+          )}
           <CartesianGrid />
           <Line
             dataKey="red_y"
@@ -143,10 +213,10 @@ export default function ProfitGraph({
           />
           <Line
             dataKey="netRevenueFirstYear"
-            stroke="black"
+            stroke="green"
             strokeWidth="2"
             isAnimationActive={false}
-            dot={{ r: 5, fill: "black" }}
+            dot={{ r: 5, fill: "green" }}
           />
           <Line
             dataKey="npv"
@@ -159,11 +229,11 @@ export default function ProfitGraph({
           {/* @ts-ignore */}
           <Tooltip content={<CustomTooltip />} />
           {/* <Legend verticalAlign="top" /> */}
-        </LineChart>
+        </ComposedChart>
       </ResponsiveContainer>
       <div className="flex space-x-6 justify-center text-sm">
         <div className="flex items-center space-x-2">
-          <span className="bg-black h-0.5 w-4"></span>
+          <span className="bg-green-600 h-0.5 w-4"></span>
           <span>First-year profit</span>
         </div>
         <div className="flex items-center space-x-2">

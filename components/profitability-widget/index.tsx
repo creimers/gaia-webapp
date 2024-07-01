@@ -12,6 +12,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 
 import { data, locations } from "./data";
 import CustomSlider from "./custom-slider";
@@ -33,6 +34,8 @@ export default function ProfitabilityWidget() {
   const [limePrice, setLimePrice] = React.useState(55);
   const [decayPeriod, setDecayPeriod] = React.useState(3);
   const [discountRate, setDiscountRate] = React.useState(0.1);
+  const [showConficenceInterval, setShowConficenceInterval] =
+    React.useState(false);
   const [showDownloadDialog, setShowDownloadDialog] = React.useState(false);
 
   React.useEffect(() => {
@@ -132,6 +135,20 @@ export default function ProfitabilityWidget() {
             </>
           )}
           <FormItem>
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="conficence-intervals"
+                checked={showConficenceInterval}
+                onCheckedChange={() =>
+                  setShowConficenceInterval(!showConficenceInterval)
+                }
+              />
+              <Label htmlFor="conficence-intervals">
+                Show confidence intervals
+              </Label>
+            </div>
+          </FormItem>
+          <FormItem>
             <div className="flex justify-center">
               <Button
                 variant={"secondary"}
@@ -176,6 +193,7 @@ export default function ProfitabilityWidget() {
               priceRatio={priceRatio}
               outputPrice={outputPrice}
               limePrice={limePrice}
+              showConficenceInterval={showConficenceInterval}
             />
             <div className="prose max-w-none">
               <p>
@@ -199,6 +217,7 @@ export default function ProfitabilityWidget() {
               limePrice={limePrice}
               decayPeriod={decayPeriod}
               discountRate={discountRate}
+              showConficenceInterval={showConficenceInterval}
             />
           </TabsContent>
         </Tabs>
