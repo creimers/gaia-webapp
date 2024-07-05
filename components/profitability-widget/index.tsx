@@ -210,7 +210,7 @@ export default function ProfitabilityWidget() {
               </p>
             </div>
           </TabsContent>
-          <TabsContent value="profit">
+          <TabsContent value="profit" className="space-y-6">
             <ProfitGraph
               data={chartData}
               outputPrice={outputPrice}
@@ -219,6 +219,26 @@ export default function ProfitabilityWidget() {
               discountRate={discountRate}
               showConficenceInterval={showConficenceInterval}
             />
+            <div className="prose max-w-none prose-blue">
+              <p>
+                First-year profit was calculated for the predicted crop yield
+                responses and using the crop and lime prices selected by the
+                user as follows: first-year profit = (yield response x output
+                price) – (lime rate x lime price). Net Present Value (NPV)
+                profit was calculated for the predicted crop yield responses
+                also using the crop and lime prices selected by the user. Yet,
+                NPV profit also considers the neutralization linear decay
+                (residual effect) from liming and a discount rate defined by the
+                user. See{" "}
+                <a
+                  href="https://en.wikipedia.org/wiki/Net_present_value"
+                  target="_blank"
+                >
+                  link
+                </a>{" "}
+                for the calculation of NPV profit.
+              </p>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
