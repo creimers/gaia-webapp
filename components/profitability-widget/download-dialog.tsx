@@ -7,8 +7,9 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import License from "../license";
+import { cn } from "@/lib/utils";
 
 type Props = {
   open: boolean;
@@ -23,19 +24,6 @@ export default function DownloadDialogue({ open, onClose }: Props) {
     onClose();
   }
 
-  async function downloadDataset() {
-    const fileUrl = "";
-    const response = await fetch(fileUrl);
-    if (response.ok) {
-      const data = await response.blob();
-      const a = document.createElement("a");
-      a.href = window.URL.createObjectURL(data);
-      const filename = fileUrl.split("/").pop();
-      a.download = filename!;
-      a.click();
-      closeDialogue();
-    }
-  }
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-xl">
@@ -75,19 +63,27 @@ export default function DownloadDialogue({ open, onClose }: Props) {
             </label>
           </div>
         </div>
-        <DialogFooter>
+        <DialogFooter className="not-prose">
           <Button variant="outline" onClick={closeDialogue} size="lg">
             Cancel
           </Button>
           <div className="h-2 block md:hidden" />
-          <Button
-            variant="default"
-            disabled={!agreeToLicense}
-            onClick={downloadDataset}
-            size="lg"
-          >
-            Download Dataset
-          </Button>
+          {!agreeToLicense ? (
+            <Button variant="default" disabled size="lg">
+              Download Dataset
+            </Button>
+          ) : (
+            <a
+              href="/data/predicted_means_allcrops_soils.csv"
+              target="_blank"
+              className={cn(
+                buttonVariants({ size: "lg", variant: "default" }),
+                "text-lg"
+              )}
+            >
+              Download Dataset
+            </a>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

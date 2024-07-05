@@ -102,7 +102,7 @@ export default function AgronomyGraph({
           </YAxis>
           <Area
             dataKey="area_green"
-            fill="#bae1be"
+            fill="#e6f4e8"
             stroke="transparent"
             type="monotone"
             fillOpacity="1"
@@ -110,7 +110,7 @@ export default function AgronomyGraph({
           />
           <Area
             dataKey="area_red"
-            fill="#ffc5cf"
+            fill="#ffeef1"
             fillOpacity="1"
             type="monotone"
             stroke="transparent"
@@ -119,7 +119,7 @@ export default function AgronomyGraph({
           {showConficenceInterval && (
             <Area
               dataKey="confidenceInterval"
-              fill="white"
+              fill="gray"
               fillOpacity="0.4"
               // type="monotone"
               stroke="transparent"

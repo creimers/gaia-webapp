@@ -146,6 +146,27 @@ export default function ProfitGraph({
     };
   });
 
+  const netRevenueFirstYearMax = Math.max(
+    ...withRevenueAndNvp.map((d) => d.netRevenueFirstYearCI[0])
+  );
+  const netRevenueFirstYearMin = Math.min(
+    ...withRevenueAndNvp.map((d) => d.netRevenueFirstYearCI[1])
+  );
+  const npvMax = Math.max(...withRevenueAndNvp.map((d) => d.npvCI[0]));
+  const nvpMin = Math.min(...withRevenueAndNvp.map((d) => d.npvCI[1]));
+
+  const yMax = Math.max(netRevenueFirstYearMax, npvMax);
+  const yMin = Math.min(netRevenueFirstYearMin, nvpMin);
+
+  const withAreas = [
+    ...withRevenueAndNvp.map((d) => ({
+      ...d,
+      area_green: 100000,
+      area_red: -100000,
+    })),
+    { tha: 8, red_y: 0, area_green: yMax * 2, area_red: yMin * 2 },
+  ];
+
   return (
     <div className="space-y-4 relative">
       <div className="absolute bottom-32 sm:bottom-24 left-20 md:left-24 z-0">
@@ -160,7 +181,7 @@ export default function ProfitGraph({
       </div>
       <ResponsiveContainer width="100%" height={400}>
         <ComposedChart
-          data={[...withRevenueAndNvp, { tha: 8, red_y: 0 }]}
+          data={withAreas}
           margin={{ top: 15, right: 5, bottom: 15, left: 5 }}
         >
           <XAxis
@@ -174,7 +195,14 @@ export default function ProfitGraph({
               position: "insideBottom",
             }}
           />
-          <YAxis type="number">
+          <YAxis
+            type="number"
+            allowDataOverflow
+            domain={[
+              Number((yMin * 1.2).toFixed(0)),
+              Number((yMax * 1.2).toFixed(0)),
+            ]}
+          >
             <Label
               value="Profitability of liming (USD/ha)"
               angle={-90}
@@ -183,12 +211,28 @@ export default function ProfitGraph({
               style={{ textAnchor: "middle" }}
             />
           </YAxis>
+          <Area
+            dataKey="area_green"
+            fill="#e6f4e8"
+            stroke="transparent"
+            type="monotone"
+            fillOpacity="1"
+            isAnimationActive={false}
+          />
+          <Area
+            dataKey="area_red"
+            fill="#ffeef1"
+            fillOpacity="1"
+            type="monotone"
+            stroke="transparent"
+            isAnimationActive={false}
+          />
           {showConficenceInterval && (
             <>
               <Area
                 dataKey="npvCI"
                 fill="gray"
-                fillOpacity="0.1"
+                fillOpacity="0.5"
                 // type="monotone"
                 stroke="transparent"
                 isAnimationActive={false}
@@ -196,7 +240,7 @@ export default function ProfitGraph({
               <Area
                 dataKey="netRevenueFirstYearCI"
                 fill="green"
-                fillOpacity="0.1"
+                fillOpacity="0.2"
                 // type="monotone"
                 stroke="transparent"
                 isAnimationActive={false}
