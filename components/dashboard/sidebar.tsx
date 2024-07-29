@@ -7,9 +7,9 @@ import { Config } from "tailwindcss/types/config";
 import tailwindConfig from "@/tailwind.config";
 
 import { Stack, ArrowLeft } from "@phosphor-icons/react";
-import { useQueryState, parseAsBoolean } from "next-usequerystate";
 
 import { cn } from "@/lib/utils";
+import { useMapStore } from "@/lib/map-store";
 
 const fullConfig = resolveConfig(tailwindConfig as unknown as Config);
 
@@ -23,10 +23,7 @@ const breakpoints = (fullConfig?.theme?.screens || {
 }) as ding;
 
 export default function Sidebar({ children }: { children?: React.ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useQueryState(
-    "sidebar",
-    parseAsBoolean
-  );
+  const { sidebarOpen, setSidebarOpen } = useMapStore();
 
   React.useEffect(() => {
     const width = window.innerWidth;

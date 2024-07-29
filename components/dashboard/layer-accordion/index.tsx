@@ -8,13 +8,10 @@ import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 
-import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
-// import { PROFITABILITY_ID } from "@/lib/layers/profitability";
+import { useMapStore } from "@/lib/map-store";
 import { LAYER_GROUPS } from "@/lib/layers";
 
 import DownloadDialogue from "../download-dialogue";
-// import { DEFAULT_LIME_PRICE } from "@/lib/constants";
-import { parseAsString, useQueryState } from "next-usequerystate";
 import Layer from "./layer";
 
 const LAYER_GROUP_LAYER_ID_MAPPING = LAYER_GROUPS.reduce((acc, group) => {
@@ -26,24 +23,11 @@ export default function LayerAccordion() {
   const [downloadDialogueOpen, setDownloadDialogueOpen] = React.useState(false);
   const [layerGroupId, setLayerGroupId] = React.useState<string | undefined>();
 
-  const [layerId, setLayerId] = useQueryState(
-    "layer",
-    parseAsString.withDefault(SOIL_LAYER_PH_ID)
-  );
-
-  // const [limePrice, setLimePrice] = useQueryState(
-  //   "lime_price",
-  //   parseAsString.withDefault(DEFAULT_LIME_PRICE)
-  // );
-
-  // function updateLimePrice(e: React.ChangeEvent<HTMLInputElement>) {
-  //   const price = e.target.value;
-  //   setLimePrice(price);
-  // }
+  const { activeLayer, setActiveLayer } = useMapStore();
 
   React.useEffect(() => {
     for (const group of LAYER_GROUPS) {
-      if (group.layers.find((layer) => layer.id === layerId)) {
+      if (group.layers.find((layer) => layer.id === activeLayer)) {
         setLayerGroupId(group.id);
         return;
       }
@@ -91,8 +75,8 @@ export default function LayerAccordion() {
                     <Layer
                       layer={layer}
                       key={layer.id}
-                      activeLayerId={layerId}
-                      handleSetLayerId={setLayerId}
+                      activeLayerId={activeLayer}
+                      handleSetLayerId={setActiveLayer}
                     />
                   ))}
                 </div>
@@ -119,7 +103,7 @@ export default function LayerAccordion() {
                 <div className="flex justify-center">
                   <Button
                     variant={"secondary"}
-                    disabled={!layers.includes(layerId)}
+                    disabled={!layers.includes(activeLayer)}
                     size={"lg"}
                     onClick={() => setDownloadDialogueOpen(true)}
                   >

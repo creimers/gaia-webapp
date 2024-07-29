@@ -1,6 +1,8 @@
 export type LegendBin = {
   color: string;
   value: string;
+  min?: number;
+  max?: number;
 };
 
 export type LayerLegend = {
@@ -16,3 +18,11 @@ export type Layer = {
   rawTileUrl?: string;
   legend: LayerLegend;
 };
+
+export type ViewState = {
+  longitude: number;
+  latitude: number;
+  zoom: number;
+};
+
+export type BaseLayer = "streets" | "satellite";

@@ -2,21 +2,16 @@
 
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
 import { CaretUp, SlidersHorizontal } from "@phosphor-icons/react";
-import { parseAsString, useQueryState, parseAsFloat } from "next-usequerystate";
+
+import { cn } from "@/lib/utils";
+import { useMapStore } from "@/lib/map-store";
 
 export default function LayerControls() {
   const [open, setOpen] = React.useState(false);
 
-  const [layerOpacity, setLayerOpacity] = useQueryState(
-    "layer_opacity",
-    parseAsFloat.withDefault(1)
-  );
-  const [baseLayer, setBaseLayer] = useQueryState(
-    "base_layer",
-    parseAsString.withDefault("streets")
-  );
+  const { layerOpacity, setLayerOpacity, baseLayer, setBaseLayer } =
+    useMapStore();
 
   function updateLayerOpacity(e: React.ChangeEvent<HTMLInputElement>) {
     const opacity = parseFloat(e.target.value);

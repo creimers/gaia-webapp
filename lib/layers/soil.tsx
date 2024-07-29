@@ -1,9 +1,9 @@
 import { Layer } from "@/lib/interfaces";
 
 export const SOIL_ID = "soil";
-export const SOIL_LAYER_PH_ID = `${SOIL_ID}_ph_in_water`;
-export const SOIL_LAYER_EXCHANGEABLE_ACIDITY_ID = `${SOIL_ID}_exchangable_acidity`;
-export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY_ID = `${SOIL_ID}_cation_exchange_capacity`;
+export const SOIL_LAYER_PH_ID = `${SOIL_ID}_ph`;
+export const SOIL_LAYER_EXCHANGEABLE_ACIDITY_ID = `${SOIL_ID}_hp`;
+export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY_ID = `${SOIL_ID}_ecec`;
 
 export const SOIL_LAYER_PH: Layer = {
   id: SOIL_LAYER_PH_ID,
@@ -40,11 +40,11 @@ export const SOIL_LAYER_PH: Layer = {
     "https://gaia-tiles.superservice-international.com/raw/soil_ph.tif",
   legend: {
     bins: [
-      { value: "< 5.0", color: "rgb(253, 231, 37)" },
-      { value: "5.0-5.5", color: "rgb(122, 209, 81)" },
-      { value: "5.5-6.0", color: "rgb(34, 168, 132)" },
-      { value: "6.0-6.5", color: "rgb(42, 120, 142)" },
-      { value: "> 6.5", color: "rgb(65, 68, 135)" },
+      { value: "< 5.0", color: "rgb(253, 231, 37)", min: 0, max: 5 },
+      { value: "5.0-5.5", color: "rgb(122, 209, 81)", min: 5, max: 5.5 },
+      { value: "5.5-6.0", color: "rgb(34, 168, 132)", min: 5.5, max: 6 },
+      { value: "6.0-6.5", color: "rgb(42, 120, 142)", min: 6, max: 6.5 },
+      { value: "> 6.5", color: "rgb(65, 68, 135)", min: 6.5, max: 14 },
       // { value: "> 6.5", color: "rgb(68, 1, 84)" },
     ],
   },
@@ -88,12 +88,12 @@ export const SOIL_LAYER_HP: Layer = {
     "https://gaia-tiles.superservice-international.com/raw/soil_hp.tif",
   legend: {
     bins: [
-      { value: "< 10", color: "rgb(253, 231, 37)" },
-      { value: "10-20", color: "rgb(122, 209, 81)" },
-      { value: "20-30", color: "rgb(34, 168, 132)" },
-      { value: "30-40", color: "rgb(42, 120, 142)" },
-      { value: "40-50", color: "rgb(65, 68, 135)" },
-      { value: "> 50", color: "rgb(68, 1, 84)" },
+      { value: "< 10", color: "rgb(253, 231, 37)", min: 0, max: 10 },
+      { value: "10-20", color: "rgb(122, 209, 81)", min: 10, max: 20 },
+      { value: "20-30", color: "rgb(34, 168, 132)", min: 20, max: 30 },
+      { value: "30-40", color: "rgb(42, 120, 142)", min: 30, max: 40 },
+      { value: "40-50", color: "rgb(65, 68, 135)", min: 40, max: 50 },
+      { value: "> 50", color: "rgb(68, 1, 84)", min: 50, max: 100 },
     ],
   },
 };
@@ -136,12 +136,12 @@ export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY: Layer = {
     "https://gaia-tiles.superservice-international.com/raw/soil_ecec.tif",
   legend: {
     bins: [
-      { value: "< 5", color: "rgb(253, 231, 37)" },
-      { value: "5-10", color: "rgb(122, 209, 81)" },
-      { value: "10-15", color: "rgb(34, 168, 132)" },
-      { value: "15-20", color: "rgb(42, 120, 142)" },
-      { value: "20-25", color: "rgb(65, 68, 135)" },
-      { value: "> 25", color: "rgb(68, 1, 84)" },
+      { value: "< 5", color: "rgb(253, 231, 37)", min: 0, max: 5 },
+      { value: "5-10", color: "rgb(122, 209, 81)", min: 5, max: 10 },
+      { value: "10-15", color: "rgb(34, 168, 132)", min: 10, max: 15 },
+      { value: "15-20", color: "rgb(42, 120, 142)", min: 15, max: 20 },
+      { value: "20-25", color: "rgb(65, 68, 135)", min: 20, max: 25 },
+      { value: "> 25", color: "rgb(68, 1, 84)", min: 25, max: 50 },
     ],
   },
 };
