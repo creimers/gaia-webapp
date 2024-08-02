@@ -62,15 +62,7 @@ export default function TheMap() {
     }
   }, [mapInitialized, sidebarOpen, mapHasMoved]);
 
-  // const [viewState, setViewState] = React.useState({
-  //   longitude: viewStateQuery.lon,
-  //   latitude: viewStateQuery.lat,
-  //   zoom: viewStateQuery.zoom,
-  // });
-
   const persistViewState = React.useCallback(() => {
-    // const { latitude, longitude, zoom } = viewState;
-    // setViewStateQuery({ lat: latitude, lon: longitude, zoom });
     setMapHasMoved(true);
   }, [viewState]);
 
