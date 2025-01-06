@@ -15,7 +15,7 @@ const LIME_LAYER_LEGEND: LayerLegend = {
     { value: "1.5-2.5", color: "rgb(34, 168, 132)", min: 1.5, max: 2.5 },
     { value: "2.5-3.5", color: "rgb(42, 120, 142)", min: 2.5, max: 3.5 },
     { value: "3.5-4.5", color: "rgb(65, 68, 135)", min: 3.5, max: 4.5 },
-    { value: "> 4.5", color: "rgb(68, 1, 84)", min: 4.5, max: 10 },
+    { value: "> 4.5", color: "rgb(68, 1, 84)", min: 4.5, max: 20 },
   ],
 };
 
@@ -41,7 +41,8 @@ const LIME_LAYER_ALL_CROPS: Layer = {
     </p>
   ),
   tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_all/{z}/{x}/{y}.webp",
+    // "https://gaia-tiles.superservice-international.com/lime_all/{z}/{x}/{y}.webp",
+    "http://localhost:61277/{z}/{x}/{y}.webp",
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/lime_all.tif",
   legend: {

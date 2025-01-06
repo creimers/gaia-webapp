@@ -39,6 +39,8 @@ export default function TheMap() {
     longitude: number;
   } | null>(null);
 
+  console.log(clickedLocation?.longitude, clickedLocation?.latitude);
+
   const {
     viewState,
     setViewState,

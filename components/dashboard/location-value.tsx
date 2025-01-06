@@ -22,12 +22,13 @@ export default function LocationValue({
   const [loading, loadValue] = React.useTransition();
   const [locationValue, setLocationValue] = React.useState<string | null>(null);
   const [locationColor, setLocationColor] = React.useState<string | null>(null);
+
   React.useEffect(() => {
     if (location && layerId) {
       loadValue(async () => {
         try {
           const response = await getLayerValue(layerId, location);
-          if (response?.value) {
+          if (response?.value !== null) {
             setLocationValue(response?.value.toFixed(2) || "");
             const color = getColorForLayerValue(
               response?.value!,
