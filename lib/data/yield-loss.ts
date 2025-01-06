@@ -17,7 +17,7 @@ export const YIELD_LOSS_DATA: { [key: string]: string } = {
   GA: "/data/yield-loss/yield_table_gabon.xlsx",
   GM: "/data/yield-loss/yield_table_gambia.xlsx",
   GH: "/data/yield-loss/yield_table_ghana.xlsx",
-  GW: "/data/yield-loss/yield_table_guinea-bissau.xlsx",
+  GW: "/data/yield-loss/yield_table_guinea_bissau.xlsx",
   GN: "/data/yield-loss/yield_table_guinea.xlsx",
   KE: "/data/yield-loss/yield_table_kenya.xlsx",
   LR: "/data/yield-loss/yield_table_liberia.xlsx",

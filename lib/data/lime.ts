@@ -17,7 +17,7 @@ export const LIME_DATA: { [key: string]: string } = {
   GA: "/data/lime/lime_table_gabon.xlsx",
   GM: "/data/lime/lime_table_gambia.xlsx",
   GH: "/data/lime/lime_table_ghana.xlsx",
-  GW: "/data/lime/lime_table_guinea-bissau.xlsx",
+  GW: "/data/lime/lime_table_guinea_bissau.xlsx",
   GN: "/data/lime/lime_table_guinea.xlsx",
   KE: "/data/lime/lime_table_kenya.xlsx",
   LR: "/data/lime/lime_table_liberia.xlsx",

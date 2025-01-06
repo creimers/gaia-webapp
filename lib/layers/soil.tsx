@@ -52,7 +52,7 @@ export const SOIL_LAYER_PH: Layer = {
 
 export const SOIL_LAYER_HP: Layer = {
   id: SOIL_LAYER_EXCHANGEABLE_ACIDITY_ID,
-  label: "Exchangeable Acidity",
+  label: "Acidity saturation",
   info: (
     <>
       <p>
@@ -87,6 +87,7 @@ export const SOIL_LAYER_HP: Layer = {
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/soil_hp.tif",
   legend: {
+    title: "Acidity saturation [% ECEC]",
     bins: [
       { value: "< 10", color: "rgb(253, 231, 37)" },
       { value: "10-20", color: "rgb(122, 209, 81)" },
@@ -100,7 +101,7 @@ export const SOIL_LAYER_HP: Layer = {
 
 export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY: Layer = {
   id: SOIL_LAYER_CATION_EXCHANGE_CAPACITY_ID,
-  label: "Cation Exchange Capacity",
+  label: "Buffering capacity",
   info: (
     <>
       <p>
@@ -135,6 +136,7 @@ export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY: Layer = {
   rawTileUrl:
     "https://gaia-tiles.superservice-international.com/raw/soil_ecec.tif",
   legend: {
+    title: "Buffering capacity [cmolc/kg]",
     bins: [
       { value: "< 5", color: "rgb(253, 231, 37)" },
       { value: "5-10", color: "rgb(122, 209, 81)" },
