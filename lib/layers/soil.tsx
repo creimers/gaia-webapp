@@ -1,4 +1,5 @@
 import { Layer } from "@/lib/interfaces";
+import { TILE_BASE_URL } from "../constants";
 
 export const SOIL_ID = "soil";
 export const SOIL_LAYER_PH_ID = `${SOIL_ID}_ph_in_water`;
@@ -34,10 +35,8 @@ export const SOIL_LAYER_PH: Layer = {
       </p>
     </>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/soil_ph_bin_5/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/soil_ph.tif",
+  tileUrl: `${TILE_BASE_URL}/soil_ph/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/soil_ph.tif`,
   legend: {
     bins: [
       { value: "< 5.0", color: "rgb(253, 231, 37)" },
@@ -82,10 +81,8 @@ export const SOIL_LAYER_HP: Layer = {
       </p>
     </>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/soil_hp_bin/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/soil_hp.tif",
+  tileUrl: `${TILE_BASE_URL}/soil_hp/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/soil_hp_sat.tif`,
   legend: {
     title: "Acidity saturation [% ECEC]",
     bins: [
@@ -131,10 +128,8 @@ export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY: Layer = {
       </p>
     </>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/soil_ecec_bin/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/soil_ecec.tif",
+  tileUrl: `${TILE_BASE_URL}/soil_ecec/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/soil_ecec.tif`,
   legend: {
     title: "Buffering capacity [cmolc/kg]",
     bins: [

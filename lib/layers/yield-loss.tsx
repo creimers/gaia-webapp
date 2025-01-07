@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Layer, LayerLegend } from "@/lib/interfaces";
+import { TILE_BASE_URL } from "../constants";
 
 export const YIELD_LOSS_ID = "yield_loss";
 export const YIELD_LOSS_LAYER_ALL_CROPS_ID = `${YIELD_LOSS_ID}_all_crops`;
@@ -32,10 +33,8 @@ const YIELD_LOSS_ALL_CROPS: Layer = {
       tobacco.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/yloss_all/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yloss_all.tif",
+  tileUrl: `${TILE_BASE_URL}/yloss_all/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_all.tif`,
   legend: {
     title: "All Crops [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -54,10 +53,8 @@ const YIELD_LOSS_LAYER_CEREALS: Layer = {
       millet.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/yloss_cereals/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yloss_cereals.tif",
+  tileUrl: `${TILE_BASE_URL}/yloss_cereals/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_cereals.tif`,
   legend: {
     title: "Cereals [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -76,10 +73,8 @@ const YIELD_LOSS_LAYER_LEGUMES: Layer = {
       groundnut.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/yloss_legumes/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yloss_legumes.tif",
+  tileUrl: `${TILE_BASE_URL}/yloss_legumes/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_legumes.tif`,
   legend: {
     title: "Legumes [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -97,10 +92,8 @@ const YIELD_LOSS_LAYER_ROOTS_TUBERS: Layer = {
       information). Roots & tubers: potato, sweet potato, cassava.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/yloss_rtbs/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yloss_rtbs.tif",
+  tileUrl: `${TILE_BASE_URL}/yloss_rtbs/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_rtbs.tif`,
   legend: {
     title: "Roots & Tubers [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -119,10 +112,8 @@ const YIELD_LOSS_LAYER_COMMODITIES: Layer = {
       tobacco.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/yloss_other/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/yloss_other.tif",
+  tileUrl: `${TILE_BASE_URL}/yloss_other/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_other.tif`,
   legend: {
     title: "Non-food crops [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
