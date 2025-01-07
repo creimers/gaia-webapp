@@ -1,9 +1,9 @@
 "use client";
-import type { Publication } from "@/tina/__generated__/types";
-import PublicationItem from "@/components/publication";
 import { useSearchParams } from "next/navigation";
 
-const PUBLICATION_TYPES = ["Journal", "Technical Report", "Presentation"];
+import type { Publication } from "@/tina/__generated__/types";
+import PublicationItem from "@/components/publication";
+import { PUBLICATION_TYPES } from "@/lib/constants";
 
 type Props = {
   publications: Publication[];

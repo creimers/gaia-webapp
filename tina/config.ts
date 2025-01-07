@@ -67,6 +67,7 @@ export default defineConfig({
               { value: "Journal", label: "Journal" },
               { value: "Technical Report", label: "Technical Report" },
               { value: "Presentation", label: "Presentation" },
+              { value: "Data", label: "Data" },
             ],
           },
         ],

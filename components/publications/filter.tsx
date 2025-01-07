@@ -1,9 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const PUBLICATION_TYPES = ["Journal", "Technical Report", "Presentation"];
+import { cn } from "@/lib/utils";
+
+import { PUBLICATION_TYPES } from "@/lib/constants";
 
 export default function Filter() {
   const router = useRouter();
