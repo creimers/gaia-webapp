@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Layer, LayerLegend } from "@/lib/interfaces";
+import { TILE_BASE_URL } from "../constants";
 
 export const LIME_ID = "lime";
 export const LIME_LAYER_ALL_CROPS_ID = `${LIME_ID}_all`;
@@ -40,10 +41,8 @@ const LIME_LAYER_ALL_CROPS: Layer = {
       tobacco.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_all/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/lime_all.tif",
+  tileUrl: `${TILE_BASE_URL}/lime_all/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_all.tif`,
   legend: {
     title: "All Crops [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -69,10 +68,8 @@ const LIME_LAYER_CEREALS: Layer = {
       millet.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_cereals/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/lime_cereals.tif",
+  tileUrl: `${TILE_BASE_URL}/lime_cereals/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_cereals.tif`,
   legend: {
     title: "Cereals [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -98,10 +95,8 @@ const LIME_LAYER_LEGUMES: Layer = {
       groundnut.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_legumes/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/lime_legumes.tif",
+  tileUrl: `${TILE_BASE_URL}/lime_legumes/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_legumes.tif`,
   legend: {
     title: "Legumes [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -126,10 +121,8 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
       information). Roots & tubers: potato, sweet potato, cassava.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_rtbs/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/lime_rtbs.tif",
+  tileUrl: `${TILE_BASE_URL}/lime_rtbs/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_rtbs.tif`,
   legend: {
     title: "Roots & Tubers [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -155,10 +148,8 @@ const LIME_LAYER_COMMODITIES: Layer = {
       tobacco.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/lime_other/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/lime_other.tif",
+  tileUrl: `${TILE_BASE_URL}/lime_other/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_other.tif`,
   legend: {
     title: "Non-food crops [t/ha]",
     ...LIME_LAYER_LEGEND,

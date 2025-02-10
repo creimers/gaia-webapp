@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Layer, LayerLegend } from "@/lib/interfaces";
+import { TILE_BASE_URL } from "../constants";
 
 export const PROFITABILITY_ID = "profit";
 export const PROFITABILITY_LAYER_ALL_CROPS_ID = `${PROFITABILITY_ID}_all`;
@@ -36,10 +37,8 @@ export const PROFITABILITY_LAYER_ALL_CROPS: Layer = {
       tobacco.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_all/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/profit_all.tif",
+  tileUrl: `${TILE_BASE_URL}/profit_all/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_all.tif`,
   legend: {
     title: "All Crops [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -57,10 +56,8 @@ export const PROFITABILITY_LAYER_CEREALS: Layer = {
       millet.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_cereals/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/profit_cereals.tif",
+  tileUrl: `${TILE_BASE_URL}/profit_cereals/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_cereals.tif`,
   legend: {
     title: "Cereals [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -78,10 +75,8 @@ export const PROFITABILITY_LAYER_LEGUMES: Layer = {
       groundnut.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_legumes/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/profit_legumes.tif",
+  tileUrl: `${TILE_BASE_URL}/profit_legumes/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_legumes.tif`,
   legend: {
     title: "Legumes [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -98,10 +93,8 @@ export const PROFITABILITY_LAYER_ROOTS_TUBERS: Layer = {
       information). Roots & tubers: potato, sweet potato, cassava.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_rtbs/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/profit_rtbs.tif",
+  tileUrl: `${TILE_BASE_URL}/profit_rtbs/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_rtbs.tif`,
   legend: {
     title: "Roots & tubers [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -119,10 +112,8 @@ export const PROFITABILITY_LAYER_COMMODITIES: Layer = {
       tobacco.
     </p>
   ),
-  tileUrl:
-    "https://gaia-tiles.superservice-international.com/profit_other/{z}/{x}/{y}.webp",
-  rawTileUrl:
-    "https://gaia-tiles.superservice-international.com/raw/profit_other.tif",
+  tileUrl: `${TILE_BASE_URL}/profit_other/{z}/{x}/{y}.webp`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_other.tif`,
   legend: {
     title: "Non-food crops [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,

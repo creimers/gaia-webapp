@@ -32,3 +32,13 @@ export const SIDEBAR_WIDTH_PX = 400;
 export const DEFAULT_LIME_PRICE = "60";
 export const LAYER_VALUE_API_URL = process.env.LAYER_VALUE_API_URL!;
 export const LAYER_VALUE_HEADER_TOKEN = process.env.LAYER_VALUE_HEADER_TOKEN!;
+
+export const TILE_BASE_URL =
+  "https://gaia-tiles.superservice-international.com";
+
+export const PUBLICATION_TYPES = [
+  "Journal",
+  "Technical Report",
+  "Presentation",
+  "Data",
+];

@@ -8,7 +8,7 @@ import { YIELD_LOSS_ID, YIELD_LOSS_LAYERS } from "./yield-loss";
 import { PROFITABILITY_ID, PROFITABILITY_LAYERS } from "./profitability";
 
 type LayerGroup = {
-  name: string;
+  name: React.ReactNode;
   id: string;
   icon: Icon;
   layers: Layer[];
@@ -16,25 +16,29 @@ type LayerGroup = {
 
 export const LAYER_GROUPS: LayerGroup[] = [
   {
-    name: "Soil Property Layers",
+    name: "Soil properties",
     id: SOIL_ID,
     icon: Globe,
     layers: SOIL_LAYERS,
   },
   {
-    name: "Lime Requirement Layers",
+    name: "Lime requirements",
     id: LIME_ID,
     icon: Ruler,
     layers: LIME_LAYERS,
   },
   {
-    name: "Yield Loss Layers",
+    name: "Crop yield loss",
     id: YIELD_LOSS_ID,
     icon: Grains,
     layers: YIELD_LOSS_LAYERS,
   },
   {
-    name: "Profitability Layers",
+    name: (
+      <span>
+        1<sup>st</sup> year profit
+      </span>
+    ),
     id: PROFITABILITY_ID,
     icon: Coins,
     layers: PROFITABILITY_LAYERS,
