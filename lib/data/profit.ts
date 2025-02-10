@@ -17,7 +17,7 @@ export const PROFIT_DATA: { [key: string]: string } = {
   GA: "/data/profit/profit_table_gabon.xlsx",
   GM: "/data/profit/profit_table_gambia.xlsx",
   GH: "/data/profit/profit_table_ghana.xlsx",
-  GW: "/data/profit/profit_table_guinea-bissau.xlsx",
+  GW: "/data/profit/profit_table_guinea_bissau.xlsx",
   GN: "/data/profit/profit_table_guinea.xlsx",
   KE: "/data/profit/profit_table_kenya.xlsx",
   LR: "/data/profit/profit_table_liberia.xlsx",

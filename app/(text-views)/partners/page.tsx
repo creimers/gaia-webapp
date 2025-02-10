@@ -104,6 +104,20 @@ const sections: { [key: string]: Partner[] } = {
       ),
       team: [{ name: "Asseta Diallo", location: "Accra, Ghana" }],
     },
+    // {
+    //   name: "AfSIS Ltd.",
+    //   homepage: "https://africasoils.info/",
+    //   logo: (
+    //     <Image
+    //       src="/logos/agra.png"
+    //       height={341}
+    //       width={1000}
+    //       alt="AGRA logo"
+    //       className="max-h-full w-auto"
+    //     />
+    //   ),
+    //   team: [{ name: "Markus Walsh", location: "Arusha, Tanzania" }],
+    // },
     {
       name: "Ethiopian Institute of Agricultural Research (EIAR)",
       homepage: "https://www.eiar.gov.et/",
@@ -181,6 +195,20 @@ const sections: { [key: string]: Partner[] } = {
         { name: "Joel Meliyo", location: "Dodoma, Tanzania" },
         { name: "Sibaway Mwango", location: "Tanga, Tanzania" },
       ],
+    },
+    {
+      name: "Zambia Agriculture Research Institute (ZARI)",
+      homepage: "https://www.zari.gov.zm/",
+      logo: (
+        <Image
+          src="/logos/zari.png"
+          height={667}
+          width={1000}
+          alt="ZARI logo"
+          className="max-h-full w-auto"
+        />
+      ),
+      team: [{ name: "Richard Kaunda", location: "Kasama, Zambia" }],
     },
   ],
   "Advanced academic institutions": [

@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
+import { parseAsString, useQueryState } from "next-usequerystate";
 
 import { SOIL_ID } from "@/lib/layers/soil";
 import { LIME_ID } from "@/lib/layers/lime";
@@ -9,10 +10,13 @@ import { PROFITABILITY_ID } from "@/lib/layers/profitability";
 import { SOIL_DATA_COUNTRY_CODES, SOIL_DATA } from "@/lib/data/soil";
 import { LIME_DATA_COUNTRY_CODES, LIME_DATA } from "@/lib/data/lime";
 import { PROFIT_DATA_COUNTRY_CODES, PROFIT_DATA } from "@/lib/data/profit";
+import { YIELD_LOSS_ID } from "@/lib/layers/yield-loss";
+import { YIELD_LOSS_DATA } from "@/lib/data/yield-loss";
 
 import Citation from "../citation";
 import CountrySelect, { type Country } from "./country-select";
 import License from "../../../license";
+
 import { useMapStore } from "@/lib/map-store";
 
 type Props = {
@@ -44,6 +48,8 @@ export default function CSVTab({ onClose }: Props) {
       return LIME_DATA[country.iso];
     } else if (activeLayer.includes(PROFITABILITY_ID)) {
       return PROFIT_DATA[country.iso];
+    } else if (layer.includes(YIELD_LOSS_ID)) {
+      return YIELD_LOSS_DATA[country.iso];
     }
     return "";
   }

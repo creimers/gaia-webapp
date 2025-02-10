@@ -16,7 +16,7 @@
 // soil_table_gabon.xlsx
 // soil_table_gambia.xlsx
 // soil_table_ghana.xlsx
-// soil_table_guinea-bissau.xlsx
+// soil_table_guinea_bissau.xlsx
 // soil_table_guinea.xlsx
 // soil_table_kenya.xlsx
 // soil_table_liberia.xlsx
@@ -62,7 +62,7 @@ export const SOIL_DATA: { [key: string]: string } = {
   GA: "/data/soil/soil_table_gabon.xlsx",
   GM: "/data/soil/soil_table_gambia.xlsx",
   GH: "/data/soil/soil_table_ghana.xlsx",
-  GW: "/data/soil/soil_table_guinea-bissau.xlsx",
+  GW: "/data/soil/soil_table_guinea_bissau.xlsx",
   GN: "/data/soil/soil_table_guinea.xlsx",
   KE: "/data/soil/soil_table_kenya.xlsx",
   LR: "/data/soil/soil_table_liberia.xlsx",
@@ -77,10 +77,10 @@ export const SOIL_DATA: { [key: string]: string } = {
   CG: "/data/soil/soil_table_republic_of_the_congo.xlsx",
   RW: "/data/soil/soil_table_rwanda.xlsx",
   SN: "/data/soil/soil_table_senegal.xlsx",
-  SL: "/data/soil/soil_table_sierra leone.xlsx",
+  SL: "/data/soil/soil_table_sierra_leone.xlsx",
   SO: "/data/soil/soil_table_somalia.xlsx",
-  ZA: "/data/soil/soil_table_south africa.xlsx",
-  SS: "/data/soil/soil_table_south sudan.xlsx",
+  ZA: "/data/soil/soil_table_south_africa.xlsx",
+  SS: "/data/soil/soil_table_south_sudan.xlsx",
   SD: "/data/soil/soil_table_sudan.xlsx",
   SZ: "/data/soil/soil_table_swaziland.xlsx",
   TZ: "/data/soil/soil_table_tanzania.xlsx",

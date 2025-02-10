@@ -40,6 +40,14 @@ export default function Page() {
         Likewise, due to unavailability of country-specific lime prices, a fixed
         lime price of 100 $US/ton was considered.
       </p>
+      <p>
+        Administrative boundaries adopted in the results were obtained from the
+        Database of Global Administrative Areas (GADM, see{" "}
+        <a href="https://en.wikipedia.org/wiki/GADM">
+          https://en.wikipedia.org/wiki/GADM
+        </a>
+        )
+      </p>
       <h2>References</h2>
       <p>
         Hengl, T., Mendes de Jesus, J., Heuvelink, G.B.M., Ruiperez Gonzalez,
