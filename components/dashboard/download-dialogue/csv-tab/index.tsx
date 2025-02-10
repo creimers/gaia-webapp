@@ -48,7 +48,7 @@ export default function CSVTab({ onClose }: Props) {
       return LIME_DATA[country.iso];
     } else if (activeLayer.includes(PROFITABILITY_ID)) {
       return PROFIT_DATA[country.iso];
-    } else if (layer.includes(YIELD_LOSS_ID)) {
+    } else if (activeLayer.includes(YIELD_LOSS_ID)) {
       return YIELD_LOSS_DATA[country.iso];
     }
     return "";
