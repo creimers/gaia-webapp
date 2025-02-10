@@ -3,20 +3,20 @@ import { Layer, LayerLegend } from "@/lib/interfaces";
 import { TILE_BASE_URL } from "../constants";
 
 export const LIME_ID = "lime";
-export const LIME_LAYER_ALL_CROPS_ID = `${LIME_ID}_all_crops`;
+export const LIME_LAYER_ALL_CROPS_ID = `${LIME_ID}_all`;
 export const LIME_LAYER_CEREALS_ID = `${LIME_ID}_cereals`;
 export const LIME_LAYER_LEGUMES_ID = `${LIME_ID}_legumes`;
-export const LIME_LAYER_ROOTS_TUBERS_ID = `${LIME_ID}_roots_tubers`;
-export const LIME_LAYER_COMMODITIES_ID = `${LIME_ID}_commodities`;
+export const LIME_LAYER_ROOTS_TUBERS_ID = `${LIME_ID}_rtbs`;
+export const LIME_LAYER_COMMODITIES_ID = `${LIME_ID}_other`;
 
 const LIME_LAYER_LEGEND: LayerLegend = {
   bins: [
-    { value: "< 0.5", color: "rgb(253, 231, 37)" },
-    { value: "0.5-1.5", color: "rgb(122, 209, 81)" },
-    { value: "1.5-2.5", color: "rgb(34, 168, 132)" },
-    { value: "2.5-3.5", color: "rgb(42, 120, 142)" },
-    { value: "3.5-4.5", color: "rgb(65, 68, 135)" },
-    { value: "> 4.5", color: "rgb(68, 1, 84)" },
+    { value: "< 0.5", color: "rgb(253, 231, 37)", min: 0, max: 0.5 },
+    { value: "0.5-1.5", color: "rgb(122, 209, 81)", min: 0.5, max: 1.5 },
+    { value: "1.5-2.5", color: "rgb(34, 168, 132)", min: 1.5, max: 2.5 },
+    { value: "2.5-3.5", color: "rgb(42, 120, 142)", min: 2.5, max: 3.5 },
+    { value: "3.5-4.5", color: "rgb(65, 68, 135)", min: 3.5, max: 4.5 },
+    { value: "> 4.5", color: "rgb(68, 1, 84)", min: 4.5, max: 20 },
   ],
 };
 

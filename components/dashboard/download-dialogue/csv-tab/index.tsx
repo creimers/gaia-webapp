@@ -4,10 +4,9 @@ import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { parseAsString, useQueryState } from "next-usequerystate";
 
-import { SOIL_ID, SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
+import { SOIL_ID } from "@/lib/layers/soil";
 import { LIME_ID } from "@/lib/layers/lime";
 import { PROFITABILITY_ID } from "@/lib/layers/profitability";
-import { DEFAULT_LIME_PRICE } from "@/lib/constants";
 import { SOIL_DATA_COUNTRY_CODES, SOIL_DATA } from "@/lib/data/soil";
 import { LIME_DATA_COUNTRY_CODES, LIME_DATA } from "@/lib/data/lime";
 import { PROFIT_DATA_COUNTRY_CODES, PROFIT_DATA } from "@/lib/data/profit";
@@ -18,6 +17,8 @@ import Citation from "../citation";
 import CountrySelect, { type Country } from "./country-select";
 import License from "../../../license";
 
+import { useMapStore } from "@/lib/map-store";
+
 type Props = {
   onClose: () => void;
 };
@@ -25,36 +26,29 @@ type Props = {
 export default function CSVTab({ onClose }: Props) {
   const [agreeToLicense, setAgreeToLicense] = React.useState(false);
   const [country, setCountry] = React.useState<Country | undefined>();
-  const [layer] = useQueryState(
-    "layer",
-    parseAsString.withDefault(SOIL_LAYER_PH_ID)
-  );
-  const [limePrice] = useQueryState(
-    "lime_price",
-    parseAsString.withDefault(DEFAULT_LIME_PRICE)
-  );
+  const { activeLayer } = useMapStore();
 
   const availableCountries = React.useMemo(() => {
-    if (layer.includes(SOIL_ID)) {
+    if (activeLayer.includes(SOIL_ID)) {
       return SOIL_DATA_COUNTRY_CODES;
-    } else if (layer.includes(LIME_ID)) {
+    } else if (activeLayer.includes(LIME_ID)) {
       return LIME_DATA_COUNTRY_CODES;
-    } else if (layer.includes(PROFITABILITY_ID)) {
+    } else if (activeLayer.includes(PROFITABILITY_ID)) {
       return PROFIT_DATA_COUNTRY_CODES;
     }
-  }, [layer]);
+  }, [activeLayer]);
 
   function generateFileUrl() {
     if (!country) {
       return "";
     }
-    if (layer.includes(SOIL_ID)) {
+    if (activeLayer.includes(SOIL_ID)) {
       return SOIL_DATA[country.iso];
-    } else if (layer.includes(LIME_ID)) {
+    } else if (activeLayer.includes(LIME_ID)) {
       return LIME_DATA[country.iso];
-    } else if (layer.includes(PROFITABILITY_ID)) {
+    } else if (activeLayer.includes(PROFITABILITY_ID)) {
       return PROFIT_DATA[country.iso];
-    } else if (layer.includes(YIELD_LOSS_ID)) {
+    } else if (activeLayer.includes(YIELD_LOSS_ID)) {
       return YIELD_LOSS_DATA[country.iso];
     }
     return "";

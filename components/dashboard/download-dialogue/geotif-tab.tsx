@@ -1,11 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
 import { LAYER_MAPPING } from "@/lib/layers";
-import { DEFAULT_LIME_PRICE } from "@/lib/constants";
-
-import { parseAsString, useQueryState } from "next-usequerystate";
 
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -13,6 +9,7 @@ import { DialogFooter } from "@/components/ui/dialog";
 import Citation from "./citation";
 import License from "../../license";
 import { cn } from "@/lib/utils";
+import { useMapStore } from "@/lib/map-store";
 
 type Props = {
   onClose: () => void;
@@ -21,16 +18,8 @@ type Props = {
 export default function GeotifTab({ onClose }: Props) {
   const [agreeToLicense, setAgreeToLicense] = React.useState(false);
 
-  const [layerId] = useQueryState(
-    "layer",
-    parseAsString.withDefault(SOIL_LAYER_PH_ID)
-  );
-  const layer = LAYER_MAPPING[layerId];
-
-  const [limePrice] = useQueryState(
-    "lime_price",
-    parseAsString.withDefault(DEFAULT_LIME_PRICE)
-  );
+  const { activeLayer } = useMapStore();
+  const layer = LAYER_MAPPING[activeLayer];
 
   function closeDialogue() {
     setAgreeToLicense(false);

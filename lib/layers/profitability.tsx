@@ -2,20 +2,25 @@ import Link from "next/link";
 import { Layer, LayerLegend } from "@/lib/interfaces";
 import { TILE_BASE_URL } from "../constants";
 
-export const PROFITABILITY_ID = "profitability";
-export const PROFITABILITY_LAYER_ALL_CROPS_ID = `${PROFITABILITY_ID}_all_crops`;
+export const PROFITABILITY_ID = "profit";
+export const PROFITABILITY_LAYER_ALL_CROPS_ID = `${PROFITABILITY_ID}_all`;
 export const PROFITABILITY_LAYER_CEREALS_ID = `${PROFITABILITY_ID}_cereals`;
 export const PROFITABILITY_LAYER_LEGUMES_ID = `${PROFITABILITY_ID}_legumes`;
-export const PROFITABILITY_LAYER_ROOTS_TUBERS_ID = `${PROFITABILITY_ID}_roots_tubers`;
-export const PROFITABILITY_LAYER_COMMODITIES_ID = `${PROFITABILITY_ID}_commodities`;
+export const PROFITABILITY_LAYER_ROOTS_TUBERS_ID = `${PROFITABILITY_ID}_rtbs`;
+export const PROFITABILITY_LAYER_COMMODITIES_ID = `${PROFITABILITY_ID}_other`;
 
 const PROFITABILITY_LAYER_LEGEND: LayerLegend = {
   bins: [
-    { value: "-Inf - -250", color: "rgb(253, 231, 37)" },
-    { value: "-250 - 0", color: "rgb(94, 201, 98)" },
-    { value: "0 - 250", color: "rgb(33, 145, 140)" },
-    { value: "250 - 500", color: "rgb(59, 82, 139)" },
-    { value: "500 - Inf", color: "rgb(68, 1, 84)" },
+    {
+      value: "-Inf - -250",
+      color: "rgb(253, 231, 37)",
+      min: -100000,
+      max: -250,
+    },
+    { value: "-250 - 0", color: "rgb(94, 201, 98)", min: -250, max: 0 },
+    { value: "0 - 250", color: "rgb(33, 145, 140)", min: 0, max: 250 },
+    { value: "250 - 500", color: "rgb(59, 82, 139)", min: 250, max: 500 },
+    { value: "500 - Inf", color: "rgb(68, 1, 84)", min: 500, max: 100000 },
   ],
 };
 

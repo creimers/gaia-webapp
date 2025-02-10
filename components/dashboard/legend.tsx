@@ -1,16 +1,11 @@
-import { useQueryState, parseAsString } from "next-usequerystate";
-
-import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
 import { LAYER_MAPPING } from "@/lib/layers";
+import { useMapStore } from "@/lib/map-store";
 
 export default function Legend() {
-  const [layerId] = useQueryState(
-    "layer",
-    parseAsString.withDefault(SOIL_LAYER_PH_ID)
-  );
-  const layer = LAYER_MAPPING[layerId];
-  const legend = LAYER_MAPPING[layerId].legend;
-  const title = legend?.title || layer.label;
+  const { activeLayer } = useMapStore();
+  const layer = LAYER_MAPPING[activeLayer];
+  const legend = LAYER_MAPPING[activeLayer]?.legend || null;
+  const title = legend?.title || layer?.label || null;
 
   return (
     <div className="absolute bottom-[50px] md:bottom-[30px] right-14 rounded-lg bg-gray-100 p-3 ring-2 ring-gray-400/50">

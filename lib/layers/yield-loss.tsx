@@ -2,20 +2,20 @@ import Link from "next/link";
 import { Layer, LayerLegend } from "@/lib/interfaces";
 import { TILE_BASE_URL } from "../constants";
 
-export const YIELD_LOSS_ID = "yield_loss";
-export const YIELD_LOSS_LAYER_ALL_CROPS_ID = `${YIELD_LOSS_ID}_all_crops`;
+export const YIELD_LOSS_ID = "yloss";
+export const YIELD_LOSS_LAYER_ALL_CROPS_ID = `${YIELD_LOSS_ID}_all`;
 export const YIELD_LOSS_LAYER_CEREALS_ID = `${YIELD_LOSS_ID}_cereals`;
 export const YIELD_LOSS_LAYER_LEGUMES_ID = `${YIELD_LOSS_ID}_legumes`;
-export const YIELD_LOSS_LAYER_ROOTS_TUBERS_ID = `${YIELD_LOSS_ID}_roots_tubers`;
-export const YIELD_LOSS_LAYER_COMMODITIES_ID = `${YIELD_LOSS_ID}_commodities`;
+export const YIELD_LOSS_LAYER_ROOTS_TUBERS_ID = `${YIELD_LOSS_ID}_rtbs`;
+export const YIELD_LOSS_LAYER_COMMODITIES_ID = `${YIELD_LOSS_ID}_other`;
 
 const YIELD_LOSS_LAYER_LEGEND: LayerLegend = {
   bins: [
-    { value: "No yield loss", color: "rgb(211, 211, 211)" },
-    { value: "0-20", color: "rgb(253, 231, 37)" },
-    { value: "20-40", color: "rgb(53, 183, 121)" },
-    { value: "40-60", color: "rgb(49, 104, 142)" },
-    { value: "60-80", color: "rgb(68, 1, 84)" },
+    { value: "No yield loss", color: "rgb(211, 211, 211)", min: 0, max: 0 },
+    { value: "0-20", color: "rgb(253, 231, 37)", min: 0, max: 20 },
+    { value: "20-40", color: "rgb(53, 183, 121)", min: 20, max: 40 },
+    { value: "40-60", color: "rgb(49, 104, 142)", min: 40, max: 60 },
+    { value: "60-80", color: "rgb(68, 1, 84)", min: 60, max: 80 },
   ],
 };
 

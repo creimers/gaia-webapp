@@ -12,29 +12,17 @@ import Map, {
 import type { RasterPaint } from "mapbox-gl";
 
 import { MagnifyingGlass } from "@phosphor-icons/react";
+import dynamic from "next/dynamic";
 
 import { LAYER_MAPPING } from "@/lib/layers";
-import { SOIL_LAYER_PH_ID } from "@/lib/layers/soil";
-// import { PROFITABILITY_ID } from "@/lib/layers/profitability";
-// import { DEFAULT_LIME_PRICE } from "@/lib/constants";
+import { useMapStore } from "@/lib/map-store";
 
-import dynamic from "next/dynamic";
 import Legend from "./legend";
-import {
-  parseAsBoolean,
-  useQueryState,
-  useQueryStates,
-  parseAsFloat,
-  parseAsString,
-} from "next-usequerystate";
+import LocationValue from "./location-value";
 
 const CustomSearchBox = dynamic(() => import("./search-box"), {
   ssr: false,
 });
-
-const DEFAULT_LATITUDE = -6;
-const DEFAULT_LONGITUDE = 26.793587;
-const DEFAULT_ZOOM = 3;
 
 const BASE_LAYER_URLS: { [key: string]: string } = {
   streets: "mapbox://styles/mapbox/streets-v12",
@@ -46,35 +34,21 @@ export default function TheMap() {
   const [mapInitialized, setMapInitialized] = React.useState(false);
   const [searchDialogueOpen, setSearchDialogueOpen] = React.useState(false);
 
-  // # grap map state from url
-  const [viewStateQuery, setViewStateQuery] = useQueryStates({
-    lon: parseAsFloat.withDefault(DEFAULT_LONGITUDE),
-    lat: parseAsFloat.withDefault(DEFAULT_LATITUDE),
-    zoom: parseAsFloat.withDefault(DEFAULT_ZOOM),
-  });
-  const [sidebarOpen] = useQueryState("sidebar", parseAsBoolean);
+  const [clickedLocation, setClickedLocation] = React.useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
 
-  const [baseLayer] = useQueryState(
-    "base_layer",
-    parseAsString.withDefault("streets")
-  );
-  const [layerId] = useQueryState(
-    "layer",
-    parseAsString.withDefault(SOIL_LAYER_PH_ID)
-  );
-  // const [limePrice] = useQueryState(
-  //   "lime_price",
-  //   parseAsString.withDefault(DEFAULT_LIME_PRICE)
-  // );
-  const [layerOpacity] = useQueryState(
-    "layer_opacity",
-    parseAsFloat.withDefault(1)
-  );
+  console.log(clickedLocation?.longitude, clickedLocation?.latitude);
 
-  const activeLayer = layerId;
-  // const activeLayer = `${layerId}${
-  //   layerId.includes(PROFITABILITY_ID) ? `_${limePrice}` : ""
-  // }`;
+  const {
+    viewState,
+    setViewState,
+    baseLayer,
+    sidebarOpen,
+    activeLayer,
+    layerOpacity,
+  } = useMapStore();
 
   const mapRef = React.useRef<MapRef>(null);
 
@@ -90,15 +64,7 @@ export default function TheMap() {
     }
   }, [mapInitialized, sidebarOpen, mapHasMoved]);
 
-  const [viewState, setViewState] = React.useState({
-    longitude: viewStateQuery.lon,
-    latitude: viewStateQuery.lat,
-    zoom: viewStateQuery.zoom,
-  });
-
   const persistViewState = React.useCallback(() => {
-    const { latitude, longitude, zoom } = viewState;
-    setViewStateQuery({ lat: latitude, lon: longitude, zoom });
     setMapHasMoved(true);
   }, [viewState]);
 
@@ -127,7 +93,21 @@ export default function TheMap() {
       doubleClickZoom={true}
       onMove={(evt) => setViewState(evt.viewState)}
       maxZoom={10}
+      onClick={(evt) => {
+        const lngLat = evt.lngLat;
+        setTimeout(() => {
+          setClickedLocation({
+            longitude: lngLat.lng,
+            latitude: lngLat.lat,
+          });
+        }, 100);
+      }}
     >
+      <LocationValue
+        location={clickedLocation}
+        layerId={activeLayer}
+        clearLocation={() => setClickedLocation(null)}
+      />
       {mapInitialized && (
         <CustomSearchBox
           mapInitialized={mapInitialized}
