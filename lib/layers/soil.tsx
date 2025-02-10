@@ -36,7 +36,7 @@ export const SOIL_LAYER_PH: Layer = {
     </>
   ),
   tileUrl: `${TILE_BASE_URL}/soil_ph/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/soil_ph.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/soil/soil_ph.tif`,
   legend: {
     bins: [
       { value: "< 5.0", color: "rgb(253, 231, 37)" },
@@ -82,7 +82,7 @@ export const SOIL_LAYER_HP: Layer = {
     </>
   ),
   tileUrl: `${TILE_BASE_URL}/soil_hp/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/soil_hp_sat.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/soil/soil_hp_sat.tif`,
   legend: {
     title: "Acidity saturation [% ECEC]",
     bins: [
@@ -129,7 +129,7 @@ export const SOIL_LAYER_CATION_EXCHANGE_CAPACITY: Layer = {
     </>
   ),
   tileUrl: `${TILE_BASE_URL}/soil_ecec/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/soil_ecec.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/soil/soil_ecec.tif`,
   legend: {
     title: "Buffering capacity [cmolc/kg]",
     bins: [

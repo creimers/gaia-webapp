@@ -34,7 +34,7 @@ const YIELD_LOSS_ALL_CROPS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/yloss_all/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_all.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yield_loss/yloss_all.tif`,
   legend: {
     title: "All Crops [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -54,7 +54,7 @@ const YIELD_LOSS_LAYER_CEREALS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/yloss_cereals/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_cereals.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yield_loss/yloss_cereals.tif`,
   legend: {
     title: "Cereals [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -74,7 +74,7 @@ const YIELD_LOSS_LAYER_LEGUMES: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/yloss_legumes/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_legumes.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yield_loss/yloss_legumes.tif`,
   legend: {
     title: "Legumes [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -93,7 +93,7 @@ const YIELD_LOSS_LAYER_ROOTS_TUBERS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/yloss_rtbs/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_rtbs.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yield_loss/yloss_rtbs.tif`,
   legend: {
     title: "Roots & Tubers [%]",
     ...YIELD_LOSS_LAYER_LEGEND,
@@ -113,7 +113,7 @@ const YIELD_LOSS_LAYER_COMMODITIES: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/yloss_other/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/yloss_other.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/yield_loss/yloss_other.tif`,
   legend: {
     title: "Non-food crops [%]",
     ...YIELD_LOSS_LAYER_LEGEND,

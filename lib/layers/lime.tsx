@@ -42,7 +42,7 @@ const LIME_LAYER_ALL_CROPS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/lime_all/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/lime_all.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_all.tif`,
   legend: {
     title: "All Crops [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -69,7 +69,7 @@ const LIME_LAYER_CEREALS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/lime_cereals/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/lime_cereals.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_cereals.tif`,
   legend: {
     title: "Cereals [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -96,7 +96,7 @@ const LIME_LAYER_LEGUMES: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/lime_legumes/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/lime_legumes.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_legumes.tif`,
   legend: {
     title: "Legumes [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -122,7 +122,7 @@ const LIME_LAYER_ROOTS_TUBERS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/lime_rtbs/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/lime_rtbs.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_rtbs.tif`,
   legend: {
     title: "Roots & Tubers [t/ha]",
     ...LIME_LAYER_LEGEND,
@@ -149,7 +149,7 @@ const LIME_LAYER_COMMODITIES: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/lime_other/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/lime_other.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/lime/lime_other.tif`,
   legend: {
     title: "Non-food crops [t/ha]",
     ...LIME_LAYER_LEGEND,

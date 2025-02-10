@@ -33,7 +33,7 @@ export const PROFITABILITY_LAYER_ALL_CROPS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/profit_all/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/profit_all.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_all.tif`,
   legend: {
     title: "All Crops [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -52,7 +52,7 @@ export const PROFITABILITY_LAYER_CEREALS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/profit_cereals/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/profit_cereals.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_cereals.tif`,
   legend: {
     title: "Cereals [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -71,7 +71,7 @@ export const PROFITABILITY_LAYER_LEGUMES: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/profit_legumes/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/profit_legumes.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_legumes.tif`,
   legend: {
     title: "Legumes [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -89,7 +89,7 @@ export const PROFITABILITY_LAYER_ROOTS_TUBERS: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/profit_rtbs/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/profit_rtbs.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_rtbs.tif`,
   legend: {
     title: "Roots & tubers [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
@@ -108,7 +108,7 @@ export const PROFITABILITY_LAYER_COMMODITIES: Layer = {
     </p>
   ),
   tileUrl: `${TILE_BASE_URL}/profit_other/{z}/{x}/{y}.webp`,
-  rawTileUrl: `${TILE_BASE_URL}/raw/profit_other.tif`,
+  rawTileUrl: `${TILE_BASE_URL}/raw/profit/profit_other.tif`,
   legend: {
     title: "Non-food crops [US$/ha]",
     ...PROFITABILITY_LAYER_LEGEND,
