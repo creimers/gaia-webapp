@@ -11,7 +11,12 @@ export const YIELD_LOSS_LAYER_COMMODITIES_ID = `${YIELD_LOSS_ID}_other`;
 
 const YIELD_LOSS_LAYER_LEGEND: LayerLegend = {
   bins: [
-    { value: "No yield loss", color: "rgb(211, 211, 211)", min: 0, max: 0 },
+    {
+      value: "No yield loss",
+      color: "rgb(211, 211, 211)",
+      min: 0,
+      max: 0.0001,
+    },
     { value: "0-20", color: "rgb(253, 231, 37)", min: 0.0001, max: 20 },
     { value: "20-40", color: "rgb(53, 183, 121)", min: 20, max: 40 },
     { value: "40-60", color: "rgb(49, 104, 142)", min: 40, max: 60 },
