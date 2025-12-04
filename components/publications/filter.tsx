@@ -12,7 +12,7 @@ export default function Filter() {
   const publicationType = searchParams.get("type");
 
   function handleClick(type: string) {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
     if (publicationType === type) {
       params.delete("type");
     } else {

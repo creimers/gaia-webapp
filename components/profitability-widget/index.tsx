@@ -75,8 +75,7 @@ export default function ProfitabilityWidget() {
             <Select value={crop} onValueChange={(v) => setCrop(v)}>
               <SelectTrigger>
                 <SelectValue className="capitalize">
-                  {<span className="capitalize">{crop}</span> ||
-                    "Select location"}
+                  <span className="capitalize">{crop}</span>
                 </SelectValue>
               </SelectTrigger>
               <SelectContent>

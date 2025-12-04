@@ -95,7 +95,7 @@ export default function UrlStateSyncer() {
   // state to url
   React.useEffect(() => {
     const { latitude, longitude, zoom } = viewState;
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
     params.set(LAT, latitude.toString());
     params.set(LON, longitude.toString());
     params.set(ZOOM, zoom.toString());
