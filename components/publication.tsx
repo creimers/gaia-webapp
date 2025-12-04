@@ -17,8 +17,8 @@ export default function Publication({ publication }: Props) {
       <h2 className="text-2xl text-lime-800 mb-2 font-medium">
         {publication.title}
       </h2>
-      <div className="text-gray-600 flex items-center space-x-2">
-        <Users className="w-4 h-4" />
+      <div className="text-gray-600 flex space-x-2">
+        <Users className="w-4 h-4 shrink-0 mt-1.5" />
         <span>{publication.authors}</span>
       </div>
       <div className="text-gray-600 flex items-center space-x-2">
