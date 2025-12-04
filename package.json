@@ -54,5 +54,6 @@
     "postcss": "latest",
     "tailwindcss": "^3.3.3",
     "typescript": "latest"
-  }
+  },
+  "packageManager": "pnpm@10.24.0"
 }
